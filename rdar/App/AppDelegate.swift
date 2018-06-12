@@ -41,6 +41,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // MARK: - URL Scheme
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let radar = Radar(url: url) {
+            switch UserDefaults.standard.browserOption {
+            case .safari:
+                app.open(radar.url(by: UserDefaults.standard.radarOption), options: [:]) { (success) in
+
+                }
+            case .sfvc:
+                // TODO:
+                break
+            }
+
+            return true
+        } else {
+            return false
+        }
+    }
 
 }
 

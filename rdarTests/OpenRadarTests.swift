@@ -1,15 +1,15 @@
 //
-//  rdarTests.swift
+//  OpenRadarTests.swift
 //  rdarTests
 //
-//  Created by Ethanhuang on 2018/6/10.
+//  Created by Ethanhuang on 2018/6/12.
 //  Copyright © 2018年 Elaborapp Co., Ltd. All rights reserved.
 //
 
 import XCTest
 @testable import rdar
 
-class rdarTests: XCTestCase {
+class OpenRadarTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
@@ -21,16 +21,16 @@ class rdarTests: XCTestCase {
         super.tearDown()
     }
     
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testParseURL() {
+        let url = URL(string: "rdar://12345678")!
+        let radar = OpenRadar.parse(url)
+        XCTAssertNotNil(radar)
+        XCTAssert(radar?.id == "12345678")
     }
-    
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
+
+    func testBuildURL() {
+        let radar = Radar(id: "12345678")
+        let url = OpenRadar.buildURL(from: radar)
+        XCTAssertEqual(url.absoluteString, "https://openradar.appspot.com/12345678")
     }
-    
 }
