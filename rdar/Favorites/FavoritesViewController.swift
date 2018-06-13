@@ -13,7 +13,7 @@ class FavoritesViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Favorites"
+        navigationItem.title = "Favorites".localized()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

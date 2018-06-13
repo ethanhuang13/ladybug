@@ -9,6 +9,9 @@
 import Foundation
 
 enum BrowserOption: Int {
-    case safari
+    case sfvcReader
     case sfvc
+    case safari
+    case briskApp
+    case ask
 }

@@ -11,4 +11,5 @@ import Foundation
 enum RadarOption: Int {
     case openRadar
     case appleRadar
+    case brisk
 }

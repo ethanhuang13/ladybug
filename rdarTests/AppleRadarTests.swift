@@ -23,14 +23,14 @@ class AppleRadarTests: XCTestCase {
 
     func testParseURL() {
         let url = URL(string: "https://bugreport.apple.com/web/problemID=12345678")!
-        let radar = AppleRadar.parse(url)
-        XCTAssertNotNil(radar)
-        XCTAssert(radar?.id == "12345678")
+        let radarID = AppleRadar.parse(url)
+        XCTAssertNotNil(radarID)
+        XCTAssert(radarID?.id == "12345678")
     }
     
     func testBuildURL() {
-        let radar = Radar(id: "12345678")
-        let url = AppleRadar.buildURL(from: radar)
+        let radarID = RadarID(string: "12345678")
+        let url = AppleRadar.buildURL(from: radarID)
         XCTAssertEqual(url.absoluteString, "https://bugreport.apple.com/web/problemID=12345678")
     }
 }

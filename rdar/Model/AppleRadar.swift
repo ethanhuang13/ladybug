@@ -9,19 +9,19 @@
 import Foundation
 
 struct AppleRadar: RadarURLParser & RadarURLBuilder {
-    static func parse(_ url: URL) -> Radar? {
+    static func parse(_ url: URL) -> RadarID? {
         if url.scheme?.hasPrefix("http") == true,
             url.host == "bugreport.apple.com",
             url.path.hasPrefix("/web"),
             url.lastPathComponent.hasPrefix("problemID=") {
             let id = url.lastPathComponent.replacingOccurrences(of: "problemID=", with: "")
-            return Radar(id: id)
+            return RadarID(string: id)
         } else {
             return nil
         }
     }
 
-    static func buildURL(from radar: Radar) -> URL {
-        return URL(string: "https://bugreport.apple.com/web/problemID=\(radar.id)")!
+    static func buildURL(from radarID: RadarID) -> URL {
+        return URL(string: "https://bugreport.apple.com/web/problemID=\(radarID.id)")!
     }
 }

@@ -6,7 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 ### Added
-- Project init
-- Radar model, RadarURLParser, RadarURLBuilder protocols and implementation
+- Radar model, RadarURLParser, RadarURLBuilder protocols, implementation, and tests
 - RadarOption and BrowserOption
 - Basic UI architecture
+- BriskRadar and tests
+- Localization
+- Present in SFSafariViewController

@@ -13,7 +13,7 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Settings"
+        navigationItem.title = "Settings".localized()
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

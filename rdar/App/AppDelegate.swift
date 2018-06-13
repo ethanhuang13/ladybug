@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+
         return true
     }
 
@@ -44,22 +45,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - URL Scheme
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        if let radar = Radar(url: url) {
-            switch UserDefaults.standard.browserOption {
-            case .safari:
-                app.open(radar.url(by: UserDefaults.standard.radarOption), options: [:]) { (success) in
 
-                }
-            case .sfvc:
-                // TODO:
-                break
+        let opener = RadarURLOpener.shared
+
+        if let radarID = RadarID(url: url),
+            opener.canOpen(in: UserDefaults.standard.browserOption) {
+            opener.open(radarID, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
+
             }
-
             return true
         } else {
             return false
         }
     }
-
 }
-

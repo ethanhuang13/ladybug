@@ -9,5 +9,5 @@
 import Foundation
 
 protocol RadarURLParser {
-    static func parse(_ url: URL) -> Radar?
+    static func parse(_ url: URL) -> RadarID?
 }

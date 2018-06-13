@@ -9,25 +9,25 @@
 import Foundation
 
 struct OpenRadar: RadarURLParser & RadarURLBuilder {
-    static func parse(_ url: URL) -> Radar? {
+    static func parse(_ url: URL) -> RadarID? {
         if url.scheme == "rdar",
             let id = url.host,
             id == String(Int(id) ?? -1) {
-            return Radar(id: id)
+            return RadarID(string: id)
         } else if url.scheme?.hasPrefix("http") == true,
             url.host == "openradar.appspot.com",
             url.lastPathComponent == String(Int(url.lastPathComponent) ?? -1) {
-            return Radar(id: url.lastPathComponent)
+            return RadarID(string: url.lastPathComponent)
         } else if url.scheme?.hasPrefix("http") == true,
             url.host?.hasSuffix("openradar.me") == true,
             url.lastPathComponent == String(Int(url.lastPathComponent) ?? -1) {
-            return Radar(id: url.lastPathComponent)
+            return RadarID(string: url.lastPathComponent)
         } else {
             return nil
         }
     }
 
-    static func buildURL(from radar: Radar) -> URL {
-        return URL(string: "https://openradar.appspot.com/\(radar.id)")!
+    static func buildURL(from radarID: RadarID) -> URL {
+        return URL(string: "https://openradar.appspot.com/\(radarID.id)")!
     }
 }

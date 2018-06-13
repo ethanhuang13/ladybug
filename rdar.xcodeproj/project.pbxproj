@@ -15,7 +15,7 @@
 		6C07273A20CDCA5300603199 /* RadarOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273920CDCA5300603199 /* RadarOption.swift */; };
 		6C07273C20CF692800603199 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273B20CF692800603199 /* UserDefaults+Extension.swift */; };
 		6C07273E20CF6C0D00603199 /* BrowserOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273D20CF6C0D00603199 /* BrowserOption.swift */; };
-		6C07274020CF6C7700603199 /* Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273F20CF6C7700603199 /* Radar.swift */; };
+		6C07274020CF6C7700603199 /* RadarID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273F20CF6C7700603199 /* RadarID.swift */; };
 		6C07274220CF6CD000603199 /* AppleRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274120CF6CD000603199 /* AppleRadar.swift */; };
 		6C07274420CF6CDB00603199 /* OpenRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274320CF6CDB00603199 /* OpenRadar.swift */; };
 		6C07274620CF6CF000603199 /* RadarURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274520CF6CF000603199 /* RadarURLBuilder.swift */; };
@@ -28,6 +28,16 @@
 		6C07276B20CFA90400603199 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276A20CFA90400603199 /* RecentViewController.swift */; };
 		6C07276D20CFA90E00603199 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276C20CFA90E00603199 /* FavoritesViewController.swift */; };
 		6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276E20CFA91800603199 /* SettingsViewController.swift */; };
+		6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */; };
+		6CCFA66920D0F188006C9BAE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6CCFA66B20D0F188006C9BAE /* Localizable.strings */; };
+		6CCFA66F20D0F3E4006C9BAE /* Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA66E20D0F3E4006C9BAE /* Radar.swift */; };
+		6CCFA67120D0F43A006C9BAE /* RadarMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */; };
+		6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */; };
+		6CCFA67520D10CE0006C9BAE /* BriskRadar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67420D10CE0006C9BAE /* BriskRadar.swift */; };
+		6CCFA67820D1111A006C9BAE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67720D1111A006C9BAE /* Result.swift */; };
+		6CCFA67A20D11265006C9BAE /* RadarURLOpenerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */; };
+		6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67C20D113DE006C9BAE /* String+Extension.swift */; };
+		6CCFA67F20D11C70006C9BAE /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67E20D11C70006C9BAE /* UIColor+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,7 +72,7 @@
 		6C07273920CDCA5300603199 /* RadarOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarOption.swift; sourceTree = "<group>"; };
 		6C07273B20CF692800603199 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		6C07273D20CF6C0D00603199 /* BrowserOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserOption.swift; sourceTree = "<group>"; };
-		6C07273F20CF6C7700603199 /* Radar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radar.swift; sourceTree = "<group>"; };
+		6C07273F20CF6C7700603199 /* RadarID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarID.swift; sourceTree = "<group>"; };
 		6C07274120CF6CD000603199 /* AppleRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleRadar.swift; sourceTree = "<group>"; };
 		6C07274320CF6CDB00603199 /* OpenRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadar.swift; sourceTree = "<group>"; };
 		6C07274520CF6CF000603199 /* RadarURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLBuilder.swift; sourceTree = "<group>"; };
@@ -77,6 +87,17 @@
 		6C07276E20CFA91800603199 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6C273FE120D01DCB001FD2F0 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		6C273FE220D01DEA001FD2F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadarTests.swift; sourceTree = "<group>"; };
+		6CCFA66C20D0F194006C9BAE /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		6CCFA66D20D0F197006C9BAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		6CCFA66E20D0F3E4006C9BAE /* Radar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radar.swift; sourceTree = "<group>"; };
+		6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMetadata.swift; sourceTree = "<group>"; };
+		6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLOpener.swift; sourceTree = "<group>"; };
+		6CCFA67420D10CE0006C9BAE /* BriskRadar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadar.swift; sourceTree = "<group>"; };
+		6CCFA67720D1111A006C9BAE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
+		6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLOpenerError.swift; sourceTree = "<group>"; };
+		6CCFA67C20D113DE006C9BAE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		6CCFA67E20D11C70006C9BAE /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +150,7 @@
 		6C07270A20CDC70300603199 /* rdar */ = {
 			isa = PBXGroup;
 			children = (
+				6CCFA67B20D113A0006C9BAE /* Extensions */,
 				6C07277120CFB3B200603199 /* App */,
 				6C07275920CFA51B00603199 /* Model */,
 				6C07275E20CFA82300603199 /* Recent */,
@@ -143,6 +165,7 @@
 			isa = PBXGroup;
 			children = (
 				6C07274B20CF801100603199 /* AppleRadarTests.swift */,
+				6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */,
 				6C07274D20CF803300603199 /* OpenRadarTests.swift */,
 				6C07272220CDC70600603199 /* rdarTests-Info.plist */,
 			);
@@ -161,14 +184,18 @@
 		6C07275920CFA51B00603199 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6C07273F20CF6C7700603199 /* Radar.swift */,
+				6CCFA66E20D0F3E4006C9BAE /* Radar.swift */,
+				6C07273F20CF6C7700603199 /* RadarID.swift */,
+				6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */,
 				6C07274720CF73C900603199 /* RadarURLParser.swift */,
 				6C07274520CF6CF000603199 /* RadarURLBuilder.swift */,
 				6C07274120CF6CD000603199 /* AppleRadar.swift */,
 				6C07274320CF6CDB00603199 /* OpenRadar.swift */,
+				6CCFA67420D10CE0006C9BAE /* BriskRadar.swift */,
 				6C07273D20CF6C0D00603199 /* BrowserOption.swift */,
 				6C07273920CDCA5300603199 /* RadarOption.swift */,
 				6C07273B20CF692800603199 /* UserDefaults+Extension.swift */,
+				6CCFA67720D1111A006C9BAE /* Result.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +234,7 @@
 				6C07271420CDC70600603199 /* LaunchScreen.storyboard */,
 				6C07270F20CDC70300603199 /* Main.storyboard */,
 				6C07271720CDC70600603199 /* rdar-Info.plist */,
+				6CCFA66B20D0F188006C9BAE /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -215,8 +243,19 @@
 			isa = PBXGroup;
 			children = (
 				6C07270B20CDC70300603199 /* AppDelegate.swift */,
+				6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */,
+				6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		6CCFA67B20D113A0006C9BAE /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6CCFA67C20D113DE006C9BAE /* String+Extension.swift */,
+				6CCFA67E20D11C70006C9BAE /* UIColor+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +344,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hant",
 			);
 			mainGroup = 6C0726FF20CDC70300603199;
 			productRefGroup = 6C07270920CDC70300603199 /* Products */;
@@ -326,6 +366,7 @@
 				6C07271620CDC70600603199 /* LaunchScreen.storyboard in Resources */,
 				6C07275D20CFA81100603199 /* Recent.storyboard in Resources */,
 				6C07271320CDC70600603199 /* Assets.xcassets in Resources */,
+				6CCFA66920D0F188006C9BAE /* Localizable.strings in Resources */,
 				6C07276320CFA8A200603199 /* Settings.storyboard in Resources */,
 				6C07276120CFA86C00603199 /* Favorites.storyboard in Resources */,
 				6C07271120CDC70300603199 /* Main.storyboard in Resources */,
@@ -353,17 +394,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6CCFA67A20D11265006C9BAE /* RadarURLOpenerError.swift in Sources */,
+				6CCFA67520D10CE0006C9BAE /* BriskRadar.swift in Sources */,
 				6C07274220CF6CD000603199 /* AppleRadar.swift in Sources */,
+				6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */,
 				6C07274820CF73C900603199 /* RadarURLParser.swift in Sources */,
 				6C07276B20CFA90400603199 /* RecentViewController.swift in Sources */,
-				6C07274020CF6C7700603199 /* Radar.swift in Sources */,
+				6CCFA66F20D0F3E4006C9BAE /* Radar.swift in Sources */,
+				6CCFA67820D1111A006C9BAE /* Result.swift in Sources */,
+				6C07274020CF6C7700603199 /* RadarID.swift in Sources */,
 				6C07273A20CDCA5300603199 /* RadarOption.swift in Sources */,
 				6C07274620CF6CF000603199 /* RadarURLBuilder.swift in Sources */,
 				6C07273C20CF692800603199 /* UserDefaults+Extension.swift in Sources */,
 				6C07273E20CF6C0D00603199 /* BrowserOption.swift in Sources */,
+				6CCFA67120D0F43A006C9BAE /* RadarMetadata.swift in Sources */,
 				6C07274420CF6CDB00603199 /* OpenRadar.swift in Sources */,
+				6CCFA67F20D11C70006C9BAE /* UIColor+Extension.swift in Sources */,
 				6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */,
 				6C07276D20CFA90E00603199 /* FavoritesViewController.swift in Sources */,
+				6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */,
 				6C07270C20CDC70300603199 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -372,6 +421,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */,
 				6C07274E20CF803300603199 /* OpenRadarTests.swift in Sources */,
 				6C07274C20CF801100603199 /* AppleRadarTests.swift in Sources */,
 			);
@@ -415,6 +465,15 @@
 				6C07271520CDC70600603199 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		6CCFA66B20D0F188006C9BAE /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6CCFA66C20D0F194006C9BAE /* zh-Hant */,
+				6CCFA66D20D0F197006C9BAE /* Base */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
