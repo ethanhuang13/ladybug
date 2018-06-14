@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Ladybug
+
+  Created by Ethanhuang on 2018/6/13.
+  Copyright © 2018年 Elaborapp Co., Ltd. All rights reserved.
+*/
+
+"Recent" = "Recent";
+"Favorites" = "Favorites";
+"Settings" = "Settings";
+
+"Open In..." = "Open In...";
+"Select browser/app to open" = "Select browser/app to open";
+"Cancel" = "Cancel";
+
+"In-app Browser" = "In-app Browser";
+"Safari" = "Safari";
+"Brisk" = "Brisk";
