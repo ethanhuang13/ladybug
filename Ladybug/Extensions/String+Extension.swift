@@ -12,4 +12,12 @@ extension String {
     func localized() -> String {
         return NSLocalizedString(self, comment: "")
     }
+
+    func caseInsensitiveHasPrefix(_ string: String) -> Bool {
+        return self.lowercased().hasPrefix(string.lowercased())
+    }
+
+    func caseInsensitiveHasSuffix(_ string: String) -> Bool {
+        return self.lowercased().hasSuffix(string.lowercased())
+    }
 }

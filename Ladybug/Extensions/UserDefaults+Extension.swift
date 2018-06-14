@@ -14,10 +14,16 @@ extension UserDefaults {
 
     var browserOption: BrowserOption {
         get {
-            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: browserKey)) ?? .safari
+            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: browserKey)) ?? .sfvcReader
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: browserKey)
+
+            if newValue == .briskApp && self.radarOption != .brisk {
+                self.radarOption = .brisk
+            } else if newValue != .briskApp && self.radarOption == .brisk {
+                self.radarOption = .openRadar
+            }
         }
     }
 
@@ -27,6 +33,12 @@ extension UserDefaults {
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: radarKey)
+
+            if newValue == .brisk && self.browserOption != .briskApp {
+                self.browserOption = .briskApp
+            } else if newValue != .brisk && self.browserOption == .briskApp {
+                self.browserOption = .sfvcReader
+            }
         }
     }
 }

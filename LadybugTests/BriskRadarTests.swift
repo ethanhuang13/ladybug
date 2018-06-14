@@ -23,11 +23,11 @@ class BriskRadarTests: XCTestCase {
         let url = URL(string: "brisk-rdar://radar/12345678")!
         let radarID = BriskRadar.parse(url)
         XCTAssertNotNil(radarID)
-        XCTAssert(radarID?.id == "12345678")
+        XCTAssert((radarID?.id == 12345678) == true)
     }
 
     func testBuildURL() {
-        let radarID = RadarID(string: "12345678")
+        let radarID = RadarID(12345678)
         let url = BriskRadar.buildURL(from: radarID)
         XCTAssertEqual(url.absoluteString, "brisk-rdar://radar/12345678")
     }

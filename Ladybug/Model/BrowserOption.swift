@@ -13,5 +13,4 @@ enum BrowserOption: Int {
     case sfvc
     case safari
     case briskApp
-    case ask
 }

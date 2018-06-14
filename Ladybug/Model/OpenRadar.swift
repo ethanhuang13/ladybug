@@ -11,16 +11,13 @@ import Foundation
 struct OpenRadar: RadarURLParser & RadarURLBuilder {
     static func parse(_ url: URL) -> RadarID? {
         if url.scheme == "rdar",
-            let id = url.host,
-            id == String(Int(id) ?? -1) {
+            let id = url.host {
             return RadarID(string: id)
-        } else if url.scheme?.hasPrefix("http") == true,
-            url.host == "openradar.appspot.com",
-            url.lastPathComponent == String(Int(url.lastPathComponent) ?? -1) {
+        } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
+            url.host?.caseInsensitiveHasSuffix("openradar.appspot.com") == true {
             return RadarID(string: url.lastPathComponent)
-        } else if url.scheme?.hasPrefix("http") == true,
-            url.host?.hasSuffix("openradar.me") == true,
-            url.lastPathComponent == String(Int(url.lastPathComponent) ?? -1) {
+        } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
+            url.host?.caseInsensitiveHasSuffix("openradar.me") == true {
             return RadarID(string: url.lastPathComponent)
         } else {
             return nil

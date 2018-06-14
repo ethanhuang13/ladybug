@@ -6,6 +6,31 @@
   Copyright © 2018年 Elaborapp Co., Ltd. All rights reserved.
 */
 
+// General
+"Cancel" = "取消";
+
+// RadarOption
+"Open Radar" = "Open Radar";
+"Apple Radar (Bug Reporter)" = "Apple Radar (Bug Reporter)";
+"Brisk" = "Brisk";
+
+// BrowserOption
+"In-App Browser" = "內建瀏覽器";
+"In-App Browser (Reader)" = "內建瀏覽器—閱讀模式";
+"Safari" = "Safari";
+
+// RecentViewController
 "Recent" = "最近項目";
+
+// FavoritesViewController
 "Favorites" = "喜好項目";
+
+// SettingsViewController
 "Settings" = "設定";
+"Radar" = "Radar";
+"Radar Option" = "Radar 選項";
+"Open a Radar link on..." = "在哪裡開啟 Radar 連結？";
+"Browser" = "瀏覽器";
+"Browser Option" = "瀏覽器選項";
+"Open a Radar link in..." = "在哪裡開啟 Radar 連結？";
+"Open a Radar Link" = "開啟 Radar 連結";

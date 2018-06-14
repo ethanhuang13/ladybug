@@ -6,14 +6,31 @@
   Copyright © 2018年 Elaborapp Co., Ltd. All rights reserved.
 */
 
-"Recent" = "Recent";
-"Favorites" = "Favorites";
-"Settings" = "Settings";
-
-"Open In..." = "Open In...";
-"Select browser/app to open" = "Select browser/app to open";
+// General
 "Cancel" = "Cancel";
 
-"In-app Browser" = "In-app Browser";
-"Safari" = "Safari";
+// RadarOption
+"Open Radar" = "Open Radar";
+"Apple Radar (Bug Reporter)" = "Apple Radar (Bug Reporter)";
 "Brisk" = "Brisk";
+
+// BrowserOption
+"In-App Browser" = "In-App Browser";
+"In-App Browser (Reader)" = "In-App Browser (Reader)";
+"Safari" = "Safari";
+
+// RecentViewController
+"Recent" = "Recent";
+
+// FavoritesViewController
+"Favorites" = "Favorites";
+
+// SettingsViewController
+"Settings" = "Settings";
+"Radar" = "Radar";
+"Radar Option" = "Radar Option";
+"Open a Radar link on..." = "Open a Radar link on...";
+"Browser" = "Browser";
+"Browser Option" = "Browser Option";
+"Open a Radar link in..." = "Open a Radar link in...";
+"Open a Radar Link" = "Open a Radar Link";

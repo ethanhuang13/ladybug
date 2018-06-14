@@ -10,11 +10,11 @@ import Foundation
 
 struct AppleRadar: RadarURLParser & RadarURLBuilder {
     static func parse(_ url: URL) -> RadarID? {
-        if url.scheme?.hasPrefix("http") == true,
-            url.host == "bugreport.apple.com",
-            url.path.hasPrefix("/web"),
-            url.lastPathComponent.hasPrefix("problemID=") {
-            let id = url.lastPathComponent.replacingOccurrences(of: "problemID=", with: "")
+        if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            urlComponents.scheme?.hasPrefix("http") == true,
+            urlComponents.host == "bugreport.apple.com",
+            urlComponents.path.hasPrefix("/web"),
+            let id = urlComponents.queryItems?.filter({ $0.name == "problemID" }).first?.value {
             return RadarID(string: id)
         } else {
             return nil
@@ -22,6 +22,6 @@ struct AppleRadar: RadarURLParser & RadarURLBuilder {
     }
 
     static func buildURL(from radarID: RadarID) -> URL {
-        return URL(string: "https://bugreport.apple.com/web/problemID=\(radarID.id)")!
+        return URL(string: "https://bugreport.apple.com/web/?problemID=\(radarID.id)")!
     }
 }

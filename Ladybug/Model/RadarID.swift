@@ -9,18 +9,18 @@
 import Foundation
 
 struct RadarID: Codable {
-    let id: String
+    let id: Int
 
-    init(string: String) {
-        self.id = string
+    init(_ int: Int) {
+        self.id = int
     }
 }
 
 extension RadarID {
-    init?(integer: Int) {
-        let string = String(integer)
-        if Int(string) == integer {
-            self.id = string
+    init?(string: String) {
+        if let int = Int(string),
+            String(int) == string {
+            self.id = int
         } else {
             return nil
         }

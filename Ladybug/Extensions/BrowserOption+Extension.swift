@@ -11,14 +11,14 @@ import Foundation
 extension BrowserOption {
     var title: String {
         switch self {
-        case .sfvcReader, .sfvc:
-            return "In-app Browser".localized()
+        case .sfvcReader:
+            return "In-App Browser (Reader)".localized()
+        case .sfvc:
+            return "In-App Browser".localized()
         case .safari:
             return "Safari".localized()
         case .briskApp:
             return "Brisk".localized()
-        case .ask:
-            return ""
         }
     }
 }
