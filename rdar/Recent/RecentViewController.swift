@@ -101,14 +101,30 @@ class RecentViewController: UITableViewController {
 
 extension RecentViewController: RadarURLOpenerUI {
     func openRadarInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool) {
-        // Prepend radarID to self.array
+        // TODO: Prepend radarID to self.array
 
         let url = radarID.url(by: radarOption)
         presentSafariViewController(url: url, readerMode: readerMode)
     }
 
     func ask(completion: @escaping (Result<BrowserOption>) -> Void) {
+        let alertController = UIAlertController(title: "Open In...".localized(), message: "Select browser/app to open".localized(), preferredStyle: .alert)
 
+        let browserOptions: [BrowserOption] = [.sfvcReader, .safari, .briskApp]
+
+        browserOptions.forEach { (browserOption) in
+            if RadarURLOpener.shared.canOpen(in: browserOption) {
+                alertController.addAction(UIAlertAction(title: browserOption.title, style: .default, handler: { (_) in
+                    completion(.success(browserOption))
+                }))
+            }
+        }
+
+        alertController.addAction(UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: { (_) in
+            completion(.error(RadarURLOpenerError.cancelled))
+        }))
+
+        present(alertController, animated: true, completion: nil)
     }
 
     private func presentSafariViewController(url: URL, readerMode: Bool) {

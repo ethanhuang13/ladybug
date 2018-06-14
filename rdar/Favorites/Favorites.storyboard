@@ -22,7 +22,7 @@
             </objects>
             <point key="canvasLocation" x="65" y="-40"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Favorites View Controller-->
         <scene sceneID="DZX-ux-4Sl">
             <objects>
                 <tableViewController id="UDe-Bd-7Pk" customClass="FavoritesViewController" customModule="rdar" customModuleProvider="target" sceneMemberID="viewController">
@@ -45,7 +45,7 @@
                             <outlet property="delegate" destination="UDe-Bd-7Pk" id="EIS-ca-6ld"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="au4-Nx-RO0"/>
+                    <navigationItem key="navigationItem" id="au4-Nx-RO0"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AXy-Km-y1w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

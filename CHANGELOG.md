@@ -12,3 +12,5 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - BriskRadar and tests
 - Localization
 - Present in SFSafariViewController
+- Ask open in which browser
+- Use Main.storyboard as launch screen file

@@ -12,4 +12,5 @@ enum RadarURLOpenerError: Error {
     case cannotOpenIn(BrowserOption)
     case appOpenURLError
     case delegateIsNil
+    case cancelled
 }
