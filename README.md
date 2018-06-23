@@ -2,6 +2,8 @@
 
 Ladybug is a simple iOS app handles Radar links gracefully.
 
+![](demo.gif)
+
 ## Features
 
 - A open source iOS project written in Swift
