@@ -14,6 +14,9 @@ class FavoritesViewController: UITableViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Favorites".localized()
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+        }
     }
 
     override func didReceiveMemoryWarning() {

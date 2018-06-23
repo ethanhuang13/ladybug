@@ -14,6 +14,14 @@ class SettingsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        tabBarItem = UITabBarItem(tabBarSystemItem: .more, tag: 0)
+
+        navigationController?.navigationBar.barTintColor = .barTintColor
+        navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        if #available(iOS 11.0, *) {
+            navigationController?.navigationBar.prefersLargeTitles = true
+            navigationController?.navigationBar.largeTitleTextAttributes = [.foregroundColor: UIColor.tintColor]
+        }
         navigationItem.title = "Settings".localized()
 
         tableView.dataSource = dataSourceDelegate
@@ -28,10 +36,22 @@ class SettingsViewController: UITableViewController {
     }
 
     func reloadData() {
-        let radarOptionCellViewModel =
-            TableViewCellViewModel(title: "Radar".localized(), subtitle: UserDefaults.standard.radarOption.title, cellStyle: .value1, selectAction: {
+        dataSourceDelegate.viewModel = TableViewViewModel(sections:
+            [linksSection,
+//             dataSection,
+//             donationSection,
+             aboutSection])
 
-                let alertController = UIAlertController(title: "Radar Option".localized(), message: "Open a Radar link on...".localized(), preferredStyle: .alert)
+        self.tableView.reloadData()
+    }
+}
+
+extension SettingsViewController {
+    private var linksSection: TableViewSectionViewModel {
+        let radarOptionCellViewModel =
+            TableViewCellViewModel(title: "Radar Website/App".localized(), subtitle: UserDefaults.standard.radarOption.title, cellStyle: .subtitle, selectAction: {
+
+                let alertController = UIAlertController(title: "Radar Website/App".localized(), message: nil, preferredStyle: .alert)
 
                 var radarOptions: [RadarOption] = [.openRadar, .appleRadar]
                 if RadarURLOpener.shared.canOpen(in: .briskApp) {
@@ -50,11 +70,11 @@ class SettingsViewController: UITableViewController {
             })
 
         let browserOptionCellViewModel =
-            TableViewCellViewModel(title: "Browser".localized(), subtitle: UserDefaults.standard.browserOption.title, cellStyle: .value1, selectAction: {
+            TableViewCellViewModel(title: "Browser".localized(), subtitle: UserDefaults.standard.browserOption.title, cellStyle: .subtitle, selectAction: {
 
-                let alertController = UIAlertController(title: "Browser Option".localized(), message: "Open a Radar link in...".localized(), preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Browser".localized(), message: nil, preferredStyle: .alert)
 
-                let browserOptions: [BrowserOption] = [.sfvcReader, .sfvc, .safari, .briskApp]
+                let browserOptions: [BrowserOption] = [.sfvcReader, .sfvc, .safari]
                 browserOptions.forEach { (browserOption) in
                     if RadarURLOpener.shared.canOpen(in: browserOption) {
                         alertController.addAction(UIAlertAction(title: browserOption.title, style: .default, handler: { (_) in
@@ -68,13 +88,63 @@ class SettingsViewController: UITableViewController {
                 self.present(alertController, animated: true, completion: { })
             })
 
-        let defaultSection =
-            TableViewSectionViewModel(header: "Open a Radar Link".localized(),
+        let rows: [TableViewCellViewModel] = {
+            if UserDefaults.standard.radarOption == .brisk {
+                return [radarOptionCellViewModel]
+            } else {
+                return [radarOptionCellViewModel, browserOptionCellViewModel]
+            }
+        }()
+
+        let sectionViewModel =
+            TableViewSectionViewModel(header: "Opening Radar Links".localized(),
                                       footer: nil,
-                                      rows: [radarOptionCellViewModel, browserOptionCellViewModel])
+                                      rows: rows)
 
-        dataSourceDelegate.viewModel = TableViewViewModel(sections: [defaultSection])
+        return sectionViewModel
+    }
 
-        self.tableView.reloadData()
+    private var dataSection: TableViewSectionViewModel {
+        let clearHistoryCellViewModel = TableViewCellViewModel(title: "Clear History".localized()) {
+
+        }
+
+        let exportFavoritesCellViewModel = TableViewCellViewModel(title: "Export Favorites".localized()) {
+
+        }
+
+        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [clearHistoryCellViewModel, exportFavoritesCellViewModel])
+        return sectionViewModel
+    }
+
+    private var donationSection: TableViewSectionViewModel {
+        let donateCellViewModel = TableViewCellViewModel(title: "Donate".localized(), subtitle: "Buy me some coffee".localized(), cellStyle: .subtitle) {
+
+        }
+
+        let sectionViewModel = TableViewSectionViewModel(header: "Donation".localized(), footer: nil, rows: [donateCellViewModel])
+        return sectionViewModel
+    }
+
+    private var aboutSection: TableViewSectionViewModel {
+        let rateCellViewModel = TableViewCellViewModel(title: "App Store".localized()) {
+            UIApplication.shared.open(App.appStoreURL, options: [:], completionHandler: nil)
+        }
+
+        let feedbackCellViewModel = TableViewCellViewModel(title: "Feedback".localized()) {
+            self.presentFeedbackMailComposer()
+        }
+
+        let developerCellViewModel = TableViewCellViewModel(title: "Developer".localized(), subtitle: "@ethanhuang13", cellStyle: .value1) {
+            UIApplication.shared.open(App.developerURL, options: [:], completionHandler: nil)
+        }
+
+        let githubCellViewModel = TableViewCellViewModel(title: "GitHub".localized(), subtitle: nil) {
+
+            UIApplication.shared.open(App.githubURL, options: [:], completionHandler: nil)
+        }
+
+        let sectionViewModel = TableViewSectionViewModel(header: "About".localized(), footer: App.aboutString, rows: [rateCellViewModel, feedbackCellViewModel, developerCellViewModel, githubCellViewModel])
+        return sectionViewModel
     }
 }

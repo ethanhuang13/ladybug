@@ -7,6 +7,7 @@
 */
 
 // General
+"OK" = "OK";
 "Cancel" = "Cancel";
 
 // RadarOption
@@ -27,10 +28,15 @@
 
 // SettingsViewController
 "Settings" = "Settings";
-"Radar" = "Radar";
-"Radar Option" = "Radar Option";
-"Open a Radar link on..." = "Open a Radar link on...";
+"Opening Radar Links" = "Opening Radar Links";
+"Radar Website/App" = "Radar Website/App";
 "Browser" = "Browser";
-"Browser Option" = "Browser Option";
-"Open a Radar link in..." = "Open a Radar link in...";
-"Open a Radar Link" = "Open a Radar Link";
+
+"About" = "About";
+"App Store" = "App Store";
+"Feedback" = "Feedback";
+"Developer" = "Developer";
+"GitHub" = "GitHub";
+
+"Setup iOS Mail" = "Setup iOS Mail";
+"Setup iOS Mail accounts first, or..." = "Setup iOS Mail accounts first, or send email to elaborapp+ladybug@gmail.com";

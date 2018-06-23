@@ -7,6 +7,7 @@
 */
 
 // General
+"OK" = "確定";
 "Cancel" = "取消";
 
 // RadarOption
@@ -27,10 +28,15 @@
 
 // SettingsViewController
 "Settings" = "設定";
-"Radar" = "Radar";
-"Radar Option" = "Radar 選項";
-"Open a Radar link on..." = "在哪裡開啟 Radar 連結？";
+"Opening Radar Links" = "開啟 Radar 連結";
+"Radar Website/App" = "Radar 網站/應用程式";
 "Browser" = "瀏覽器";
-"Browser Option" = "瀏覽器選項";
-"Open a Radar link in..." = "在哪裡開啟 Radar 連結？";
-"Open a Radar Link" = "開啟 Radar 連結";
+
+"About" = "關於";
+"App Store" = "App Store";
+"Feedback" = "意見回饋";
+"Developer" = "開發者";
+"GitHub" = "GitHub";
+
+"Setup iOS Mail" = "請先設定 iOS 郵件";
+"Setup iOS Mail accounts first, or..." = "請先至 iOS 郵件 app 登入信箱，或寄信到 elaborapp+ladybug@gmail.com";
