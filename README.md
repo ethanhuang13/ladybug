@@ -18,8 +18,8 @@ Also...
 
 ## Install
 
-- Clone the repo
-- Open workspace with Xcode 9 or above
+- Clone the repo on [GitHub](https://github.com/ethanhuang13/ladybug)
+- Open the project with Xcode 9 or above
 - Change bundle ID to something like com.yourcompany.Ladybug
 - Build and run on your iOS devices
 
