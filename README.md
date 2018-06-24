@@ -6,7 +6,7 @@ Ladybug is a simple iOS app handles Radar links gracefully.
 
 ## Features
 
-- ✅ A open source iOS project written in Swift
+- ✅ Open source iOS project written in Swift
 - ✅ Opens a rdar:// link in [Open Radar](https://openradar.appspot.com/), [Apple Radar](https://bugreport.apple.com/) (Bug Reporter) or [Brisk](https://github.com/br1sk/brisk-ios)
 - ✅ Safari Reader mode for Open Radar
 - [ ] Recent viewed radars
@@ -15,7 +15,7 @@ Ladybug is a simple iOS app handles Radar links gracefully.
 
 Also... 
 
-- ✅ Free without ads (IAP donation are welcome)
+- ✅ Free without ads
 - ✅ No third-party tracking or analytics
 
 ## Install
