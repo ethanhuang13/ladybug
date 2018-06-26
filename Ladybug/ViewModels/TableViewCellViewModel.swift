@@ -8,6 +8,8 @@
 
 import UIKit
 
+typealias Closure = () -> Void
+
 struct TableViewCellViewModel {
     let title: String
     let subtitle: String?
@@ -15,20 +17,27 @@ struct TableViewCellViewModel {
     let cellStyle: UITableViewCellStyle
     let selectionStyle: UITableViewCellSelectionStyle
     let accessoryType: UITableViewCellAccessoryType
-    let selectAction: () -> Void
+    var leadingSwipeActions: UISwipeActionsConfiguration?
+    var trailingSwipeActions: UISwipeActionsConfiguration?
+    var selectAction: Closure
 
     init(title: String,
          subtitle: String? = nil,
          cellStyle: UITableViewCellStyle = .default,
          selectionStyle: UITableViewCellSelectionStyle = .default,
          accessoryType: UITableViewCellAccessoryType = .disclosureIndicator,
-         selectAction: @escaping () -> Void) {
+         leadingSwipeActions: UISwipeActionsConfiguration? = nil,
+         trailingSwipeActions: UISwipeActionsConfiguration? = nil,
+         selectAction: @escaping Closure = {}
+         ) {
         self.title = title
         self.subtitle = subtitle
         self.cellStyle = cellStyle
         self.reuseIdentifier = String(cellStyle.rawValue)
         self.selectionStyle = selectionStyle
         self.accessoryType = accessoryType
+        self.leadingSwipeActions = leadingSwipeActions
+        self.trailingSwipeActions = trailingSwipeActions
         self.selectAction = selectAction
     }
 

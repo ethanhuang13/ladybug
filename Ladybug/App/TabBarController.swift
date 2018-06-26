@@ -10,30 +10,32 @@ import UIKit
 import SafariServices
 
 class TabBarController: UITabBarController {
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
-
         setNeedsStatusBarAppearanceUpdate()
+
         tabBar.barTintColor = .barTintColor
 
-        viewControllers = [UINavigationController(rootViewController: SettingsViewController(style: .grouped))]
+        let vcs = [
+            UINavigationController(rootViewController: HistoryViewController(style: .plain)),
+            UINavigationController(rootViewController: BookmarksViewController(style: .plain)),
+            UINavigationController(rootViewController: SettingsViewController(style: .grouped))]
 
-        if let count = viewControllers?.count,
-            count <= 1 {
-            tabBar.isHidden = true
-        }
+        viewControllers = vcs
+
+        vcs.forEach({ (vc) in
+            _ = vc.viewControllers.first?.view.description // Preload each view controllers
+        })
+
+        tabBar.isHidden = vcs.count <= 1
 
         RadarURLOpener.shared.delegate = self
     }
 }
 
 extension TabBarController: RadarURLOpenerUI {
-    func openRadarInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool) {
-        // TODO: Prepend radarID to self.array
-
+    func openRadarLinkInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool) {
         let url = radarID.url(by: radarOption)
         presentSafariViewController(url: url, readerMode: readerMode)
     }
@@ -58,10 +60,10 @@ extension TabBarController: RadarURLOpenerUI {
 
         if let presented = self.presentedViewController {
             presented.dismiss(animated: false) {
-                self.present(sfvc, animated: false, completion: nil)
+                self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
             }
         } else {
-            self.present(sfvc, animated: false, completion: nil)
+            self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
         }
     }
 }

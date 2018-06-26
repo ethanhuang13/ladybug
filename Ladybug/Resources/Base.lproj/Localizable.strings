@@ -20,11 +20,16 @@
 "In-App Browser (Reader)" = "In-App Browser (Reader)";
 "Safari" = "Safari";
 
-// RecentViewController
-"Recent" = "Recent";
+// HistoryViewController
+"History" = "History";
 
-// FavoritesViewController
-"Favorites" = "Favorites";
+// BookmarksViewController
+"Bookmarks" = "Bookmarks";
+
+// Cell Actions
+"Bookmark" = "Bookmark";
+"Unbookmark" = "Unbookmark";
+"Delete" = "Delete";
 
 // SettingsViewController
 "Settings" = "Settings";

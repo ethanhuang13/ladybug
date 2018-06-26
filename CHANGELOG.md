@@ -6,6 +6,16 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.2(2)] - 2018-06-26
+### Added
+- RadarCollection for radars local CRUD (temporarily use Codable + UserDefaults)
+- History view
+- Bookmarks view
+
+### Changed
+- Recents changes to History
+- Favorites changes to Bookmarks
+
 ## [0.1(1)] - 2018-06-23
 ### Added
 - Radar model, RadarURLParser, RadarURLBuilder protocols, implementation, and tests

@@ -20,11 +20,16 @@
 "In-App Browser (Reader)" = "內建瀏覽器—閱讀模式";
 "Safari" = "Safari";
 
-// RecentViewController
-"Recent" = "最近項目";
+// HistoryViewController
+"History" = "瀏覽記錄";
 
-// FavoritesViewController
-"Favorites" = "喜好項目";
+// BookmarksViewController
+"Bookmarks" = "書籤";
+
+// Cell Actions
+"Bookmark" = "書籤";
+"Unbookmark" = "移除書籤";
+"Delete" = "刪除";
 
 // SettingsViewController
 "Settings" = "設定";

@@ -13,7 +13,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
@@ -24,12 +23,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         UIView.appearance().tintColor = .tintColor
 
+        RadarCollection.shared.unarchive()
+
         return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+
+        RadarCollection.shared.archive()
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -58,8 +61,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let radarID = RadarID(url: url),
             opener.canOpen(in: UserDefaults.standard.browserOption) {
             opener.open(radarID, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
-
             }
+
+            let radar = Radar(id: radarID)
+            RadarCollection.shared.upsert(radar: radar)
+
             return true
         } else {
             return false

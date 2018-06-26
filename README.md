@@ -9,9 +9,10 @@ Ladybug is a simple iOS app handles Radar links gracefully.
 - ✅ Open source iOS project written in Swift
 - ✅ Opens a rdar:// link in [Open Radar](https://openradar.appspot.com/), [Apple Radar](https://bugreport.apple.com/) (Bug Reporter) or [Brisk](https://github.com/br1sk/brisk-ios)
 - ✅ Safari Reader mode for Open Radar
-- [ ] Recent viewed radars
-- [ ] Favorite radars 😂
-- [ ] iCloud sync for Recent and Favorite radars
+- ✅ History
+- ✅ Bookmarks
+- [ ] Retrive radar metadata from Open Radar for lists
+- [ ] iCloud sync for History and Bookmarks radars
 
 Also... 
 
@@ -33,4 +34,4 @@ Also...
 
 As iOS developer I follow a lot of developers on Twitter. It's painful every time I saw a rdar:// in Tweetbot but cannot tap it to open. Therefore I created Ladybug, a solution for iOS to open or bookmark a Radar link. 
 
-I use a lot of tools made by other developers. And I always want to contribute something to the community. With Ladybug I finally found something: 1. I need 2. others might need too 3. I can do. Consider Ladybug as my love letter to the dev community. 😍 Enjoy!
+I use a lot of tools made by other developers. And I always want to contribute something to the community. With Ladybug I finally found something: 1. I need. 2. others might need too. 3. I can do. Consider Ladybug as my love letter to the dev community. 😍 Enjoy!

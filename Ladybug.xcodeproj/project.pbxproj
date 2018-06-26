@@ -20,15 +20,16 @@
 		6C07274820CF73C900603199 /* RadarURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274720CF73C900603199 /* RadarURLParser.swift */; };
 		6C07274C20CF801100603199 /* AppleRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274B20CF801100603199 /* AppleRadarTests.swift */; };
 		6C07274E20CF803300603199 /* OpenRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274D20CF803300603199 /* OpenRadarTests.swift */; };
-		6C07275D20CFA81100603199 /* Recent.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C07275C20CFA81100603199 /* Recent.storyboard */; };
-		6C07276120CFA86C00603199 /* Favorites.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C07276020CFA86C00603199 /* Favorites.storyboard */; };
-		6C07276B20CFA90400603199 /* RecentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276A20CFA90400603199 /* RecentViewController.swift */; };
-		6C07276D20CFA90E00603199 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276C20CFA90E00603199 /* FavoritesViewController.swift */; };
+		6C07276B20CFA90400603199 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276A20CFA90400603199 /* HistoryViewController.swift */; };
+		6C07276D20CFA90E00603199 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276C20CFA90E00603199 /* BookmarksViewController.swift */; };
 		6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276E20CFA91800603199 /* SettingsViewController.swift */; };
+		6C0D223A20E100C200FBFA86 /* RadarCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D223920E100C200FBFA86 /* RadarCollection.swift */; };
+		6C0D223C20E1F0CB00FBFA86 /* MulticastDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D223B20E1F0CB00FBFA86 /* MulticastDelegate.swift */; };
+		6C0D223E20E1FBFC00FBFA86 /* Radar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D223D20E1FBFC00FBFA86 /* Radar+Extension.swift */; };
 		6C380C6B20DB887D000EE273 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C380C6A20DB887D000EE273 /* TabBarController.swift */; };
 		6C380C6D20DC1EF2000EE273 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C380C6C20DC1EF2000EE273 /* UINavigationController+Extension.swift */; };
 		6C55AAD720D16A5E002E0E82 /* BrowserOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */; };
-		6C92D74920DE4A7A0016BBA8 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* App.swift */; };
+		6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */; };
 		6C92D74D20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */; };
 		6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */; };
 		6CCEA1DF20D23CFA007FA16B /* RadarOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEA1DE20D23CFA007FA16B /* RadarOption+Extension.swift */; };
@@ -77,17 +78,18 @@
 		6C07274720CF73C900603199 /* RadarURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLParser.swift; sourceTree = "<group>"; };
 		6C07274B20CF801100603199 /* AppleRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleRadarTests.swift; sourceTree = "<group>"; };
 		6C07274D20CF803300603199 /* OpenRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarTests.swift; sourceTree = "<group>"; };
-		6C07275C20CFA81100603199 /* Recent.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Recent.storyboard; sourceTree = "<group>"; };
-		6C07276020CFA86C00603199 /* Favorites.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Favorites.storyboard; sourceTree = "<group>"; };
-		6C07276A20CFA90400603199 /* RecentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecentViewController.swift; sourceTree = "<group>"; };
-		6C07276C20CFA90E00603199 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		6C07276A20CFA90400603199 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		6C07276C20CFA90E00603199 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		6C07276E20CFA91800603199 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6C0D223920E100C200FBFA86 /* RadarCollection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCollection.swift; sourceTree = "<group>"; };
+		6C0D223B20E1F0CB00FBFA86 /* MulticastDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MulticastDelegate.swift; sourceTree = "<group>"; };
+		6C0D223D20E1FBFC00FBFA86 /* Radar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Radar+Extension.swift"; sourceTree = "<group>"; };
 		6C273FE120D01DCB001FD2F0 /* CHANGELOG.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CHANGELOG.md; sourceTree = "<group>"; };
 		6C273FE220D01DEA001FD2F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6C380C6A20DB887D000EE273 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6C380C6C20DC1EF2000EE273 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
 		6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrowserOption+Extension.swift"; sourceTree = "<group>"; };
-		6C92D74820DE4A7A0016BBA8 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
+		6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+MFMailComposeViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadarTests.swift; sourceTree = "<group>"; };
 		6CCEA1DE20D23CFA007FA16B /* RadarOption+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RadarOption+Extension.swift"; sourceTree = "<group>"; };
@@ -154,8 +156,8 @@
 				6CCFA67B20D113A0006C9BAE /* Extensions */,
 				6C07277120CFB3B200603199 /* App */,
 				6C07275920CFA51B00603199 /* Model */,
-				6C07275E20CFA82300603199 /* Recent */,
-				6C07275F20CFA84900603199 /* Favorites */,
+				6C07275E20CFA82300603199 /* History */,
+				6C07275F20CFA84900603199 /* Bookmarks */,
 				6C07275A20CFA53400603199 /* Settings */,
 				6C07277020CFB39800603199 /* Resources */,
 			);
@@ -177,6 +179,7 @@
 		6C07275920CFA51B00603199 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C0D223920E100C200FBFA86 /* RadarCollection.swift */,
 				6CCFA66E20D0F3E4006C9BAE /* Radar.swift */,
 				6C07273F20CF6C7700603199 /* RadarID.swift */,
 				6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */,
@@ -188,6 +191,7 @@
 				6C07273D20CF6C0D00603199 /* BrowserOption.swift */,
 				6C07273920CDCA5300603199 /* RadarOption.swift */,
 				6CCFA67720D1111A006C9BAE /* Result.swift */,
+				6C0D223B20E1F0CB00FBFA86 /* MulticastDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -201,22 +205,20 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		6C07275E20CFA82300603199 /* Recent */ = {
+		6C07275E20CFA82300603199 /* History */ = {
 			isa = PBXGroup;
 			children = (
-				6C07275C20CFA81100603199 /* Recent.storyboard */,
-				6C07276A20CFA90400603199 /* RecentViewController.swift */,
+				6C07276A20CFA90400603199 /* HistoryViewController.swift */,
 			);
-			path = Recent;
+			path = History;
 			sourceTree = "<group>";
 		};
-		6C07275F20CFA84900603199 /* Favorites */ = {
+		6C07275F20CFA84900603199 /* Bookmarks */ = {
 			isa = PBXGroup;
 			children = (
-				6C07276020CFA86C00603199 /* Favorites.storyboard */,
-				6C07276C20CFA90E00603199 /* FavoritesViewController.swift */,
+				6C07276C20CFA90E00603199 /* BookmarksViewController.swift */,
 			);
-			path = Favorites;
+			path = Bookmarks;
 			sourceTree = "<group>";
 		};
 		6C07277020CFB39800603199 /* Resources */ = {
@@ -234,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				6C07270B20CDC70300603199 /* AppDelegate.swift */,
-				6C92D74820DE4A7A0016BBA8 /* App.swift */,
+				6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */,
 				6C380C6A20DB887D000EE273 /* TabBarController.swift */,
 				6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */,
 				6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */,
@@ -245,10 +247,10 @@
 		6CCEA1E020D23FDD007FA16B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				6CCEA1E720D24488007FA16B /* TableViewDataSourceDelegate.swift */,
 				6CCEA1E120D23FE9007FA16B /* TableViewViewModel.swift */,
 				6CCEA1E320D23FF3007FA16B /* TableViewSectionViewModel.swift */,
 				6CCEA1E520D23FFF007FA16B /* TableViewCellViewModel.swift */,
-				6CCEA1E720D24488007FA16B /* TableViewDataSourceDelegate.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -263,6 +265,7 @@
 				6CCEA1E920D24590007FA16B /* UIAlertAction+Extension.swift */,
 				6C07273B20CF692800603199 /* UserDefaults+Extension.swift */,
 				6C380C6C20DC1EF2000EE273 /* UINavigationController+Extension.swift */,
+				6C0D223D20E1FBFC00FBFA86 /* Radar+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -349,10 +352,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C07275D20CFA81100603199 /* Recent.storyboard in Resources */,
 				6C07271320CDC70600603199 /* Assets.xcassets in Resources */,
 				6CCFA66920D0F188006C9BAE /* Localizable.strings in Resources */,
-				6C07276120CFA86C00603199 /* Favorites.storyboard in Resources */,
 				6C07271120CDC70300603199 /* Launch.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -374,17 +375,20 @@
 				6CCFA67A20D11265006C9BAE /* RadarURLOpenerError.swift in Sources */,
 				6CCFA67520D10CE0006C9BAE /* BriskRadar.swift in Sources */,
 				6C07274220CF6CD000603199 /* AppleRadar.swift in Sources */,
-				6C92D74920DE4A7A0016BBA8 /* App.swift in Sources */,
+				6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */,
 				6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */,
 				6C380C6D20DC1EF2000EE273 /* UINavigationController+Extension.swift in Sources */,
+				6C0D223A20E100C200FBFA86 /* RadarCollection.swift in Sources */,
 				6C07274820CF73C900603199 /* RadarURLParser.swift in Sources */,
-				6C07276B20CFA90400603199 /* RecentViewController.swift in Sources */,
+				6C0D223C20E1F0CB00FBFA86 /* MulticastDelegate.swift in Sources */,
+				6C07276B20CFA90400603199 /* HistoryViewController.swift in Sources */,
 				6CCFA66F20D0F3E4006C9BAE /* Radar.swift in Sources */,
 				6C55AAD720D16A5E002E0E82 /* BrowserOption+Extension.swift in Sources */,
 				6CCFA67820D1111A006C9BAE /* Result.swift in Sources */,
 				6C07274020CF6C7700603199 /* RadarID.swift in Sources */,
 				6C07273A20CDCA5300603199 /* RadarOption.swift in Sources */,
 				6C07274620CF6CF000603199 /* RadarURLBuilder.swift in Sources */,
+				6C0D223E20E1FBFC00FBFA86 /* Radar+Extension.swift in Sources */,
 				6C07273C20CF692800603199 /* UserDefaults+Extension.swift in Sources */,
 				6CCEA1DF20D23CFA007FA16B /* RadarOption+Extension.swift in Sources */,
 				6C07273E20CF6C0D00603199 /* BrowserOption.swift in Sources */,
@@ -394,7 +398,7 @@
 				6CCFA67F20D11C70006C9BAE /* UIColor+Extension.swift in Sources */,
 				6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */,
 				6CCEA1E620D23FFF007FA16B /* TableViewCellViewModel.swift in Sources */,
-				6C07276D20CFA90E00603199 /* FavoritesViewController.swift in Sources */,
+				6C07276D20CFA90E00603199 /* BookmarksViewController.swift in Sources */,
 				6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */,
 				6CCEA1EA20D24590007FA16B /* UIAlertAction+Extension.swift in Sources */,
 				6CCEA1E420D23FF3007FA16B /* TableViewSectionViewModel.swift in Sources */,
@@ -570,6 +574,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +593,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

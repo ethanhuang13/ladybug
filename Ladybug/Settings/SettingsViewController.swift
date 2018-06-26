@@ -30,11 +30,6 @@ class SettingsViewController: UITableViewController {
         reloadData()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     func reloadData() {
         dataSourceDelegate.viewModel = TableViewViewModel(sections:
             [linksSection,
@@ -42,7 +37,7 @@ class SettingsViewController: UITableViewController {
 //             donationSection,
              aboutSection])
 
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
 }
 
@@ -109,11 +104,11 @@ extension SettingsViewController {
 
         }
 
-        let exportFavoritesCellViewModel = TableViewCellViewModel(title: "Export Favorites".localized()) {
+        let exportBookmarksCellViewModel = TableViewCellViewModel(title: "Export Bookmarks".localized()) {
 
         }
 
-        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [clearHistoryCellViewModel, exportFavoritesCellViewModel])
+        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [clearHistoryCellViewModel, exportBookmarksCellViewModel])
         return sectionViewModel
     }
 
@@ -128,7 +123,7 @@ extension SettingsViewController {
 
     private var aboutSection: TableViewSectionViewModel {
         let rateCellViewModel = TableViewCellViewModel(title: "App Store".localized()) {
-            UIApplication.shared.open(App.appStoreURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.appStoreURL, options: [:], completionHandler: nil)
         }
 
         let feedbackCellViewModel = TableViewCellViewModel(title: "Feedback".localized()) {
@@ -136,15 +131,15 @@ extension SettingsViewController {
         }
 
         let developerCellViewModel = TableViewCellViewModel(title: "Developer".localized(), subtitle: "@ethanhuang13", cellStyle: .value1) {
-            UIApplication.shared.open(App.developerURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.developerURL, options: [:], completionHandler: nil)
         }
 
         let githubCellViewModel = TableViewCellViewModel(title: "GitHub".localized(), subtitle: nil) {
 
-            UIApplication.shared.open(App.githubURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.githubURL, options: [:], completionHandler: nil)
         }
 
-        let sectionViewModel = TableViewSectionViewModel(header: "About".localized(), footer: App.aboutString, rows: [rateCellViewModel, feedbackCellViewModel, developerCellViewModel, githubCellViewModel])
+        let sectionViewModel = TableViewSectionViewModel(header: "About".localized(), footer: AppConstants.aboutString, rows: [rateCellViewModel, feedbackCellViewModel, developerCellViewModel, githubCellViewModel])
         return sectionViewModel
     }
 }

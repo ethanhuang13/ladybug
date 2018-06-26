@@ -1,5 +1,5 @@
 //
-//  App.swift
+//  AppConstants.swift
 //  Ladybug
 //
 //  Created by Ethanhuang on 2018/6/23.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct App {
+struct AppConstants {
     static var appName: String = "Ladybug"
     static var versionString: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     static var buildString: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""

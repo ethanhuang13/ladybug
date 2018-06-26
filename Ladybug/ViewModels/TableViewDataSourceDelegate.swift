@@ -30,7 +30,6 @@ class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
         let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
         let identifier = cellViewModel.reuseIdentifier
         let cell = UITableViewCell(style: cellViewModel.cellStyle, reuseIdentifier:identifier)
@@ -46,5 +45,15 @@ class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
 
         let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
         cellViewModel.selectAction()
+    }
+
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
+        return cellViewModel.leadingSwipeActions
+    }
+
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
+        return cellViewModel.trailingSwipeActions
     }
 }

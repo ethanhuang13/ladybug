@@ -16,6 +16,14 @@ struct RadarID: Codable {
     }
 }
 
+extension RadarID: Hashable {
+    var hashValue: Int { return id } 
+}
+
+func == (lhs: RadarID, rhs: RadarID) -> Bool {
+    return lhs.id == rhs.id
+}
+
 extension RadarID {
     init?(string: String) {
         if let int = Int(string),

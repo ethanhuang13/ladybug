@@ -18,9 +18,9 @@ extension SettingsViewController: MFMailComposeViewControllerDelegate {
             return
         }
         let vc = MFMailComposeViewController()
-        vc.setToRecipients([App.feedbackEmail])
+        vc.setToRecipients([AppConstants.feedbackEmail])
         vc.setSubject("[Ladybug Feedback]")
-        vc.setMessageBody("Hello Developer,\n\n\n\n\n\n\(App.aboutString)", isHTML: false)
+        vc.setMessageBody("Hello Developer,\n\n\n\n\n\n\(AppConstants.aboutString)", isHTML: false)
         vc.mailComposeDelegate = self
         self.present(vc, animated: true, completion: { })
     }

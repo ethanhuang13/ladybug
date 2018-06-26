@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RadarURLOpenerUI {
-    func openRadarInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool)
+    func openRadarLinkInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool)
 }
 
 class RadarURLOpener {
@@ -44,11 +44,11 @@ class RadarURLOpener {
         
         switch browserOption {
         case .sfvcReader:
-            delegate.openRadarInSafariViewController(radarID, radarOption: radarOption, readerMode: true)
+            delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: true)
             completion(.success(()))
 
         case .sfvc:
-            delegate.openRadarInSafariViewController(radarID, radarOption: radarOption, readerMode: false)
+            delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: false)
             completion(.success(()))
 
         case .safari, .briskApp:
