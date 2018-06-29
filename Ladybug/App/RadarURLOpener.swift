@@ -45,16 +45,16 @@ class RadarURLOpener {
         switch browserOption {
         case .sfvcReader:
             delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: true)
-            completion(.success(()))
+            completion(.value(()))
 
         case .sfvc:
             delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: false)
-            completion(.success(()))
+            completion(.value(()))
 
         case .safari, .briskApp:
             UIApplication.shared.open(url, options: [:]) { (success) in
                 if success {
-                    completion(.success(()))
+                    completion(.value(()))
                 } else {
                     completion(.error(RadarURLOpenerError.appOpenURLError))
                 }

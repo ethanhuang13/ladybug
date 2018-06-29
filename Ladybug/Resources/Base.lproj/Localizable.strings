@@ -9,6 +9,7 @@
 // General
 "OK" = "OK";
 "Cancel" = "Cancel";
+"(No record on Open Radar)" = "(No record on Open Radar)";
 
 // RadarOption
 "Open Radar" = "Open Radar";
@@ -36,6 +37,16 @@
 "Opening Radar Links" = "Opening Radar Links";
 "Radar Website/App" = "Radar Website/App";
 "Browser" = "Browser";
+
+"Data" = "Data";
+"Import from Open Radar" = "Import from Open Radar";
+"Enter an Open Radar username.\n\nThe email will not be collected." = "Enter an Open Radar username.\n\nThe email will not be collected.";
+"Import" = "Import";
+"Import Finished" = "Import Finished";
+"Imported %li radars from Open Radar" = "Imported %li radars from Open Radar. Added to Bookmarks.";
+"Import Failed" = "Import Failed";
+"Export..." = "Export...";
+"Select what to export" = "Select what to export";
 
 "About" = "About";
 "App Store" = "App Store";

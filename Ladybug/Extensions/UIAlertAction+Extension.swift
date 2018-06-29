@@ -9,5 +9,6 @@
 import UIKit
 
 extension UIAlertAction {
+    static let okAction = UIAlertAction(title: "OK".localized(), style: .cancel, handler: nil)
     static let cancelAction = UIAlertAction(title: "Cancel".localized(), style: .cancel, handler: nil)
 }

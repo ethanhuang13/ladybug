@@ -6,6 +6,12 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [0.3(3)] - 2018-06-29
+### Added
+- Retrive radar metadata from Open Radar for lists
+- Export radars
+- Import radars from Open Radar
+
 ## [0.2(2)] - 2018-06-26
 ### Added
 - RadarCollection for radars local CRUD (temporarily use Codable + UserDefaults)

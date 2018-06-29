@@ -33,9 +33,24 @@ class HistoryViewController: UITableViewController {
 
     func reloadData() {
         let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
-            let viewModel = TableViewCellViewModel(title: radar.idString, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleFavoriteAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.deleteAction]), selectAction: {
-                try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+            let viewModel = TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.deleteAction]), selectAction: {
+
                 RadarURLOpener.shared.open(radar.id, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
+                }
+
+                if radar.metadata == nil {
+                    OpenRadarAPI().fetchRadar(by: radar.id) { (result) in
+                        switch result {
+                        case .value(let radar):
+                            RadarCollection.shared.upsert(radar: radar)
+                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                        case .error(let error):
+                            print(error.localizedDescription)
+                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                        }
+                    }
+                } else {
+                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
                 }
             })
 

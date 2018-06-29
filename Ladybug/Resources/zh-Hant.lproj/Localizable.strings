@@ -9,6 +9,7 @@
 // General
 "OK" = "確定";
 "Cancel" = "取消";
+"(No record on Open Radar)" = "(沒有 Open Radar 紀錄)";
 
 // RadarOption
 "Open Radar" = "Open Radar";
@@ -36,6 +37,16 @@
 "Opening Radar Links" = "開啟 Radar 連結";
 "Radar Website/App" = "Radar 網站/應用程式";
 "Browser" = "瀏覽器";
+
+"Data" = "資料";
+"Import from Open Radar" = "從 Open Radar 輸入";
+"Enter an Open Radar username.\n\nThe email will not be collected." = "請填寫要輸入的 Open Radar 帳號。\n\n（Email 不會被保存）";
+"Import" = "輸入";
+"Import Finished" = "輸入完畢";
+"Imported %li radars from Open Radar" = "從 Open Radar 輸入了 %li 個 radar，已自動加入書籤";
+"Import Failed" = "輸入失敗";
+"Export..." = "輸出...";
+"Select what to export" = "選擇要輸出的資料";
 
 "About" = "關於";
 "App Store" = "App Store";

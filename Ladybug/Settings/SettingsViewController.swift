@@ -33,7 +33,7 @@ class SettingsViewController: UITableViewController {
     func reloadData() {
         dataSourceDelegate.viewModel = TableViewViewModel(sections:
             [linksSection,
-//             dataSection,
+             dataSection,
 //             donationSection,
              aboutSection])
 
@@ -100,15 +100,84 @@ extension SettingsViewController {
     }
 
     private var dataSection: TableViewSectionViewModel {
-        let clearHistoryCellViewModel = TableViewCellViewModel(title: "Clear History".localized()) {
+//        let clearHistoryCellViewModel = TableViewCellViewModel(title: "Clear History".localized()) {
+//
+//        }
 
+        let importCellViewModel = TableViewCellViewModel(title: "Import from Open Radar".localized()) {
+            let alertController = UIAlertController(title: "Import from Open Radar".localized(), message: "Enter an Open Radar username.\n\nThe email will not be collected.".localized(), preferredStyle: .alert)
+
+            alertController.addTextField(configurationHandler: { (textField) in
+                textField.keyboardType = .emailAddress
+                textField.textContentType = .emailAddress
+                textField.placeholder = "myname@company.com"
+            })
+            alertController.addAction(UIAlertAction(title: "Import".localized(), style: .default, handler: { (_) in
+                guard let email = alertController.textFields?.first?.text else { return }
+
+                OpenRadarAPI().fetchRadarsBy(user: email, completion: { (result) in
+                    DispatchQueue.main.async {
+                        switch result {
+                        case .value(let value):
+                            let radars = value.reversed()
+                            radars.forEach {
+                                RadarCollection.shared.upsert(radar: $0)
+                            }
+                            RadarCollection.shared.bookmark(radarIDs: radars.map { $0.id } )
+
+                            let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Imported %li radars from Open Radar".localized(), radars.count), preferredStyle: .alert)
+                            alertController.addAction(.okAction)
+                            self.present(alertController, animated: true) { }
+                        case .error(let error):
+                            let alertController = UIAlertController(title: "Import Failed".localized(), message: error.localizedDescription, preferredStyle: .alert)
+                            alertController.addAction(.cancelAction)
+                            self.present(alertController, animated: true) { }
+                        }
+                    }
+                })
+            }))
+
+            alertController.addAction(.cancelAction)
+
+            self.present(alertController, animated: true) { }
         }
 
-        let exportBookmarksCellViewModel = TableViewCellViewModel(title: "Export Bookmarks".localized()) {
+        let exportCellViewModel = TableViewCellViewModel(title: "Export...".localized()) {
+            func presentExportActivityController(radars: [Radar]) {
+                let string = radars.map { String("* rdar://" + $0.idString + " " + $0.cellSubtitle) }.joined(separator: "\n")
+                print(string)
 
+                let avc = UIActivityViewController(activityItems: [string], applicationActivities: nil)
+                avc.completionWithItemsHandler = { activity, success, items, error in
+                    if success {
+                        self.dismiss(animated: true, completion: nil)
+                    }
+                }
+
+                avc.modalPresentationStyle = .popover
+                let popPC = avc.popoverPresentationController
+
+                if let sourceView = self.tabBarController?.tabBar {
+                    popPC?.sourceView = sourceView
+                    popPC?.sourceRect = sourceView.bounds
+                }
+
+                self.present(avc, animated: true) { }
+            }
+
+            let alertController = UIAlertController(title: "Export...".localized(), message: "Select what to export".localized(), preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "History".localized(), style: .default, handler: { (_) in
+                presentExportActivityController(radars: RadarCollection.shared.history())
+            }))
+            alertController.addAction(UIAlertAction(title: "Bookmarks".localized(), style: .default, handler: { (_) in
+                presentExportActivityController(radars: RadarCollection.shared.bookmarks())
+            }))
+            alertController.addAction(.cancelAction)
+
+            self.present(alertController, animated: true) { }
         }
 
-        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [clearHistoryCellViewModel, exportBookmarksCellViewModel])
+        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [importCellViewModel, exportCellViewModel])
         return sectionViewModel
     }
 

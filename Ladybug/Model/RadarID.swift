@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct RadarID: Codable {
+public struct RadarID: Codable {
     let id: Int
 
     init(_ int: Int) {
@@ -17,10 +17,10 @@ struct RadarID: Codable {
 }
 
 extension RadarID: Hashable {
-    var hashValue: Int { return id } 
+    public var hashValue: Int { return id }
 }
 
-func == (lhs: RadarID, rhs: RadarID) -> Bool {
+public func == (lhs: RadarID, rhs: RadarID) -> Bool {
     return lhs.id == rhs.id
 }
 
@@ -55,5 +55,11 @@ extension RadarID {
         case .brisk:
             return BriskRadar.buildURL(from: self)
         }
+    }
+}
+
+extension RadarID {
+    var idString: String {
+        return String(self.id)
     }
 }

@@ -11,7 +11,9 @@ Ladybug is a simple iOS app handles Radar links gracefully.
 - ✅ Safari Reader mode for Open Radar
 - ✅ History
 - ✅ Bookmarks
-- [ ] Retrive radar metadata from Open Radar for lists
+- ✅ Retrive radar metadata from Open Radar for lists
+- ✅ Export radars
+- ✅ Import radars from Open Radar
 - [ ] iCloud sync for History and Bookmarks radars
 
 Also... 

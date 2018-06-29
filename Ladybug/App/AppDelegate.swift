@@ -63,8 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             opener.open(radarID, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
             }
 
-            let radar = Radar(id: radarID)
-            RadarCollection.shared.upsert(radar: radar)
+            OpenRadarAPI().fetchRadar(by: radarID) { (result) in
+                switch result {
+                case .value(let radar):
+                    RadarCollection.shared.upsert(radar: radar)
+                case .error(let error):
+                    print(error.localizedDescription)
+                    let radar = Radar(id: radarID)
+                    RadarCollection.shared.upsert(radar: radar)
+                }
+            }
 
             return true
         } else {

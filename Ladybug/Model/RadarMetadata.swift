@@ -8,6 +8,19 @@
 
 import Foundation
 
-struct RadarMetadata: Codable {
+/// Open Radar format
 
+struct RadarMetadata: Codable {
+    let status: String
+    let resolved: String
+    let product: String
+    let description: String
+    let classification: String
+    let originated: String
+    let product_version: String
+    let number: String
+    let user: String
+    let id: Int
+    let title: String
+    let reproducible: String
 }
