@@ -23,6 +23,9 @@
 
 // HistoryViewController
 "History" = "History";
+"Add a Radar" = "Add a Radar";
+"Enter radar number or url" = "Enter radar number or url";
+"Add" = "Add";
 
 // BookmarksViewController
 "Bookmarks" = "Bookmarks";
@@ -56,3 +59,14 @@
 
 "Setup iOS Mail" = "Setup iOS Mail";
 "Setup iOS Mail accounts first, or..." = "Setup iOS Mail accounts first, or send email to elaborapp+ladybug@gmail.com";
+
+"Error" = "Error";
+
+// RadarURLParserError
+"No valid radar number" = "No valid radar number";
+
+// OpenRadarAPIError
+"URL invalid" = "URL invalid";
+"No data" = "No data";
+"No result" = "No result";
+"Parse data failed" = "Parse data failed";

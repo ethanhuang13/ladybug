@@ -67,10 +67,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 switch result {
                 case .value(let radar):
                     RadarCollection.shared.upsert(radar: radar)
+                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
                 case .error(let error):
                     print(error.localizedDescription)
                     let radar = Radar(id: radarID)
                     RadarCollection.shared.upsert(radar: radar)
+                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
                 }
             }
 

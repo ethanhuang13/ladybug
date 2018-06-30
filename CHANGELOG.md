@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 - 3D Touch Peek & Pop for lists
+- Manually input to add radar
 
 ## [0.3(3)] - 2018-06-29
 ### Added

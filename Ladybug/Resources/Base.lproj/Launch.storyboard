@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,7 +36,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="prv-HR-qQF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632.79999999999995" y="-205.54722638680661"/>
+            <point key="canvasLocation" x="1450" y="-116"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LFE-lv-Adr">
@@ -57,7 +56,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yFW-RL-82H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="632.79999999999995" y="453.82308845577217"/>
+            <point key="canvasLocation" x="558" y="-115"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="3Oe-1l-10Z">
@@ -73,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="552-7s-8nB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="1160"/>
+            <point key="canvasLocation" x="558" y="602"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="4WL-Fi-D2q">
@@ -89,7 +88,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Myg-Ja-iLt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="633" y="1860"/>
+            <point key="canvasLocation" x="558" y="1358"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="tre-6P-liG">
@@ -97,6 +96,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="qdc-0s-bph" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="KZm-KD-cFG">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

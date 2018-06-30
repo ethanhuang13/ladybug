@@ -113,7 +113,7 @@ extension SettingsViewController {
                 textField.placeholder = "myname@company.com"
             })
             alertController.addAction(UIAlertAction(title: "Import".localized(), style: .default, handler: { (_) in
-                guard let email = alertController.textFields?.first?.text else { return }
+                guard let email = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 
                 OpenRadarAPI().fetchRadarsBy(user: email, completion: { (result) in
                     DispatchQueue.main.async {

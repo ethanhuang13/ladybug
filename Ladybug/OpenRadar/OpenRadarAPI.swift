@@ -11,7 +11,23 @@ import Foundation
 enum OpenRadarAPIError: Error {
     case urlInvalidString(String)
     case noData
+    case noResult
     case parseFailed
+}
+
+extension OpenRadarAPIError: LocalizedError {
+    var errorDescription: String? {
+        switch self {
+        case .urlInvalidString(_):
+            return "URL invalid".localized()
+        case .noData:
+            return "No data".localized()
+        case .noResult:
+            return "No result".localized()
+        case .parseFailed:
+            return "Parse data failed".localized()
+        }
+    }
 }
 
 struct OpenRadarAPIResultObject<T: Codable>: Codable {
@@ -23,14 +39,9 @@ struct OpenRadarAPIResultArray<T: Codable>: Codable {
 }
 
 public struct OpenRadarAPI {
-    public func fetchRadar(by radarID: RadarID, completion: @escaping (_ result: Result<Radar>) -> Void) {
-        let urlString = "https://openradar.appspot.com/api/radar?number=\(radarID.idString)"
-        guard let url = URL(string: urlString) else {
-            completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))
-            return
-        }
-
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+    private func performRequest(url: URL, completion: @escaping (_ result: Result<Data>) -> Void) {
+        let request = URLRequest(url: url)
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.error(error))
                 return
@@ -41,19 +52,35 @@ public struct OpenRadarAPI {
                 return
             }
 
-            do {
-                let metadata = try JSONDecoder().decode(OpenRadarAPIResultObject<RadarMetadata>.self, from: data).result
-                guard let radar = Radar(metadata: metadata) else {
-                    completion(.error(OpenRadarAPIError.parseFailed))
+            completion(.value(data))
+        }.resume()
+    }
+
+    public func fetchRadar(by radarID: RadarID, completion: @escaping (_ result: Result<Radar>) -> Void) {
+        let urlString = "https://openradar.appspot.com/api/radar?number=\(radarID.idString)"
+        guard let url = URL(string: urlString) else {
+            completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))
+            return
+        }
+
+        performRequest(url: url) { (result) in
+            switch result {
+            case .value(let data):
+                do {
+                    let metadata = try JSONDecoder().decode(OpenRadarAPIResultObject<RadarMetadata>.self, from: data).result
+                    guard let radar = Radar(metadata: metadata) else {
+                        completion(.error(OpenRadarAPIError.noResult))
+                        return
+                    }
+                    completion(.value(radar))
+                } catch {
+                    completion(.error(OpenRadarAPIError.noResult))
                     return
                 }
-                completion(.value(radar))
-            } catch {
-                print(error.localizedDescription)
-                completion(.error(OpenRadarAPIError.parseFailed))
-                return
+            case .error(let error):
+                completion(.error(error))
             }
-        }.resume()
+        }
     }
 
     /// User is usually email
@@ -65,27 +92,22 @@ public struct OpenRadarAPI {
             return
         }
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
+        performRequest(url: url) { (result) in
+            switch result {
+            case .value(let data):
+                do {
+                    let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
+                    let radars = array.compactMap { Radar(metadata: $0) }
+                    completion(.value(radars))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.error(OpenRadarAPIError.parseFailed))
+                    return
+                }
+            case .error(let error):
                 completion(.error(error))
-                return
             }
-
-            guard let data = data else {
-                completion(.error(OpenRadarAPIError.noData))
-                return
-            }
-
-            do {
-                let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
-                let radars = array.compactMap { Radar(metadata: $0) }
-                completion(.value(radars))
-            } catch {
-                print(error.localizedDescription)
-                completion(.error(OpenRadarAPIError.parseFailed))
-                return
-            }
-            }.resume()
+        }
     }
 
     public func fetchRadarsBy(keywords: [String], completion: @escaping (_ result: Result<[Radar]>) -> Void) {
@@ -95,26 +117,21 @@ public struct OpenRadarAPI {
             return
         }
 
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
-            if let error = error {
+        performRequest(url: url) { (result) in
+            switch result {
+            case .value(let data):
+                do {
+                    let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
+                    let radars = array.compactMap { Radar(metadata: $0) }
+                    completion(.value(radars))
+                } catch {
+                    print(error.localizedDescription)
+                    completion(.error(OpenRadarAPIError.parseFailed))
+                    return
+                }
+            case .error(let error):
                 completion(.error(error))
-                return
             }
-
-            guard let data = data else {
-                completion(.error(OpenRadarAPIError.noData))
-                return
-            }
-
-            do {
-                let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
-                let radars = array.compactMap { Radar(metadata: $0) }
-                completion(.value(radars))
-            } catch {
-                print(error.localizedDescription)
-                completion(.error(OpenRadarAPIError.parseFailed))
-                return
-            }
-            }.resume()
+        }
     }
 }
