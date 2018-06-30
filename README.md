@@ -16,6 +16,7 @@ Ladybug is a simple iOS app handles Radar links gracefully.
 - ✅ Import radars from Open Radar
 - ✅ 3D Touch Peek & Pop from lists
 - ✅ Manually input to add radar
+- ✅ Detect radar number in clipboard
 - [ ] iCloud sync for History and Bookmarks radars
 
 Also... 

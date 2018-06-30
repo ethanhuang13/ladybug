@@ -89,6 +89,10 @@ class RadarCollection {
 
     /// This API has update policy
 
+    public func radar(_ radarID: RadarID) -> Radar? {
+        return radars[radarID]
+    }
+
     public func upsert(radar: Radar) {
         if let existingRadar = radars[radar.id] {
             if existingRadar.bookmarkedDate == nil {

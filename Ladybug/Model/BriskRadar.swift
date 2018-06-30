@@ -10,7 +10,13 @@ import Foundation
 
 struct BriskRadar: RadarURLParser & RadarURLBuilder {
     static func parse(_ url: URL) -> RadarID? {
-        return RadarID(string: url.lastPathComponent)
+        let string = url.lastPathComponent
+        if let int = Int(string),
+            String(int) == string {
+            return RadarID(int)
+        } else {
+            return nil
+        }
     }
 
     static func buildURL(from radarID: RadarID) -> URL {

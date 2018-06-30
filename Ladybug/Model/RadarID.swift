@@ -26,9 +26,13 @@ public func == (lhs: RadarID, rhs: RadarID) -> Bool {
 
 extension RadarID {
     init?(string: String) {
-        if let int = Int(string),
-            String(int) == string {
+        let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
+        if let int = Int(trimmedString),
+            String(int) == trimmedString {
             self.id = int
+        } else if let url = URL(string:trimmedString),
+            let radarID = RadarID(url: url) {
+            self = radarID
         } else {
             return nil
         }

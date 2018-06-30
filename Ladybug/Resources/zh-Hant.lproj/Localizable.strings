@@ -26,6 +26,8 @@
 "Add a Radar" = "加入 Radar";
 "Enter radar number or url" = "輸入 radar number 或網址";
 "Add" = "加入";
+"Clipboard" = "剪貼簿";
+"Tap to add from clipboard: %@" = "從剪貼簿內容來加入：%@";
 
 // BookmarksViewController
 "Bookmarks" = "書籤";

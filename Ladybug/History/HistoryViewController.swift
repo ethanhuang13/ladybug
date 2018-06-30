@@ -29,8 +29,15 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
         tableView.dataSource = dataSourceDelegate
         tableView.delegate = dataSourceDelegate
 
-        reloadData()
         RadarCollection.shared.delegates.add(delegate: self)
+
+        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIPasteboardChanged, object: nil)
+    }
+
+    @objc func pasteboardDidChange() {
+        DispatchQueue.main.async {
+            self.reloadData()
+        }
     }
 
     @objc func add() {
@@ -41,19 +48,8 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
         alertController.addAction(UIAlertAction(title: "Add".localized(), style: .default, handler: { (_) in
             guard let text = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 
-            let radarIDOptional: RadarID? = {
-                if let url = URL(string: text),
-                    let radarID = RadarID(url: url) {
-                    return radarID
-                } else if let radarID = RadarID(string: text) {
-                    return radarID
-                } else {
-                    return nil
-                }
-            }()
-
             let opener = RadarURLOpener.shared
-            if let radarID = radarIDOptional,
+            if let radarID = RadarID(string: text),
                 opener.canOpen(in: UserDefaults.standard.browserOption) {
                 OpenRadarAPI().fetchRadar(by: radarID) { (result) in
                     DispatchQueue.main.async {
@@ -79,6 +75,37 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
     }
 
     func reloadData() {
+        var sections: [TableViewSectionViewModel] = []
+
+        if let pasteboardString = UIPasteboard.general.string,
+            let radarID = RadarID(string: pasteboardString) {
+            let cell = TableViewCellViewModel(title: radarID.idString, subtitle: String(format: "Tap to add from clipboard: %@".localized(), pasteboardString), cellStyle: .subtitle, previewingViewController: {
+                let url = radarID.url(by: .openRadar)
+                return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
+            }, selectAction: {
+                RadarURLOpener.shared.open(radarID, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
+                }
+
+                if RadarCollection.shared.radar(radarID)?.metadata == nil {
+                    OpenRadarAPI().fetchRadar(by: radarID) { (result) in
+                        switch result {
+                        case .value(let radar):
+                            RadarCollection.shared.upsert(radar: radar)
+                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                        case .error(let error):
+                            print(error.localizedDescription)
+                            try? RadarCollection.shared.updatedViewed(radarID: radarID)
+                        }
+                    }
+                } else {
+                    try? RadarCollection.shared.updatedViewed(radarID: radarID)
+                }
+            })
+
+            let section = TableViewSectionViewModel(header: "Clipboard".localized(), footer: nil, rows: [cell])
+            sections.append(section)
+        }
+
         let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
             TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
                 let url = radar.id.url(by: .openRadar)
@@ -104,8 +131,10 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
             })
         }
 
-        let section = TableViewSectionViewModel(header: nil, footer: nil, rows: cells)
-        dataSourceDelegate.viewModel = TableViewViewModel(sections: [section])
+        let mainSection = TableViewSectionViewModel(header: sections.isEmpty ? nil : "History".localized(), footer: nil, rows: cells)
+        sections.append(mainSection)
+
+        dataSourceDelegate.viewModel = TableViewViewModel(sections: sections)
         tableView.reloadData()
     }
 }

@@ -26,6 +26,8 @@
 "Add a Radar" = "Add a Radar";
 "Enter radar number or url" = "Enter radar number or url";
 "Add" = "Add";
+"Clipboard" = "Clipboard";
+"Tap to add from clipboard: %@" = "Tap to add from clipboard: %@";
 
 // BookmarksViewController
 "Bookmarks" = "Bookmarks";

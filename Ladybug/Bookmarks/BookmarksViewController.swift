@@ -27,7 +27,6 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
         tableView.dataSource = dataSourceDelegate
         tableView.delegate = dataSourceDelegate
 
-        reloadData()
         RadarCollection.shared.delegates.add(delegate: self)
     }
 
