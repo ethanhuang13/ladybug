@@ -12,7 +12,7 @@ public class Radar: Codable {
     let id: RadarID
     var metadata: RadarMetadata?
     let firstViewedDate: Date
-    var lastViewedDate: Date
+    var lastViewedDate: Date? = nil
     var bookmarkedDate: Date? = nil
 
     enum CodingKeys: String, CodingKey {
@@ -26,7 +26,6 @@ public class Radar: Codable {
         self.id = id
         self.metadata = metadata
         firstViewedDate = Date()
-        lastViewedDate = Date()
     }
 
     var idString: String {

@@ -8,8 +8,15 @@
 
 import UIKit
 
-class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate {
+class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewDelegate, UIViewControllerPreviewingDelegate {
     var viewModel: TableViewViewModel = TableViewViewModel(sections: [])
+    private weak var tableViewController: UITableViewController?
+
+    init(tableViewController: UITableViewController) {
+        super.init()
+        self.tableViewController = tableViewController
+        tableViewController.registerForPreviewing(with: self, sourceView: tableViewController.view)
+    }
 
     // MARK: - UITableViewDataSource
 
@@ -47,6 +54,10 @@ class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
         cellViewModel.selectAction()
     }
 
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCellEditingStyle {
+        return .none
+    }
+
     func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
         return cellViewModel.leadingSwipeActions
@@ -55,5 +66,24 @@ class TableViewDataSourceDelegate: NSObject, UITableViewDataSource, UITableViewD
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let cellViewModel = self.viewModel.sections[indexPath.section].rows[indexPath.row]
         return cellViewModel.trailingSwipeActions
+    }
+
+    // MARK: - UIViewControllerPreviewingDelegate
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, viewControllerForLocation location: CGPoint) -> UIViewController? {
+        guard let view = tableViewController?.view,
+            let tableView = tableViewController?.tableView,
+            let indexPath = tableView.indexPathForRow(at: tableView.convert(location, from: view)),
+            let cell = tableView.cellForRow(at: indexPath) else {
+                return nil
+        }
+        previewingContext.sourceRect = tableView.convert(cell.frame, to: view)
+
+        let cellViewModel = viewModel.sections[indexPath.section].rows[indexPath.row]
+        return cellViewModel.previewingViewController?()
+    }
+
+    func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
+        tableViewController?.present(viewControllerToCommit, animated: true, completion: nil)
     }
 }

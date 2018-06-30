@@ -30,7 +30,7 @@
 // Cell Actions
 "Bookmark" = "Bookmark";
 "Unbookmark" = "Unbookmark";
-"Delete" = "Delete";
+"Remove" = "Remove";
 
 // SettingsViewController
 "Settings" = "Settings";

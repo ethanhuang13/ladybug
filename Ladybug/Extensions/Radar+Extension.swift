@@ -11,16 +11,18 @@ import UIKit
 extension Radar {
     var toggleBookmarkAction: UIContextualAction {
         let isBookmarked = bookmarkedDate != nil
-        return UIContextualAction(style: .normal, title: isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), handler: { (_, _, completion) in
+        let action = UIContextualAction(style: .normal, title: isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), handler: { (_, _, completion) in
             try? RadarCollection.shared.toggleBookmark(radarID: self.id)
             completion(true)
         })
+        return action
     }
 
-    var deleteAction: UIContextualAction {
-        return UIContextualAction(style: .destructive, title: "Delete".localized(), handler: { (_, _, completion) in
-            RadarCollection.shared.remove(radar: self)
+    var removeFromHistoryAction: UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Remove".localized(), handler: { (_, _, completion) in
+            RadarCollection.shared.removeFromHistory(radarID: self.id)
             completion(true)
         })
+        return action
     }
 }

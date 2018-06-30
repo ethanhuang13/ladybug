@@ -8,6 +8,7 @@
 
 import UIKit
 
+typealias UIViewControllerClosure = () -> UIViewController?
 typealias Closure = () -> Void
 
 struct TableViewCellViewModel {
@@ -19,6 +20,7 @@ struct TableViewCellViewModel {
     let accessoryType: UITableViewCellAccessoryType
     var leadingSwipeActions: UISwipeActionsConfiguration?
     var trailingSwipeActions: UISwipeActionsConfiguration?
+    var previewingViewController: UIViewControllerClosure?
     var selectAction: Closure
 
     init(title: String,
@@ -28,6 +30,7 @@ struct TableViewCellViewModel {
          accessoryType: UITableViewCellAccessoryType = .disclosureIndicator,
          leadingSwipeActions: UISwipeActionsConfiguration? = nil,
          trailingSwipeActions: UISwipeActionsConfiguration? = nil,
+         previewingViewController: UIViewControllerClosure? = nil,
          selectAction: @escaping Closure = {}
          ) {
         self.title = title
@@ -38,6 +41,7 @@ struct TableViewCellViewModel {
         self.accessoryType = accessoryType
         self.leadingSwipeActions = leadingSwipeActions
         self.trailingSwipeActions = trailingSwipeActions
+        self.previewingViewController = previewingViewController
         self.selectAction = selectAction
     }
 

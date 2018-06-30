@@ -37,10 +37,20 @@ class TabBarController: UITabBarController {
 extension TabBarController: RadarURLOpenerUI {
     func openRadarLinkInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool) {
         let url = radarID.url(by: radarOption)
-        presentSafariViewController(url: url, readerMode: readerMode)
+        let sfvc = safariViewController(url: url, readerMode: readerMode)
+
+        self.tabBarController?.selectedIndex = 0
+
+        if let presented = self.presentedViewController {
+            presented.dismiss(animated: false) {
+                self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
+            }
+        } else {
+            self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
+        }
     }
 
-    private func presentSafariViewController(url: URL, readerMode: Bool) {
+    func safariViewController(url: URL, readerMode: Bool) -> SFSafariViewController {
         let sfvc: SFSafariViewController = {
             if #available(iOS 11.0, *) {
                 let config = SFSafariViewController.Configuration()
@@ -56,14 +66,6 @@ extension TabBarController: RadarURLOpenerUI {
         sfvc.preferredBarTintColor = .barTintColor
         sfvc.preferredControlTintColor = .tintColor
 
-        self.tabBarController?.selectedIndex = 0
-
-        if let presented = self.presentedViewController {
-            presented.dismiss(animated: false) {
-                self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
-            }
-        } else {
-            self.present(sfvc, animated: UIApplication.shared.applicationState == .active, completion: nil)
-        }
+        return sfvc
     }
 }

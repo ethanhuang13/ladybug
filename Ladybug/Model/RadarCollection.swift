@@ -95,7 +95,7 @@ class RadarCollection {
                 existingRadar.bookmarkedDate = radar.bookmarkedDate
             }
 
-            if radar.lastViewedDate > existingRadar.lastViewedDate {
+            if existingRadar.lastViewedDate == nil {
                 existingRadar.lastViewedDate = radar.lastViewedDate
             }
 
@@ -107,8 +107,11 @@ class RadarCollection {
         }
     }
 
-    public func remove(radar: Radar) {
-        radars.removeValue(forKey: radar.id)
+    public func removeFromHistory(radarID: RadarID) {
+        if let existingRadar = radars[radarID] {
+            existingRadar.lastViewedDate = nil
+            notifyDidUpdate()
+        }
     }
 
     /// Use when user view a radar
@@ -139,7 +142,7 @@ class RadarCollection {
     }
 
     public func history() -> [Radar] {
-        let radars = self.radars.values.sorted { (lhs, rhs) -> Bool in
+        let radars = self.radars.values.filter { $0.lastViewedDate != nil }.sorted { (lhs, rhs) -> Bool in
             return lhs.firstViewedDate > rhs.firstViewedDate
         }
 

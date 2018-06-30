@@ -8,8 +8,8 @@
 
 import UIKit
 
-class HistoryViewController: UITableViewController {
-    let dataSourceDelegate = TableViewDataSourceDelegate()
+class HistoryViewController: UITableViewController, TableViewControllerUsingViewModel {
+    lazy var dataSourceDelegate: TableViewDataSourceDelegate = { TableViewDataSourceDelegate(tableViewController: self) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,8 +33,10 @@ class HistoryViewController: UITableViewController {
 
     func reloadData() {
         let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
-            let viewModel = TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.deleteAction]), selectAction: {
-
+            TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
+                let url = radar.id.url(by: .openRadar)
+                return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
+            }, selectAction: {
                 RadarURLOpener.shared.open(radar.id, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
                 }
 
@@ -53,8 +55,6 @@ class HistoryViewController: UITableViewController {
                     try? RadarCollection.shared.updatedViewed(radarID: radar.id)
                 }
             })
-
-            return viewModel
         }
 
         let section = TableViewSectionViewModel(header: nil, footer: nil, rows: cells)

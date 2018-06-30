@@ -28,9 +28,9 @@
 "Bookmarks" = "書籤";
 
 // Cell Actions
-"Bookmark" = "書籤";
+"Bookmark" = "加入書籤";
 "Unbookmark" = "移除書籤";
-"Delete" = "刪除";
+"Remove" = "移除";
 
 // SettingsViewController
 "Settings" = "設定";

@@ -9,7 +9,7 @@
 import UIKit
 
 class SettingsViewController: UITableViewController {
-    let dataSourceDelegate = TableViewDataSourceDelegate()
+    lazy var dataSourceDelegate: TableViewDataSourceDelegate =  { TableViewDataSourceDelegate(tableViewController: self) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()

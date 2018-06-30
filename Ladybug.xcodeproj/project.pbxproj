@@ -33,6 +33,7 @@
 		6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */; };
 		6C92D74D20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */; };
 		6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */; };
+		6CB9EFED20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */; };
 		6CCEA1DF20D23CFA007FA16B /* RadarOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEA1DE20D23CFA007FA16B /* RadarOption+Extension.swift */; };
 		6CCEA1E220D23FE9007FA16B /* TableViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEA1E120D23FE9007FA16B /* TableViewViewModel.swift */; };
 		6CCEA1E420D23FF3007FA16B /* TableViewSectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEA1E320D23FF3007FA16B /* TableViewSectionViewModel.swift */; };
@@ -94,6 +95,7 @@
 		6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+MFMailComposeViewControllerDelegate.swift"; sourceTree = "<group>"; };
 		6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadarTests.swift; sourceTree = "<group>"; };
+		6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerUsingViewModel.swift; sourceTree = "<group>"; };
 		6CCEA1DE20D23CFA007FA16B /* RadarOption+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RadarOption+Extension.swift"; sourceTree = "<group>"; };
 		6CCEA1E120D23FE9007FA16B /* TableViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewViewModel.swift; sourceTree = "<group>"; };
 		6CCEA1E320D23FF3007FA16B /* TableViewSectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewSectionViewModel.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				6CCEA1E120D23FE9007FA16B /* TableViewViewModel.swift */,
 				6CCEA1E320D23FF3007FA16B /* TableViewSectionViewModel.swift */,
 				6CCEA1E520D23FFF007FA16B /* TableViewCellViewModel.swift */,
+				6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				6CCFA67F20D11C70006C9BAE /* UIColor+Extension.swift in Sources */,
 				6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */,
 				6CCEA1E620D23FFF007FA16B /* TableViewCellViewModel.swift in Sources */,
+				6CB9EFED20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift in Sources */,
 				6C07276D20CFA90E00603199 /* BookmarksViewController.swift in Sources */,
 				6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */,
 				6CCEA1EA20D24590007FA16B /* UIAlertAction+Extension.swift in Sources */,
