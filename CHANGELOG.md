@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [0.4(4)] - 2018-06-30
 - 3D Touch Peek & Pop for lists
 - Manually input to add radar
 - Detect radar number in clipboard
