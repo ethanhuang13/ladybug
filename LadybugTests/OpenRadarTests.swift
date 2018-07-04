@@ -27,15 +27,15 @@ class OpenRadarTests: XCTestCase {
                           "http://openradar.me/12345678"]
         let urls = urlStrings.map { URL(string: $0)! }
         urls.forEach { (url) in
-            let radarID = OpenRadar.parse(url)
-            XCTAssertNotNil(radarID)
-            XCTAssert((radarID?.id == 12345678) == true)
+            let radarNumber = OpenRadarURL.parse(url)
+            XCTAssertNotNil(radarNumber)
+            XCTAssert((radarNumber?.rawValue == 12345678) == true)
         }
     }
 
     func testBuildURL() {
-        let radarID = RadarID(12345678)
-        let url = OpenRadar.buildURL(from: radarID)
+        let radarID = RadarNumber(12345678)
+        let url = OpenRadarURL.buildURL(from: radarID)
         XCTAssertEqual(url.absoluteString, "https://openradar.appspot.com/12345678")
     }
 }

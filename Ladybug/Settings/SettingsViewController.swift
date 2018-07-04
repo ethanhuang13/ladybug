@@ -100,10 +100,6 @@ extension SettingsViewController {
     }
 
     private var dataSection: TableViewSectionViewModel {
-//        let clearHistoryCellViewModel = TableViewCellViewModel(title: "Clear History".localized()) {
-//
-//        }
-
         let importCellViewModel = TableViewCellViewModel(title: "Import from Open Radar".localized()) {
             let alertController = UIAlertController(title: "Import from Open Radar".localized(), message: "Enter an Open Radar username.\n\nThe email will not be collected.".localized(), preferredStyle: .alert)
 
@@ -123,7 +119,7 @@ extension SettingsViewController {
                             radars.forEach {
                                 RadarCollection.shared.upsert(radar: $0)
                             }
-                            RadarCollection.shared.bookmark(radarIDs: radars.map { $0.id } )
+                            RadarCollection.shared.bookmark(radarNumbers: radars.map { $0.number } )
 
                             let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Imported %li radars from Open Radar".localized(), radars.count), preferredStyle: .alert)
                             alertController.addAction(.okAction)
@@ -144,7 +140,7 @@ extension SettingsViewController {
 
         let exportCellViewModel = TableViewCellViewModel(title: "Export...".localized()) {
             func presentExportActivityController(radars: [Radar]) {
-                let string = radars.map { String("* rdar://" + $0.idString + " " + $0.cellSubtitle) }.joined(separator: "\n")
+                let string = radars.map { String("* rdar://" + $0.number.string + " " + $0.cellSubtitle) }.joined(separator: "\n")
                 print(string)
 
                 let avc = UIActivityViewController(activityItems: [string], applicationActivities: nil)

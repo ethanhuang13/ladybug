@@ -67,21 +67,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         let opener = RadarURLOpener.shared
 
-        if let radarID = RadarID(url: url),
+        if let radarNumber = RadarNumber(url: url),
             opener.canOpen(in: UserDefaults.standard.browserOption) {
-            opener.open(radarID, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
+            opener.open(radarNumber, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
             }
 
-            OpenRadarAPI().fetchRadar(by: radarID) { (result) in
+            OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
                 switch result {
                 case .value(let radar):
                     RadarCollection.shared.upsert(radar: radar)
-                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                    try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                 case .error(let error):
                     print(error.localizedDescription)
-                    let radar = Radar(id: radarID)
+                    let radar = Radar(number: radarNumber)
                     RadarCollection.shared.upsert(radar: radar)
-                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                    try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                 }
             }
 

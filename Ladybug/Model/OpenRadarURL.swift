@@ -8,23 +8,23 @@
 
 import Foundation
 
-struct OpenRadar: RadarURLParser & RadarURLBuilder {
-    static func parse(_ url: URL) -> RadarID? {
+struct OpenRadarURL: RadarURLParser & RadarURLBuilder {
+    static func parse(_ url: URL) -> RadarNumber? {
         if url.scheme == "rdar",
             let id = url.host {
-            return RadarID(string: id)
+            return RadarNumber(string: id)
         } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
             url.host?.caseInsensitiveHasSuffix("openradar.appspot.com") == true {
-            return RadarID(string: url.lastPathComponent)
+            return RadarNumber(string: url.lastPathComponent)
         } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
             url.host?.caseInsensitiveHasSuffix("openradar.me") == true {
-            return RadarID(string: url.lastPathComponent)
+            return RadarNumber(string: url.lastPathComponent)
         } else {
             return nil
         }
     }
 
-    static func buildURL(from radarID: RadarID) -> URL {
-        return URL(string: "https://openradar.appspot.com/\(radarID.id)")!
+    static func buildURL(from radarNumber: RadarNumber) -> URL {
+        return URL(string: "https://openradar.appspot.com/\(radarNumber.rawValue)")!
     }
 }

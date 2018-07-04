@@ -5,8 +5,12 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Rename RadarID to RadarNumber
+- Rewrite how to save Radars. Move to App Groups. Combine Radar, Radar Number and Radar Metadata
 
 ## [0.4(4)] - 2018-06-30
+### Added
 - 3D Touch Peek & Pop for lists
 - Manually input to add radar
 - Detect radar number in clipboard

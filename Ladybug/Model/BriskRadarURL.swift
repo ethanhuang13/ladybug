@@ -8,18 +8,18 @@
 
 import Foundation
 
-struct BriskRadar: RadarURLParser & RadarURLBuilder {
-    static func parse(_ url: URL) -> RadarID? {
+struct BriskRadarURL: RadarURLParser & RadarURLBuilder {
+    static func parse(_ url: URL) -> RadarNumber? {
         let string = url.lastPathComponent
         if let int = Int(string),
             String(int) == string {
-            return RadarID(int)
+            return RadarNumber(int)
         } else {
             return nil
         }
     }
 
-    static func buildURL(from radarID: RadarID) -> URL {
-        return URL(string: "brisk-rdar://radar/\(radarID.id)")!
+    static func buildURL(from radarNumber: RadarNumber) -> URL {
+        return URL(string: "brisk-rdar://radar/\(radarNumber.rawValue)")!
     }
 }

@@ -49,16 +49,16 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
             guard let text = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 
             let opener = RadarURLOpener.shared
-            if let radarID = RadarID(string: text),
+            if let radarNumber = RadarNumber(string: text),
                 opener.canOpen(in: UserDefaults.standard.browserOption) {
-                OpenRadarAPI().fetchRadar(by: radarID) { (result) in
+                OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
                     DispatchQueue.main.async {
                         switch result {
                         case .value(let radar):
                             RadarCollection.shared.upsert(radar: radar)
-                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                            try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
 
-                            opener.open(radarID, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
+                            opener.open(radarNumber, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
                             }
                         case .error(let error):
                             self.present(UIAlertController.errorAlertController(error), animated: true, completion: { })
@@ -78,27 +78,27 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
         var sections: [TableViewSectionViewModel] = []
 
         if let pasteboardString = UIPasteboard.general.string,
-            let radarID = RadarID(string: pasteboardString) {
-            let cell = TableViewCellViewModel(title: radarID.idString, subtitle: String(format: "Tap to add from clipboard: %@".localized(), pasteboardString), cellStyle: .subtitle, previewingViewController: {
-                let url = radarID.url(by: .openRadar)
+            let radarNumber = RadarNumber(string: pasteboardString) {
+            let cell = TableViewCellViewModel(title: radarNumber.string, subtitle: String(format: "Tap to add from clipboard: %@".localized(), pasteboardString), cellStyle: .subtitle, previewingViewController: {
+                let url = radarNumber.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
             }, selectAction: {
-                RadarURLOpener.shared.open(radarID, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
+                RadarURLOpener.shared.open(radarNumber, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
                 }
 
-                if RadarCollection.shared.radar(radarID)?.metadata == nil {
-                    OpenRadarAPI().fetchRadar(by: radarID) { (result) in
+                if RadarCollection.shared.radar(radarNumber)?.metadata == nil {
+                    OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
                         switch result {
                         case .value(let radar):
                             RadarCollection.shared.upsert(radar: radar)
-                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                            try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                         case .error(let error):
                             print(error.localizedDescription)
-                            try? RadarCollection.shared.updatedViewed(radarID: radarID)
+                            try? RadarCollection.shared.updatedViewed(radarNumber: radarNumber)
                         }
                     }
                 } else {
-                    try? RadarCollection.shared.updatedViewed(radarID: radarID)
+                    try? RadarCollection.shared.updatedViewed(radarNumber: radarNumber)
                 }
             })
 
@@ -108,25 +108,25 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 
         let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
             TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
-                let url = radar.id.url(by: .openRadar)
+                let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
             }, selectAction: {
-                RadarURLOpener.shared.open(radar.id, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
+                RadarURLOpener.shared.open(radar.number, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
                 }
 
                 if radar.metadata == nil {
-                    OpenRadarAPI().fetchRadar(by: radar.id) { (result) in
+                    OpenRadarAPI().fetchRadar(by: radar.number) { (result) in
                         switch result {
                         case .value(let radar):
                             RadarCollection.shared.upsert(radar: radar)
-                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                            try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                         case .error(let error):
                             print(error.localizedDescription)
-                            try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                            try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                         }
                     }
                 } else {
-                    try? RadarCollection.shared.updatedViewed(radarID: radar.id)
+                    try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                 }
             })
         }

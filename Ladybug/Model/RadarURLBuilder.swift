@@ -9,5 +9,5 @@
 import Foundation
 
 protocol RadarURLBuilder {
-    static func buildURL(from radarID: RadarID) -> URL
+    static func buildURL(from radarNumber: RadarNumber) -> URL
 }

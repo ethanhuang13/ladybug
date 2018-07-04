@@ -9,7 +9,8 @@
 import Foundation
 
 struct AppConstants {
-    static var appName: String = "Ladybug"
+    static let appName: String = "Ladybug"
+    static let groupID: String = "group.com.elaborapp.Ladybug"
     static var versionString: String = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
     static var buildString: String = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? ""
     static var aboutString: String = "\(appName) v\(versionString)(\(buildString))"

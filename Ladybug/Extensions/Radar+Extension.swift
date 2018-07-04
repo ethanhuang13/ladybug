@@ -12,7 +12,7 @@ extension Radar {
     var toggleBookmarkAction: UIContextualAction {
         let isBookmarked = bookmarkedDate != nil
         let action = UIContextualAction(style: .normal, title: isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), handler: { (_, _, completion) in
-            try? RadarCollection.shared.toggleBookmark(radarID: self.id)
+            try? RadarCollection.shared.toggleBookmark(radarNumber: self.number)
             completion(true)
         })
         return action
@@ -20,7 +20,7 @@ extension Radar {
 
     var removeFromHistoryAction: UIContextualAction {
         let action = UIContextualAction(style: .destructive, title: "Remove".localized(), handler: { (_, _, completion) in
-            RadarCollection.shared.removeFromHistory(radarID: self.id)
+            RadarCollection.shared.removeFromHistory(radarNumber: self.number)
             completion(true)
         })
         return action

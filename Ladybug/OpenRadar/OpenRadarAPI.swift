@@ -56,8 +56,8 @@ public struct OpenRadarAPI {
         }.resume()
     }
 
-    public func fetchRadar(by radarID: RadarID, completion: @escaping (_ result: Result<Radar>) -> Void) {
-        let urlString = "https://openradar.appspot.com/api/radar?number=\(radarID.idString)"
+    public func fetchRadar(by radarNumber: RadarNumber, completion: @escaping (_ result: Result<Radar>) -> Void) {
+        let urlString = "https://openradar.appspot.com/api/radar?number=\(radarNumber.string)"
         guard let url = URL(string: urlString) else {
             completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))
             return

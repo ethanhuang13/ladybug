@@ -35,8 +35,8 @@ class TabBarController: UITabBarController {
 }
 
 extension TabBarController: RadarURLOpenerUI {
-    func openRadarLinkInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool) {
-        let url = radarID.url(by: radarOption)
+    func openRadarLinkInSafariViewController(_ radarNumber: RadarNumber, radarOption: RadarOption, readerMode: Bool) {
+        let url = radarNumber.url(by: radarOption)
         let sfvc = safariViewController(url: url, readerMode: readerMode)
 
         self.tabBarController?.selectedIndex = 0

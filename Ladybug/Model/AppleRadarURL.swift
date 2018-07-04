@@ -8,20 +8,20 @@
 
 import Foundation
 
-struct AppleRadar: RadarURLParser & RadarURLBuilder {
-    static func parse(_ url: URL) -> RadarID? {
+struct AppleRadarURL: RadarURLParser & RadarURLBuilder {
+    static func parse(_ url: URL) -> RadarNumber? {
         if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
             urlComponents.scheme?.hasPrefix("http") == true,
             urlComponents.host == "bugreport.apple.com",
             urlComponents.path.hasPrefix("/web"),
             let id = urlComponents.queryItems?.filter({ $0.name == "problemID" }).first?.value {
-            return RadarID(string: id)
+            return RadarNumber(string: id)
         } else {
             return nil
         }
     }
 
-    static func buildURL(from radarID: RadarID) -> URL {
-        return URL(string: "https://bugreport.apple.com/web/?problemID=\(radarID.id)")!
+    static func buildURL(from radarNumber: RadarNumber) -> URL {
+        return URL(string: "https://bugreport.apple.com/web/?problemID=\(radarNumber.rawValue)")!
     }
 }

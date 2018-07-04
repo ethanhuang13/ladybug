@@ -9,34 +9,31 @@
 import Foundation
 
 public class Radar: Codable {
-    let id: RadarID
+    let number: RadarNumber
     var metadata: RadarMetadata?
     let firstViewedDate: Date
     var lastViewedDate: Date? = nil
     var bookmarkedDate: Date? = nil
 
     enum CodingKeys: String, CodingKey {
-        case id
-        case firstViewedDate
-        case lastViewedDate
-        case bookmarkedDate
+        case number = "number"
+        case metadata = "open-radar"
+        case firstViewedDate = "first-viewed"
+        case lastViewedDate = "last-viewed"
+        case bookmarkedDate = "bookmarked"
     }
 
-    init(id: RadarID, metadata: RadarMetadata? = nil) {
-        self.id = id
+    init(number: RadarNumber, metadata: RadarMetadata? = nil) {
+        self.number = number
         self.metadata = metadata
         firstViewedDate = Date()
-    }
-
-    var idString: String {
-        return String(id.id)
     }
 }
 
 extension Radar {
     convenience init?(metadata: RadarMetadata) {
-        if let radarId = RadarID(string: metadata.number) {
-            self.init(id: radarId, metadata: metadata)
+        if let radarNumber = RadarNumber(string: metadata.number) {
+            self.init(number: radarNumber, metadata: metadata)
         } else {
             return nil
         }
@@ -45,7 +42,7 @@ extension Radar {
 
 extension Radar {
     var cellTitle: String {
-        return idString
+        return number.string
     }
 
     var cellSubtitle: String {

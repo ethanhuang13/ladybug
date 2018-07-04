@@ -9,7 +9,7 @@
 import UIKit
 
 protocol RadarURLOpenerUI {
-    func openRadarLinkInSafariViewController(_ radarID: RadarID, radarOption: RadarOption, readerMode: Bool)
+    func openRadarLinkInSafariViewController(_ radarNumber: RadarNumber, radarOption: RadarOption, readerMode: Bool)
 }
 
 class RadarURLOpener {
@@ -28,7 +28,7 @@ class RadarURLOpener {
         }
     }
 
-    func open(_ radarID: RadarID, radarOption: RadarOption = .openRadar, in browserOption: BrowserOption = .sfvcReader, completion: @escaping (Result<Void>) -> Void) {
+    func open(_ radarNumber: RadarNumber, radarOption: RadarOption = .openRadar, in browserOption: BrowserOption = .sfvcReader, completion: @escaping (Result<Void>) -> Void) {
 
         guard canOpen(in: browserOption) else {
             completion(.error(RadarURLOpenerError.cannotOpenIn(browserOption)))
@@ -40,15 +40,15 @@ class RadarURLOpener {
             return
         }
 
-        let url: URL = radarID.url(by: radarOption)
+        let url: URL = radarNumber.url(by: radarOption)
         
         switch browserOption {
         case .sfvcReader:
-            delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: true)
+            delegate.openRadarLinkInSafariViewController(radarNumber, radarOption: radarOption, readerMode: true)
             completion(.value(()))
 
         case .sfvc:
-            delegate.openRadarLinkInSafariViewController(radarID, radarOption: radarOption, readerMode: false)
+            delegate.openRadarLinkInSafariViewController(radarNumber, radarOption: radarOption, readerMode: false)
             completion(.value(()))
 
         case .safari, .briskApp:

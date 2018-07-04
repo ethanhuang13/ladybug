@@ -18,9 +18,8 @@ class RadarCollection {
     var delegates: MulticastDelegate<RadarCollectionDelegate> = MulticastDelegate()
 
     static private let key = "com.elaborapp.Ladybug.RadarCollection"
-    static private let metadataKey = "com.elaborapp.Ladybug.RadarCollection.metadata"
 
-    private var radars: [RadarID: Radar] = [:] {
+    private var radars: [RadarNumber: Radar] = [:] {
         didSet {
             notifyDidUpdate()
         }
@@ -35,29 +34,9 @@ class RadarCollection {
     }
 
     public func unarchive() {
-        let radarMetdata: [RadarID: RadarMetadata] = {
-            if let metadataData = UserDefaults.standard.object(forKey: RadarCollection.metadataKey) as? Data {
-                do {
-                    let metadata = try PropertyListDecoder().decode([RadarID: RadarMetadata].self, from: metadataData)
-                    print("Unarchived \(metadata.count) radar metadata")
-                    return metadata
-                } catch {
-                    print(error.localizedDescription)
-                }
-            }
-            return [:]
-        }()
-
-        if let data = UserDefaults.standard.object(forKey: RadarCollection.key) as? Data {
+        if let data = UserDefaults(suiteName: AppConstants.groupID)?.object(forKey: RadarCollection.key) as? Data {
             do {
-                let radars = try PropertyListDecoder().decode([RadarID: Radar].self, from: data)
-
-                for radar in radars {
-                    if let metadata = radarMetdata[radar.key] {
-                        radar.value.metadata = metadata
-                    }
-                }
-
+                let radars = try JSONDecoder().decode([RadarNumber: Radar].self, from: data)
                 self.radars = radars
                 print("Unarchived \(radars.count) radars")
             } catch {
@@ -68,20 +47,10 @@ class RadarCollection {
 
     public func archive() {
         do {
-            let radarData = try PropertyListEncoder().encode(radars)
-            UserDefaults.standard.set(radarData, forKey: RadarCollection.key)
+            let radarData = try JSONEncoder().encode(radars)
+            UserDefaults(suiteName: AppConstants.groupID)?.set(radarData, forKey: RadarCollection.key)
 
-            var radarMetdata: [RadarID: RadarMetadata] = [:]
-            for radar in radars {
-                if let metadata = radar.value.metadata {
-                    radarMetdata[radar.key] = metadata
-                }
-            }
-
-            let radarMetadataData = try PropertyListEncoder().encode(radarMetdata)
-            UserDefaults.standard.set(radarMetadataData, forKey: RadarCollection.metadataKey)
-
-            print("Archived \(radars.count) radars, \(radarMetdata.count) metadata")
+            print("Archived \(radars.count) radars")
         } catch {
             print(error.localizedDescription)
         }
@@ -89,12 +58,12 @@ class RadarCollection {
 
     /// This API has update policy
 
-    public func radar(_ radarID: RadarID) -> Radar? {
-        return radars[radarID]
+    public func radar(_ radarNumber: RadarNumber) -> Radar? {
+        return radars[radarNumber]
     }
 
     public func upsert(radar: Radar) {
-        if let existingRadar = radars[radar.id] {
+        if let existingRadar = radars[radar.number] {
             if existingRadar.bookmarkedDate == nil {
                 existingRadar.bookmarkedDate = radar.bookmarkedDate
             }
@@ -107,12 +76,12 @@ class RadarCollection {
                 existingRadar.metadata = metadata
             }
         } else {
-            radars[radar.id] = radar
+            radars[radar.number] = radar
         }
     }
 
-    public func removeFromHistory(radarID: RadarID) {
-        if let existingRadar = radars[radarID] {
+    public func removeFromHistory(radarNumber: RadarNumber) {
+        if let existingRadar = radars[radarNumber] {
             existingRadar.lastViewedDate = nil
             notifyDidUpdate()
         }
@@ -120,8 +89,8 @@ class RadarCollection {
 
     /// Use when user view a radar
 
-    public func updatedViewed(radarID: RadarID) throws {
-        if let existingRadar = radars[radarID] {
+    public func updatedViewed(radarNumber: RadarNumber) throws {
+        if let existingRadar = radars[radarNumber] {
             existingRadar.lastViewedDate = Date()
             notifyDidUpdate()
         }
@@ -129,16 +98,16 @@ class RadarCollection {
 
      /// Use when user toggle bookmark for a radar
 
-    public func toggleBookmark(radarID: RadarID) throws {
-        if let existingRadar = radars[radarID] {
+    public func toggleBookmark(radarNumber: RadarNumber) throws {
+        if let existingRadar = radars[radarNumber] {
             existingRadar.bookmarkedDate = existingRadar.bookmarkedDate != nil ? nil : Date()
             notifyDidUpdate()
         }
     }
 
-    public func bookmark(radarIDs: [RadarID]) {
-        for radarID in radarIDs {
-            if let existingRadar = radars[radarID] {
+    public func bookmark(radarNumbers: [RadarNumber]) {
+        for radarNumber in radarNumbers {
+            if let existingRadar = radars[radarNumber] {
                 existingRadar.bookmarkedDate = existingRadar.bookmarkedDate != nil ? existingRadar.bookmarkedDate : Date()
             }
         }

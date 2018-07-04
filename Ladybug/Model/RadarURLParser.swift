@@ -9,7 +9,7 @@
 import Foundation
 
 protocol RadarURLParser {
-    static func parse(_ url: URL) -> RadarID?
+    static func parse(_ url: URL) -> RadarNumber?
 }
 
 enum RadarURLParserError: Error {
