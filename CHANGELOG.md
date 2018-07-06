@@ -5,12 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.0.0(5)] - 2018-07-06
+### Added
+- Backup & Restore as JSON
+- More tests
+
 ### Changed
 - Rename RadarID to RadarNumber
-- Rewrite how to save Radars. Move to App Groups. Combine Radar, Radar Number and Radar Metadata
+- Rewrite how to save Radars. Combine Radar, Radar Number and Radar Metadata to a JSON file
 - Refactor RadarNumber, URLParsers and Builders
-- Add tests
-- Backup & Restore as JSON
 
 ## [0.4(4)] - 2018-06-30
 ### Added
