@@ -22,7 +22,7 @@ class RadarCollection {
     lazy var fileURL: URL = {
         let fileManager = FileManager.default
         let documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
-        let fileURL = documentDirectory.appendingPathComponent("radars.json")
+        let fileURL = documentDirectory.appendingPathComponent("ladybug-radars.json")
         return fileURL
     }()
 
@@ -40,6 +40,10 @@ class RadarCollection {
         })
     }
 
+    public func forceNotifyDelegates() {
+        notifyDidUpdate()
+    }
+
     public func unarchive() {
         do {
             self.radars = try RadarCollection.load(from: self.fileURL)
@@ -50,7 +54,8 @@ class RadarCollection {
 
     public func archive() {
         do {
-            try RadarCollection.save(self.radars, to: self.fileURL)
+            let radars = self.radars.filter { $0.value.bookmarkedDate != nil || $0.value.lastViewedDate != nil }
+            try RadarCollection.save(radars, to: self.fileURL)
         } catch {
             print(error.localizedDescription)
         }

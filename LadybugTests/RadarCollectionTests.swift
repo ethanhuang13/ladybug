@@ -37,6 +37,10 @@ class RadarCollectionTests: XCTestCase {
             let radars = try RadarCollection.load(from: fileURL)
             XCTAssert(radars.count == 22)
             self.radars = radars
+
+            radars.forEach {
+                XCTAssertNotNil($0.value.metadata)
+            }
         } catch {
             XCTFail(error.localizedDescription)
         }

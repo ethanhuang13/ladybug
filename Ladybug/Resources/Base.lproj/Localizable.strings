@@ -50,8 +50,12 @@
 "Import Finished" = "Import Finished";
 "Imported %li radars from Open Radar" = "Imported %li radars from Open Radar. Added to Bookmarks.";
 "Import Failed" = "Import Failed";
-"Export..." = "Export...";
-"Select what to export" = "Select what to export";
+"Export Markdown..." = "Export as Markdown Text...";
+"Select what to export" = "Select what to export.";
+"Backup as a JSON File" = "Backup as a JSON File";
+"Restore from a JSON File" = "Restore from a JSON File";
+"Imported %li radars from the JSON file" = "Imported %li radars from the JSON file";
+"Ladybug doesn't sync, but" = "Ladybug doesn't support syncing, but you can import/export as JSON";
 
 "About" = "About";
 "App Store" = "App Store";

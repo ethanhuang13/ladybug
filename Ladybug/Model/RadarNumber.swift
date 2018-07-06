@@ -91,9 +91,11 @@ extension RadarNumber {
             return URL(string: "brisk-rdar://radar/\(rawValue)")!
         }
     }
-}
 
-extension RadarNumber {
+    var rdarURLString: String {
+        return "rdar://" + self.string
+    }
+
     var string: String {
         return String(self.number)
     }

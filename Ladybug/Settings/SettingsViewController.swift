@@ -138,10 +138,12 @@ extension SettingsViewController {
             self.present(alertController, animated: true) { }
         }
 
-        let exportCellViewModel = TableViewCellViewModel(title: "Export...".localized()) {
-            func presentExportActivityController(radars: [Radar]) {
-                let string = radars.map { String("* rdar://" + $0.number.string + " " + $0.cellSubtitle) }.joined(separator: "\n")
-                print(string)
+        let exportCellViewModel = TableViewCellViewModel(title: "Export Markdown...".localized()) {
+            let alertController = UIAlertController(title: "Export Markdown...".localized(), message: "Select what to export".localized(), preferredStyle: .alert)
+
+            func presentExportActivityController(title: String, radars: [Radar]) {
+                let radarString = radars.map ({ "* [\($0.number.rdarURLString)](\($0.number.url(by: .openRadar))) \($0.cellSubtitle)" }).joined(separator: "\n")
+                let string = "# Ladybug \(title)\n\n\(radarString)"
 
                 let avc = UIActivityViewController(activityItems: [string], applicationActivities: nil)
                 avc.completionWithItemsHandler = { activity, success, items, error in
@@ -161,28 +163,36 @@ extension SettingsViewController {
                 self.present(avc, animated: true) { }
             }
 
-            let alertController = UIAlertController(title: "Export...".localized(), message: "Select what to export".localized(), preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "History".localized(), style: .default, handler: { (_) in
-                presentExportActivityController(radars: RadarCollection.shared.history())
+                presentExportActivityController(title: "History".localized(), radars: RadarCollection.shared.history())
             }))
             alertController.addAction(UIAlertAction(title: "Bookmarks".localized(), style: .default, handler: { (_) in
-                presentExportActivityController(radars: RadarCollection.shared.bookmarks())
+                presentExportActivityController(title: "Bookmarks".localized(), radars: RadarCollection.shared.bookmarks())
             }))
             alertController.addAction(.cancelAction)
 
             self.present(alertController, animated: true) { }
         }
 
-        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: nil, rows: [importCellViewModel, exportCellViewModel])
-        return sectionViewModel
-    }
-
-    private var donationSection: TableViewSectionViewModel {
-        let donateCellViewModel = TableViewCellViewModel(title: "Donate".localized(), subtitle: "Buy me some coffee".localized(), cellStyle: .subtitle) {
-
+        let backupCellViewModel = TableViewCellViewModel(title: "Backup as a JSON File".localized()) {
+            RadarCollection.shared.archive()
+            let url = RadarCollection.shared.fileURL
+            guard FileManager.default.fileExists(atPath: url.path) else {
+                return
+            }
+            let vc = UIDocumentPickerViewController(url: url, in: .exportToService)
+            vc.delegate = self
+            self.present(vc, animated: true) { }
         }
 
-        let sectionViewModel = TableViewSectionViewModel(header: "Donation".localized(), footer: nil, rows: [donateCellViewModel])
+        let restoreCellViewModel = TableViewCellViewModel(title: "Restore from a JSON File".localized()) {
+            let vc = UIDocumentPickerViewController(documentTypes: ["public.text"], in: .import)
+            vc.allowsMultipleSelection = false
+            vc.delegate = self
+            self.present(vc, animated: true) { }
+        }
+
+        let sectionViewModel = TableViewSectionViewModel(header: "Data".localized(), footer: "Ladybug doesn't sync, but".localized(), rows: [importCellViewModel, exportCellViewModel, backupCellViewModel, restoreCellViewModel])
         return sectionViewModel
     }
 
@@ -206,5 +216,34 @@ extension SettingsViewController {
 
         let sectionViewModel = TableViewSectionViewModel(header: "About".localized(), footer: AppConstants.aboutString, rows: [rateCellViewModel, feedbackCellViewModel, developerCellViewModel, githubCellViewModel])
         return sectionViewModel
+    }
+}
+
+extension SettingsViewController: UIDocumentPickerDelegate {
+    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+        guard controller.documentPickerMode == .import else {
+            return
+        }
+
+        // Restore from JSON
+        if let url = urls.first,
+            url.isFileURL {
+            do {
+                let radars = try RadarCollection.load(from: url)
+                radars.values.forEach {
+                    RadarCollection.shared.upsert(radar: $0)
+                }
+                RadarCollection.shared.archive()
+                RadarCollection.shared.forceNotifyDelegates()
+
+                let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Imported %li radars from the JSON file".localized(), radars.count), preferredStyle: .alert)
+                alertController.addAction(.okAction)
+                self.present(alertController, animated: true) { }
+            } catch {
+                self.present(UIAlertController.errorAlertController(error), animated: true, completion: { })
+            }
+        } else {
+            print("No valid file")
+        }
     }
 }

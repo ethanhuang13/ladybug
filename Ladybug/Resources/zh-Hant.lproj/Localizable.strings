@@ -50,8 +50,12 @@
 "Import Finished" = "輸入完畢";
 "Imported %li radars from Open Radar" = "從 Open Radar 輸入了 %li 個 radar，已自動加入書籤";
 "Import Failed" = "輸入失敗";
-"Export..." = "輸出...";
-"Select what to export" = "選擇要輸出的資料";
+"Export Markdown..." = "輸出為 Markdown 文字...";
+"Select what to export" = "選擇要輸出的資料。";
+"Backup as a JSON File" = "備份為 JSON";
+"Restore from a JSON File" = "從 JSON 回復";
+"Imported %li radars from the JSON file" = "從 JSON 檔輸入了 %li 個 radar";
+"Ladybug doesn't sync, but" = "Ladybug 不支援同步，但你可以利用 JSON 檔做備份/還原";
 
 "About" = "關於";
 "App Store" = "App Store";
