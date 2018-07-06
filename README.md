@@ -1,27 +1,28 @@
 # Ladybug 🐞
 
+![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master)
+
 Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
 
 ![](demo.gif)
 
 ## Features
 
-- ✅ Open source iOS project written in Swift 😇
-- ✅ Opens a radar link from other app, clipboard, or manually input. 😎 Then it redirects to [Open Radar](https://openradar.appspot.com/), [Apple Radar](https://bugreport.apple.com/) (Bug Reporter) or [Brisk](https://github.com/br1sk/brisk-ios) app 💪
-- ✅ Support multiple formats of radar links 💡
-- ✅ Safari Reader mode for [Open Radar](https://openradar.appspot.com/) 👁
-- ✅ History 🕑
-- ✅ Bookmarks 📖
-- ✅ Retrive radar metadata from [Open Radar](https://openradar.appspot.com/) 📲
-- ✅ Export radars ⏫
-- ✅ Import your radars from [Open Radar](https://openradar.appspot.com/) by email ⏬
-- ✅ 3D Touch Peek & Pop 👀
-- [ ] iCloud sync for History and Bookmarks radars 🌏
-
-Also... 
-
-- ✅ Free without ads 🆓
-- ✅ No third-party tracking or analytics 🚫
+| | Features |
+| --- | --- |
+| 😇 | Open source iOS project written in Swift  |
+| 😎 | Opens a radar link from other app, clipboard, or manually input. |
+| 💪 | Redirects to [Open Radar](https://openradar.appspot.com/), [Apple Radar](https://bugreport.apple.com/) (Bug Reporter) or [Brisk](https://github.com/br1sk/brisk-ios) app |
+| 💡 | Support multiple formats of radar links |
+| 👁 | Safari Reader mode for [Open Radar](https://openradar.appspot.com/) |
+| 🕑 | History |
+| 📖 | Bookmarks |
+| 📲 | Retrive radar metadata from [Open Radar](https://openradar.appspot.com/) |
+| ⏫ | Export radars |
+| ⏬ | Import your radars from [Open Radar](https://openradar.appspot.com/) by email |
+| 👀 | 3D Touch Peek & Pop |
+| 🆓 | Free without ads |
+| 🚫 | No third-party tracking or analytics |
 
 ## Install
 
