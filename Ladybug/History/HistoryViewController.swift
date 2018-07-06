@@ -66,7 +66,7 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
                     }
                 }
             } else {
-                self.present(UIAlertController.errorAlertController(RadarURLParserError.noValidRadarNumber), animated: true, completion: { })
+                self.present(UIAlertController.errorAlertController(RadarURLParseError.noValidRadarNumber), animated: true, completion: { })
             }
         }))
         alertController.addAction(.cancelAction)

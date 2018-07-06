@@ -8,6 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Changed
 - Rename RadarID to RadarNumber
 - Rewrite how to save Radars. Move to App Groups. Combine Radar, Radar Number and Radar Metadata
+- Refactor RadarNumber, URLParsers and Builders
+- Add tests
 
 ## [0.4(4)] - 2018-06-30
 ### Added

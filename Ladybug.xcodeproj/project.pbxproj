@@ -14,12 +14,7 @@
 		6C07273C20CF692800603199 /* UserDefaults+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273B20CF692800603199 /* UserDefaults+Extension.swift */; };
 		6C07273E20CF6C0D00603199 /* BrowserOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273D20CF6C0D00603199 /* BrowserOption.swift */; };
 		6C07274020CF6C7700603199 /* RadarNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07273F20CF6C7700603199 /* RadarNumber.swift */; };
-		6C07274220CF6CD000603199 /* AppleRadarURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274120CF6CD000603199 /* AppleRadarURL.swift */; };
-		6C07274420CF6CDB00603199 /* OpenRadarURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274320CF6CDB00603199 /* OpenRadarURL.swift */; };
-		6C07274620CF6CF000603199 /* RadarURLBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274520CF6CF000603199 /* RadarURLBuilder.swift */; };
-		6C07274820CF73C900603199 /* RadarURLParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274720CF73C900603199 /* RadarURLParser.swift */; };
-		6C07274C20CF801100603199 /* AppleRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274B20CF801100603199 /* AppleRadarTests.swift */; };
-		6C07274E20CF803300603199 /* OpenRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274D20CF803300603199 /* OpenRadarTests.swift */; };
+		6C07274820CF73C900603199 /* RadarURLParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07274720CF73C900603199 /* RadarURLParseError.swift */; };
 		6C07276B20CFA90400603199 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276A20CFA90400603199 /* HistoryViewController.swift */; };
 		6C07276D20CFA90E00603199 /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276C20CFA90E00603199 /* BookmarksViewController.swift */; };
 		6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C07276E20CFA91800603199 /* SettingsViewController.swift */; };
@@ -29,10 +24,13 @@
 		6C0D224320E255AD00FBFA86 /* OpenRadarAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D224220E255AD00FBFA86 /* OpenRadarAPI.swift */; };
 		6C380C6B20DB887D000EE273 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C380C6A20DB887D000EE273 /* TabBarController.swift */; };
 		6C380C6D20DC1EF2000EE273 /* UINavigationController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C380C6C20DC1EF2000EE273 /* UINavigationController+Extension.swift */; };
+		6C4039B520EF643E00218E2C /* RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4039B420EF643E00218E2C /* RadarTests.swift */; };
+		6C4039B720EF645F00218E2C /* RadarNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4039B620EF645F00218E2C /* RadarNumberTests.swift */; };
+		6C4039B920EF6A0400218E2C /* test-radars.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C4039B820EF6A0400218E2C /* test-radars.json */; };
 		6C55AAD720D16A5E002E0E82 /* BrowserOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */; };
+		6C7E64A120EF56AF00CB1D2B /* RadarCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */; };
 		6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */; };
 		6C92D74D20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */; };
-		6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */; };
 		6CB9EFED20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */; };
 		6CB9EFEF20E7931A00D44CB3 /* UIAlertController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9EFEE20E7931A00D44CB3 /* UIAlertController+Extension.swift */; };
 		6CCEA1DF20D23CFA007FA16B /* RadarOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCEA1DE20D23CFA007FA16B /* RadarOption+Extension.swift */; };
@@ -46,7 +44,6 @@
 		6CCFA66F20D0F3E4006C9BAE /* Radar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA66E20D0F3E4006C9BAE /* Radar.swift */; };
 		6CCFA67120D0F43A006C9BAE /* RadarMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */; };
 		6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */; };
-		6CCFA67520D10CE0006C9BAE /* BriskRadarURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67420D10CE0006C9BAE /* BriskRadarURL.swift */; };
 		6CCFA67820D1111A006C9BAE /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67720D1111A006C9BAE /* Result.swift */; };
 		6CCFA67A20D11265006C9BAE /* RadarURLOpenerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */; };
 		6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CCFA67C20D113DE006C9BAE /* String+Extension.swift */; };
@@ -75,12 +72,7 @@
 		6C07273B20CF692800603199 /* UserDefaults+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+Extension.swift"; sourceTree = "<group>"; };
 		6C07273D20CF6C0D00603199 /* BrowserOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowserOption.swift; sourceTree = "<group>"; };
 		6C07273F20CF6C7700603199 /* RadarNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarNumber.swift; sourceTree = "<group>"; };
-		6C07274120CF6CD000603199 /* AppleRadarURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleRadarURL.swift; sourceTree = "<group>"; };
-		6C07274320CF6CDB00603199 /* OpenRadarURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarURL.swift; sourceTree = "<group>"; };
-		6C07274520CF6CF000603199 /* RadarURLBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLBuilder.swift; sourceTree = "<group>"; };
-		6C07274720CF73C900603199 /* RadarURLParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLParser.swift; sourceTree = "<group>"; };
-		6C07274B20CF801100603199 /* AppleRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleRadarTests.swift; sourceTree = "<group>"; };
-		6C07274D20CF803300603199 /* OpenRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarTests.swift; sourceTree = "<group>"; };
+		6C07274720CF73C900603199 /* RadarURLParseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLParseError.swift; sourceTree = "<group>"; };
 		6C07276A20CFA90400603199 /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		6C07276C20CFA90E00603199 /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		6C07276E20CFA91800603199 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
@@ -92,10 +84,13 @@
 		6C273FE220D01DEA001FD2F0 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6C380C6A20DB887D000EE273 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		6C380C6C20DC1EF2000EE273 /* UINavigationController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Extension.swift"; sourceTree = "<group>"; };
+		6C4039B420EF643E00218E2C /* RadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTests.swift; sourceTree = "<group>"; };
+		6C4039B620EF645F00218E2C /* RadarNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarNumberTests.swift; sourceTree = "<group>"; };
+		6C4039B820EF6A0400218E2C /* test-radars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-radars.json"; sourceTree = "<group>"; };
 		6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrowserOption+Extension.swift"; sourceTree = "<group>"; };
+		6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCollectionTests.swift; sourceTree = "<group>"; };
 		6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+MFMailComposeViewControllerDelegate.swift"; sourceTree = "<group>"; };
-		6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadarTests.swift; sourceTree = "<group>"; };
 		6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerUsingViewModel.swift; sourceTree = "<group>"; };
 		6CB9EFEE20E7931A00D44CB3 /* UIAlertController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Extension.swift"; sourceTree = "<group>"; };
 		6CB9EFF320E8D82D00D44CB3 /* Ladybug.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Ladybug.entitlements; sourceTree = "<group>"; };
@@ -111,7 +106,6 @@
 		6CCFA66E20D0F3E4006C9BAE /* Radar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Radar.swift; sourceTree = "<group>"; };
 		6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarMetadata.swift; sourceTree = "<group>"; };
 		6CCFA67220D109FD006C9BAE /* RadarURLOpener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLOpener.swift; sourceTree = "<group>"; };
-		6CCFA67420D10CE0006C9BAE /* BriskRadarURL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BriskRadarURL.swift; sourceTree = "<group>"; };
 		6CCFA67720D1111A006C9BAE /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		6CCFA67920D11265006C9BAE /* RadarURLOpenerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarURLOpenerError.swift; sourceTree = "<group>"; };
 		6CCFA67C20D113DE006C9BAE /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -177,10 +171,11 @@
 		6C07271F20CDC70600603199 /* LadybugTests */ = {
 			isa = PBXGroup;
 			children = (
-				6C07274B20CF801100603199 /* AppleRadarTests.swift */,
-				6C935B1420D13B7C00136F1E /* BriskRadarTests.swift */,
-				6C07274D20CF803300603199 /* OpenRadarTests.swift */,
+				6C4039B620EF645F00218E2C /* RadarNumberTests.swift */,
+				6C4039B420EF643E00218E2C /* RadarTests.swift */,
+				6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */,
 				6CCEA1ED20D24C6B007FA16B /* UserDefaultsExtensionTests.swift */,
+				6C4039B820EF6A0400218E2C /* test-radars.json */,
 				6C07272220CDC70600603199 /* LadybugTests-Info.plist */,
 			);
 			path = LadybugTests;
@@ -193,11 +188,7 @@
 				6CCFA66E20D0F3E4006C9BAE /* Radar.swift */,
 				6C07273F20CF6C7700603199 /* RadarNumber.swift */,
 				6CCFA67020D0F43A006C9BAE /* RadarMetadata.swift */,
-				6C07274720CF73C900603199 /* RadarURLParser.swift */,
-				6C07274520CF6CF000603199 /* RadarURLBuilder.swift */,
-				6C07274120CF6CD000603199 /* AppleRadarURL.swift */,
-				6C07274320CF6CDB00603199 /* OpenRadarURL.swift */,
-				6CCFA67420D10CE0006C9BAE /* BriskRadarURL.swift */,
+				6C07274720CF73C900603199 /* RadarURLParseError.swift */,
 				6C07273D20CF6C0D00603199 /* BrowserOption.swift */,
 				6C07273920CDCA5300603199 /* RadarOption.swift */,
 				6CCFA67720D1111A006C9BAE /* Result.swift */,
@@ -349,7 +340,7 @@
 						CreatedOnToolsVersion = 9.3.1;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -403,6 +394,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C4039B920EF6A0400218E2C /* test-radars.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -414,14 +406,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				6CCFA67A20D11265006C9BAE /* RadarURLOpenerError.swift in Sources */,
-				6CCFA67520D10CE0006C9BAE /* BriskRadarURL.swift in Sources */,
-				6C07274220CF6CD000603199 /* AppleRadarURL.swift in Sources */,
 				6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */,
 				6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */,
 				6C380C6D20DC1EF2000EE273 /* UINavigationController+Extension.swift in Sources */,
 				6C0D223A20E100C200FBFA86 /* RadarCollection.swift in Sources */,
 				6CB9EFEF20E7931A00D44CB3 /* UIAlertController+Extension.swift in Sources */,
-				6C07274820CF73C900603199 /* RadarURLParser.swift in Sources */,
+				6C07274820CF73C900603199 /* RadarURLParseError.swift in Sources */,
 				6C0D223C20E1F0CB00FBFA86 /* MulticastDelegate.swift in Sources */,
 				6C07276B20CFA90400603199 /* HistoryViewController.swift in Sources */,
 				6CCFA66F20D0F3E4006C9BAE /* Radar.swift in Sources */,
@@ -430,14 +420,12 @@
 				6CCFA67820D1111A006C9BAE /* Result.swift in Sources */,
 				6C07274020CF6C7700603199 /* RadarNumber.swift in Sources */,
 				6C07273A20CDCA5300603199 /* RadarOption.swift in Sources */,
-				6C07274620CF6CF000603199 /* RadarURLBuilder.swift in Sources */,
 				6C0D223E20E1FBFC00FBFA86 /* Radar+Extension.swift in Sources */,
 				6C07273C20CF692800603199 /* UserDefaults+Extension.swift in Sources */,
 				6CCEA1DF20D23CFA007FA16B /* RadarOption+Extension.swift in Sources */,
 				6C07273E20CF6C0D00603199 /* BrowserOption.swift in Sources */,
 				6CCFA67120D0F43A006C9BAE /* RadarMetadata.swift in Sources */,
 				6CCEA1E220D23FE9007FA16B /* TableViewViewModel.swift in Sources */,
-				6C07274420CF6CDB00603199 /* OpenRadarURL.swift in Sources */,
 				6CCFA67F20D11C70006C9BAE /* UIColor+Extension.swift in Sources */,
 				6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */,
 				6CCEA1E620D23FFF007FA16B /* TableViewCellViewModel.swift in Sources */,
@@ -457,9 +445,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6C935B1520D13B7C00136F1E /* BriskRadarTests.swift in Sources */,
-				6C07274E20CF803300603199 /* OpenRadarTests.swift in Sources */,
-				6C07274C20CF801100603199 /* AppleRadarTests.swift in Sources */,
+				6C7E64A120EF56AF00CB1D2B /* RadarCollectionTests.swift in Sources */,
+				6C4039B520EF643E00218E2C /* RadarTests.swift in Sources */,
+				6C4039B720EF645F00218E2C /* RadarNumberTests.swift in Sources */,
 				6CCEA1EE20D24C6B007FA16B /* UserDefaultsExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -615,7 +603,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Ladybug/Ladybug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";
@@ -635,7 +622,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = Ladybug/Ladybug.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";

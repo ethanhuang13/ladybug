@@ -19,6 +19,13 @@ class RadarCollection {
 
     static private let key = "com.elaborapp.Ladybug.RadarCollection"
 
+    lazy var fileURL: URL = {
+        let fileManager = FileManager.default
+        let documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let fileURL = documentDirectory.appendingPathComponent("radars.json")
+        return fileURL
+    }()
+
     private var radars: [RadarNumber: Radar] = [:] {
         didSet {
             notifyDidUpdate()
@@ -34,25 +41,37 @@ class RadarCollection {
     }
 
     public func unarchive() {
-        if let data = UserDefaults(suiteName: AppConstants.groupID)?.object(forKey: RadarCollection.key) as? Data {
-            do {
-                let radars = try JSONDecoder().decode([RadarNumber: Radar].self, from: data)
-                self.radars = radars
-                print("Unarchived \(radars.count) radars")
-            } catch {
-                print(error.localizedDescription)
-            }
+        do {
+            self.radars = try RadarCollection.load(from: self.fileURL)
+        } catch {
+            print(error.localizedDescription)
         }
     }
 
     public func archive() {
         do {
-            let radarData = try JSONEncoder().encode(radars)
-            UserDefaults(suiteName: AppConstants.groupID)?.set(radarData, forKey: RadarCollection.key)
-
-            print("Archived \(radars.count) radars")
+            try RadarCollection.save(self.radars, to: self.fileURL)
         } catch {
             print(error.localizedDescription)
+        }
+    }
+
+    public static func load(from fileURL: URL) throws -> [RadarNumber: Radar] {
+        do {
+            let radars = try JSONDecoder().decode([RadarNumber: Radar].self, from: try Data(contentsOf: fileURL))
+            print("Loaded \(radars.count) radars")
+            return radars
+        } catch {
+            throw error
+        }
+    }
+
+    public static func save(_ radars: [RadarNumber: Radar], to fileURL: URL) throws {
+        do {
+            try JSONEncoder().encode(radars).write(to: fileURL)
+            print("Saved \(radars.count) radars")
+        } catch {
+            throw error
         }
     }
 

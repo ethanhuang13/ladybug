@@ -49,12 +49,33 @@ extension RadarNumber {
     }
 
     init?(url: URL) {
-        if let radarNumber = OpenRadarURL.parse(url) {
+        if let string = RadarNumber.parse(url),
+            let radarNumber = RadarNumber(string: string) {
             self = radarNumber
-        } else if let radarNumber = AppleRadarURL.parse(url) {
-            self = radarNumber
-        } else if let radarNumber = BriskRadarURL.parse(url) {
-            self = radarNumber
+        } else {
+            return nil
+        }
+    }
+
+    static func parse(_ url: URL) -> String? {
+        if url.scheme?.caseInsensitiveCompare("rdar") == .orderedSame,
+            let string = url.host {
+            return string
+        } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
+            url.host?.caseInsensitiveHasSuffix("openradar.appspot.com") == true {
+            return url.lastPathComponent
+        } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
+            url.host?.caseInsensitiveHasSuffix("openradar.me") == true {
+            return url.lastPathComponent
+        } else if let urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: false),
+            urlComponents.scheme?.hasPrefix("http") == true,
+            urlComponents.host == "bugreport.apple.com",
+            urlComponents.path.hasPrefix("/web"),
+            let string = urlComponents.queryItems?.filter({ $0.name == "problemID" }).first?.value {
+            return string
+        } else if let int = Int(url.lastPathComponent),
+            String(int) == url.lastPathComponent {
+            return url.lastPathComponent
         } else {
             return nil
         }
@@ -63,11 +84,11 @@ extension RadarNumber {
     func url(by radarOption: RadarOption) -> URL {
         switch radarOption {
         case .appleRadar:
-            return AppleRadarURL.buildURL(from: self)
+            return URL(string: "https://bugreport.apple.com/web/?problemID=\(rawValue)")!
         case .openRadar:
-            return OpenRadarURL.buildURL(from: self)
+            return URL(string: "https://openradar.appspot.com/\(rawValue)")!
         case .brisk:
-            return BriskRadarURL.buildURL(from: self)
+            return URL(string: "brisk-rdar://radar/\(rawValue)")!
         }
     }
 }

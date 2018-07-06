@@ -1,5 +1,5 @@
 //
-//  RadarURLParser.swift
+//  RadarURLParseError.swift
 //  Ladybug
 //
 //  Created by Ethanhuang on 2018/6/12.
@@ -8,15 +8,11 @@
 
 import Foundation
 
-protocol RadarURLParser {
-    static func parse(_ url: URL) -> RadarNumber?
-}
-
-enum RadarURLParserError: Error {
+enum RadarURLParseError: Error {
     case noValidRadarNumber
 }
 
-extension RadarURLParserError: LocalizedError {
+extension RadarURLParseError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .noValidRadarNumber:
