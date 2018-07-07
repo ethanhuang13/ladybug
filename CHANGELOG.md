@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.0.0(6)] - 2018-07-07
+### Hotfix
+- Handle rdar://problem/number
+
 ## [1.0.0(5)] - 2018-07-06
 ### Added
 - Backup & Restore as JSON

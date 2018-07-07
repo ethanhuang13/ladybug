@@ -59,8 +59,12 @@ extension RadarNumber {
 
     static func parse(_ url: URL) -> String? {
         if url.scheme?.caseInsensitiveCompare("rdar") == .orderedSame,
-            let string = url.host {
-            return string
+            let host = url.host {
+            if host == "problem" {
+                return url.lastPathComponent
+            } else {
+                return host
+            }
         } else if url.scheme?.caseInsensitiveHasPrefix("http") == true,
             url.host?.caseInsensitiveHasSuffix("openradar.appspot.com") == true {
             return url.lastPathComponent
