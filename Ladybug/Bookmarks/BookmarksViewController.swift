@@ -31,8 +31,11 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
     }
 
     func reloadData() {
+        let isAPIKeySet = OpenRadarKeychain.getAPIKey() != nil
+        let setupAPIKeySubtitle = "(Setup Open Radar API Key for more information)".localized()
+
         let cells = RadarCollection.shared.bookmarks().map { (radar) -> TableViewCellViewModel in
-            TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: nil, previewingViewController: {
+            TableViewCellViewModel(title: radar.cellTitle, subtitle: isAPIKeySet ? radar.cellSubtitle : setupAPIKeySubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: nil, previewingViewController: {
                 let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
             }, selectAction: {

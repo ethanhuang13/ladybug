@@ -5,6 +5,10 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Added
+- User agent in Open Radar API request #4
+- Open Radar user API key #5
+
 ### Changed
 - Combine TableViewViewModel and TableViewDataSourceDelegate
 

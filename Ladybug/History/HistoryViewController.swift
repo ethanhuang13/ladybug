@@ -41,6 +41,18 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
     }
 
     @objc func add() {
+        guard OpenRadarKeychain.getAPIKey() != nil else {
+            OpenRadarKeychain.presentSetupAlertController(on: self) { (success) in
+                if success {
+                    DispatchQueue.main.async {
+                        self.reloadData()
+                        RadarCollection.shared.forceNotifyDelegates()
+                    }
+                }
+            }
+            return
+        }
+
         let alertController = UIAlertController(title: "Add a Radar".localized(), message: "Enter radar number or url".localized(), preferredStyle: .alert)
         alertController.addTextField { (textField) in
             textField.placeholder = "12345678"
@@ -106,8 +118,11 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
             sections.append(section)
         }
 
+        let isAPIKeySet = OpenRadarKeychain.getAPIKey() != nil
+        let setupAPIKeySubtitle = "(Setup Open Radar API Key for more information)".localized()
+        
         let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
-            TableViewCellViewModel(title: radar.cellTitle, subtitle: radar.cellSubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
+            TableViewCellViewModel(title: radar.cellTitle, subtitle: isAPIKeySet ? radar.cellSubtitle : setupAPIKeySubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
                 let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
             }, selectAction: {

@@ -10,6 +10,7 @@ import Foundation
 
 enum OpenRadarAPIError: Error {
     case urlInvalidString(String)
+    case requiresAPIKey
     case noData
     case noResult
     case parseFailed
@@ -20,6 +21,8 @@ extension OpenRadarAPIError: LocalizedError {
         switch self {
         case .urlInvalidString(_):
             return "URL invalid".localized()
+        case .requiresAPIKey:
+            return "Requires API Key".localized()
         case .noData:
             return "No data".localized()
         case .noResult:
@@ -40,7 +43,13 @@ struct OpenRadarAPIResultArray<T: Codable>: Codable {
 
 public struct OpenRadarAPI {
     private func performRequest(url: URL, completion: @escaping (_ result: Result<Data>) -> Void) {
+        guard let apiKey = OpenRadarKeychain.getAPIKey() else {
+            completion(.error(OpenRadarAPIError.requiresAPIKey))
+            return
+        }
+
         var request = URLRequest(url: url)
+        request.addValue(apiKey, forHTTPHeaderField: "Authorization")
         request.addValue(AppConstants.userAgentString, forHTTPHeaderField: "User-Agent")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in

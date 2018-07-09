@@ -9,7 +9,9 @@
 // General
 "OK" = "OK";
 "Cancel" = "Cancel";
+"Save" = "Save";
 "(No record on Open Radar)" = "(No record on Open Radar)";
+"(Setup Open Radar API Key for more information)" = "(Setup Open Radar API Key for more information)";
 
 // RadarOption
 "Open Radar" = "Open Radar";
@@ -39,6 +41,15 @@
 
 // SettingsViewController
 "Settings" = "Settings";
+
+"Open Radar API Key" = "Open Radar API Key";
+"Setup or remove the API Key" = "Setup or remove the API Key";
+"Remove Open Radar API Key" = "Remove Open Radar API Key";
+"Open Radar API Key is Required" = "Open Radar API Key is Required";
+"Sign in Open Radar to..." = "Sign in Open Radar (https://openradar.appspot.com/apikey) to get your API key. \n\nThe key will be stored securely.";
+"Paste the API Key here" = "Paste the API Key here";
+"Get My API Key" = "Get My API Key";
+
 "Opening Radar Links" = "Opening Radar Links";
 "Radar Website/App" = "Radar Website/App";
 "Browser" = "Browser";
@@ -73,6 +84,7 @@
 
 // OpenRadarAPIError
 "URL invalid" = "URL invalid";
+"Requires API Key" = "Open Radar API Key is required. Please setup then try again.";
 "No data" = "No data";
 "No result" = "No result";
 "Parse data failed" = "Parse data failed";

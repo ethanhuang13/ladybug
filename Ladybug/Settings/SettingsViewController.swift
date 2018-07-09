@@ -31,13 +31,14 @@ class SettingsViewController: UITableViewController, TableViewControllerUsingVie
     }
 
     func reloadData() {
-        tableViewViewModel.sections =
-            [linksSection,
-             dataSection,
-//             donationSection,
-                aboutSection]
+        DispatchQueue.main.async {
+            self.tableViewViewModel.sections =
+                [self.linksSection,
+                 self.dataSection,
+                 self.aboutSection]
 
-        tableView.reloadData()
+            self.tableView.reloadData()
+        }
     }
 }
 
@@ -83,11 +84,30 @@ extension SettingsViewController {
                 self.present(alertController, animated: true, completion: { })
             })
 
+        let openRadarAPIKeyViewModel = TableViewCellViewModel(title: "Open Radar API Key".localized(), subtitle: "Setup or remove the API Key".localized(), cellStyle: .subtitle, selectAction: {
+
+            if OpenRadarKeychain.getAPIKey() != nil {
+                OpenRadarKeychain.presentRemoveKeyAlertContrller(on: self, completion: { (success) in
+                    if success {
+                        self.reloadData()
+                        RadarCollection.shared.forceNotifyDelegates()
+                    }
+                })
+            } else {
+                OpenRadarKeychain.presentSetupAlertController(on: self, completion: { (success) in
+                    if success {
+                        self.reloadData()
+                        RadarCollection.shared.forceNotifyDelegates()
+                    }
+                })
+            }
+        })
+
         let rows: [TableViewCellViewModel] = {
             if UserDefaults.standard.radarOption == .brisk {
-                return [radarOptionCellViewModel]
+                return [radarOptionCellViewModel, openRadarAPIKeyViewModel]
             } else {
-                return [radarOptionCellViewModel, browserOptionCellViewModel]
+                return [radarOptionCellViewModel, browserOptionCellViewModel, openRadarAPIKeyViewModel]
             }
         }()
 
@@ -101,6 +121,16 @@ extension SettingsViewController {
 
     private var dataSection: TableViewSectionViewModel {
         let importCellViewModel = TableViewCellViewModel(title: "Import from Open Radar".localized()) {
+            guard OpenRadarKeychain.getAPIKey() != nil else {
+                OpenRadarKeychain.presentSetupAlertController(on: self, completion: { (success) in
+                    if success {
+                        self.reloadData()
+                        RadarCollection.shared.forceNotifyDelegates()
+                    }
+                })
+                return
+            }
+
             let alertController = UIAlertController(title: "Import from Open Radar".localized(), message: "Enter an Open Radar username.\n\nThe email will not be collected.".localized(), preferredStyle: .alert)
 
             alertController.addTextField(configurationHandler: { (textField) in

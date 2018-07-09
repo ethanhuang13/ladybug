@@ -9,7 +9,9 @@
 // General
 "OK" = "確定";
 "Cancel" = "取消";
+"Save" = "儲存";
 "(No record on Open Radar)" = "(沒有 Open Radar 紀錄)";
+"(Setup Open Radar API Key for more information)" = "(設定 Open Radar API Key 可顯示更多資訊)";
 
 // RadarOption
 "Open Radar" = "Open Radar";
@@ -39,6 +41,15 @@
 
 // SettingsViewController
 "Settings" = "設定";
+
+"Open Radar API Key" = "Open Radar API Key";
+"Setup or remove the API Key" = "設定或移除 API Key";
+"Remove Open Radar API Key" = "移除 Open Radar API Key";
+"Open Radar API Key is Required" = "需要 Open Radar API Key";
+"Sign in Open Radar to..." = "登入 Open Radar (https://openradar.appspot.com/apikey) 來取得你的 API key。 \n\nKey 會用安全的方式儲存。";
+"Paste the API Key here" = "在這裡貼上 API Key";
+"Get My API Key" = "取得我的 API Key";
+
 "Opening Radar Links" = "開啟 Radar 連結";
 "Radar Website/App" = "Radar 網站/應用程式";
 "Browser" = "瀏覽器";
@@ -73,6 +84,7 @@
 
 // OpenRadarAPIError
 "URL invalid" = "網址無效";
+"Requires API Key" = "需要 Open Radar API Key，請先設定之後再試";
 "No data" = "沒有資料";
 "No result" = "沒有結果";
 "Parse data failed" = "解析資料失敗";
