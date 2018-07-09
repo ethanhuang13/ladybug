@@ -40,7 +40,9 @@ struct OpenRadarAPIResultArray<T: Codable>: Codable {
 
 public struct OpenRadarAPI {
     private func performRequest(url: URL, completion: @escaping (_ result: Result<Data>) -> Void) {
-        let request = URLRequest(url: url)
+        var request = URLRequest(url: url)
+        request.addValue(AppConstants.userAgentString, forHTTPHeaderField: "User-Agent")
+
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 completion(.error(error))
