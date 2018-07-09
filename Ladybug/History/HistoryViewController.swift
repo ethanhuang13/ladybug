@@ -9,7 +9,7 @@
 import UIKit
 
 class HistoryViewController: UITableViewController, TableViewControllerUsingViewModel {
-    lazy var dataSourceDelegate: TableViewDataSourceDelegate = { TableViewDataSourceDelegate(tableViewController: self) }()
+    lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +26,8 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(add))
 
-        tableView.dataSource = dataSourceDelegate
-        tableView.delegate = dataSourceDelegate
+        tableView.dataSource = tableViewViewModel
+        tableView.delegate = tableViewViewModel
 
         RadarCollection.shared.delegates.add(delegate: self)
 
@@ -134,7 +134,7 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
         let mainSection = TableViewSectionViewModel(header: sections.isEmpty ? nil : "History".localized(), footer: nil, rows: cells)
         sections.append(mainSection)
 
-        dataSourceDelegate.viewModel = TableViewViewModel(sections: sections)
+        tableViewViewModel.sections = sections
         tableView.reloadData()
     }
 }

@@ -10,6 +10,6 @@ import UIKit
 
 protocol TableViewControllerUsingViewModel {
     var tableView: UITableView! { get set }
-    var dataSourceDelegate: TableViewDataSourceDelegate { get }
+    var tableViewViewModel: TableViewViewModel { get }
     func reloadData()
 }

@@ -8,8 +8,8 @@
 
 import UIKit
 
-class SettingsViewController: UITableViewController {
-    lazy var dataSourceDelegate: TableViewDataSourceDelegate =  { TableViewDataSourceDelegate(tableViewController: self) }()
+class SettingsViewController: UITableViewController, TableViewControllerUsingViewModel {
+    lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,18 +24,18 @@ class SettingsViewController: UITableViewController {
         }
         navigationItem.title = "Settings".localized()
 
-        tableView.dataSource = dataSourceDelegate
-        tableView.delegate = dataSourceDelegate
+        tableView.dataSource = tableViewViewModel
+        tableView.delegate = tableViewViewModel
 
         reloadData()
     }
 
     func reloadData() {
-        dataSourceDelegate.viewModel = TableViewViewModel(sections:
+        tableViewViewModel.sections =
             [linksSection,
              dataSection,
 //             donationSection,
-             aboutSection])
+                aboutSection]
 
         tableView.reloadData()
     }

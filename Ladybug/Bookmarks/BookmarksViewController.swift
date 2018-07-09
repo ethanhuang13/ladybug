@@ -9,7 +9,7 @@
 import UIKit
 
 class BookmarksViewController: UITableViewController, TableViewControllerUsingViewModel {
-    lazy var dataSourceDelegate: TableViewDataSourceDelegate = { TableViewDataSourceDelegate(tableViewController: self) }()
+    lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +24,8 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
         }
         navigationItem.title = "Bookmarks".localized()
 
-        tableView.dataSource = dataSourceDelegate
-        tableView.delegate = dataSourceDelegate
+        tableView.dataSource = tableViewViewModel
+        tableView.delegate = tableViewViewModel
 
         RadarCollection.shared.delegates.add(delegate: self)
     }
@@ -57,7 +57,7 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
         }
 
         let section = TableViewSectionViewModel(header: nil, footer: nil, rows: cells)
-        dataSourceDelegate.viewModel = TableViewViewModel(sections: [section])
+        tableViewViewModel.sections = [section]
         tableView.reloadData()
     }
 }

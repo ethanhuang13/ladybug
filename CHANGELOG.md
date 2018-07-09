@@ -5,6 +5,8 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+### Changed
+- Combine TableViewViewModel and TableViewDataSourceDelegate
 
 ## [1.0.0(6)] - 2018-07-07
 ### Hotfix
