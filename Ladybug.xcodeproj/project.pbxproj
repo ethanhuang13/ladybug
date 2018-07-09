@@ -27,6 +27,8 @@
 		6C4039B520EF643E00218E2C /* RadarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4039B420EF643E00218E2C /* RadarTests.swift */; };
 		6C4039B720EF645F00218E2C /* RadarNumberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C4039B620EF645F00218E2C /* RadarNumberTests.swift */; };
 		6C4039B920EF6A0400218E2C /* test-radars.json in Resources */ = {isa = PBXBuildFile; fileRef = 6C4039B820EF6A0400218E2C /* test-radars.json */; };
+		6C45961420F348EE00C66769 /* OpenRadarKeychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45961320F348EE00C66769 /* OpenRadarKeychain.swift */; };
+		6C45961620F35B3E00C66769 /* OpenRadarKeychainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C45961520F35B3E00C66769 /* OpenRadarKeychainTests.swift */; };
 		6C55AAD720D16A5E002E0E82 /* BrowserOption+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */; };
 		6C7E64A120EF56AF00CB1D2B /* RadarCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */; };
 		6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */; };
@@ -86,6 +88,8 @@
 		6C4039B420EF643E00218E2C /* RadarTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarTests.swift; sourceTree = "<group>"; };
 		6C4039B620EF645F00218E2C /* RadarNumberTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarNumberTests.swift; sourceTree = "<group>"; };
 		6C4039B820EF6A0400218E2C /* test-radars.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "test-radars.json"; sourceTree = "<group>"; };
+		6C45961320F348EE00C66769 /* OpenRadarKeychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarKeychain.swift; sourceTree = "<group>"; };
+		6C45961520F35B3E00C66769 /* OpenRadarKeychainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarKeychainTests.swift; sourceTree = "<group>"; };
 		6C55AAD620D16A5E002E0E82 /* BrowserOption+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrowserOption+Extension.swift"; sourceTree = "<group>"; };
 		6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCollectionTests.swift; sourceTree = "<group>"; };
 		6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
@@ -173,6 +177,7 @@
 				6C4039B420EF643E00218E2C /* RadarTests.swift */,
 				6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */,
 				6CCEA1ED20D24C6B007FA16B /* UserDefaultsExtensionTests.swift */,
+				6C45961520F35B3E00C66769 /* OpenRadarKeychainTests.swift */,
 				6C4039B820EF6A0400218E2C /* test-radars.json */,
 				6C07272220CDC70600603199 /* LadybugTests-Info.plist */,
 			);
@@ -247,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				6C0D224220E255AD00FBFA86 /* OpenRadarAPI.swift */,
+				6C45961320F348EE00C66769 /* OpenRadarKeychain.swift */,
 			);
 			path = OpenRadar;
 			sourceTree = "<group>";
@@ -407,6 +413,7 @@
 				6CCFA67D20D113DE006C9BAE /* String+Extension.swift in Sources */,
 				6C380C6D20DC1EF2000EE273 /* UINavigationController+Extension.swift in Sources */,
 				6C0D223A20E100C200FBFA86 /* RadarCollection.swift in Sources */,
+				6C45961420F348EE00C66769 /* OpenRadarKeychain.swift in Sources */,
 				6CB9EFEF20E7931A00D44CB3 /* UIAlertController+Extension.swift in Sources */,
 				6C07274820CF73C900603199 /* RadarURLParseError.swift in Sources */,
 				6C0D223C20E1F0CB00FBFA86 /* MulticastDelegate.swift in Sources */,
@@ -444,6 +451,7 @@
 				6C7E64A120EF56AF00CB1D2B /* RadarCollectionTests.swift in Sources */,
 				6C4039B520EF643E00218E2C /* RadarTests.swift in Sources */,
 				6C4039B720EF645F00218E2C /* RadarNumberTests.swift in Sources */,
+				6C45961620F35B3E00C66769 /* OpenRadarKeychainTests.swift in Sources */,
 				6CCEA1EE20D24C6B007FA16B /* UserDefaultsExtensionTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
