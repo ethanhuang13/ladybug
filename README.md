@@ -4,6 +4,10 @@
 
 Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
 
+[![](App_Store_Badge.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
+
+## Demo
+
 ![Demo of user tapped a radar link in Message and opened Ladybug to view Open Radar.](demo.gif)
 
 ## Features
@@ -20,7 +24,7 @@ Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
 | 📖 | Bookmarks |
 | 📲 | Retrieve radar data from [Open Radar](https://openradar.appspot.com/) |
 | ⏬ | Import your radars from [Open Radar](https://openradar.appspot.com/) |
-| ⏫ | Export radars |
+| ⏫ | Export radars as JSON |
 | 🆓 | Free without ads |
 | 🚫 | No third-party tracking or analytics |
 
@@ -28,7 +32,11 @@ Developers have mixed feeling about radars. Lots of radars never get close or re
 
 ## Install
 
-This app will be submitted to the App Store once core features developed. In the meantime, you can install this open source app with the following steps:
+[![](App_Store_Badge.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
+
+Download the official release version from [App Store](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README).
+
+Or, you can install this open source app with the following steps:
 
 - Clone the repo on [GitHub](https://github.com/ethanhuang13/ladybug)
 - Open the project with Xcode 9 or above
