@@ -97,7 +97,7 @@ public struct OpenRadarAPI {
     /// User is usually email
 
     public func fetchRadarsBy(user: String, completion: @escaping (_ result: Result<[Radar]>) -> Void) {
-        let urlString = "https://openradar.appspot.com/api/search?scope=user&q=\(user)"
+        let urlString = "https://openradar.appspot.com/api/search?scope=user&count=1000&q=\(user)"
         guard let url = URL(string: urlString) else {
             completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))
             return
