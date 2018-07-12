@@ -148,7 +148,7 @@ class RadarCollection {
 
     public func bookmarks() -> [Radar] {
         let radars = self.radars.values.filter { $0.bookmarkedDate != nil }.sorted { (lhs, rhs) -> Bool in
-            return lhs.bookmarkedDate! > rhs.bookmarkedDate!
+            return lhs.number > rhs.number
         }
 
         return radars
