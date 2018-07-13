@@ -139,10 +139,16 @@ extension SettingsViewController {
                 textField.placeholder = "myname@company.com"
             })
             alertController.addAction(UIAlertAction(title: "Import".localized(), style: .default, handler: { (_) in
-                guard let email = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+                guard var email = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 
+                if email.caseInsensitiveHasPrefix("mailto:") {
+                    email = email.replacingOccurrences(of: "mailto:", with: "")
+                }
+
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true // No use on iPhone X yet
                 OpenRadarAPI().fetchRadarsBy(user: email, completion: { (result) in
                     DispatchQueue.main.async {
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                         switch result {
                         case .value(let value):
                             let radars = value.reversed()

@@ -97,28 +97,51 @@ public struct OpenRadarAPI {
     /// User is usually email
 
     public func fetchRadarsBy(user: String, completion: @escaping (_ result: Result<[Radar]>) -> Void) {
-        let urlString = "https://openradar.appspot.com/api/search?scope=user&q=\(user)"
-        guard let url = URL(string: urlString) else {
-            completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))
+        let countPerPage = 100
+
+        var urlComponents = URLComponents()
+        urlComponents.scheme = "https"
+        urlComponents.host = "openradar.appspot.com"
+        urlComponents.path = "/api/search"
+        urlComponents.queryItems = [URLQueryItem(name: "scope", value: "user"),
+                                    URLQueryItem(name: "q", value: user),
+                                    URLQueryItem(name: "count", value: String(countPerPage))]
+
+        guard urlComponents.url != nil else {
+            completion(.error(OpenRadarAPIError.urlInvalidString(urlComponents.debugDescription)))
             return
         }
 
-        performRequest(url: url) { (result) in
-            switch result {
-            case .value(let data):
-                do {
-                    let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
-                    let radars = array.compactMap { Radar(metadata: $0) }
-                    completion(.value(radars))
-                } catch {
-                    print(error.localizedDescription)
-                    completion(.error(OpenRadarAPIError.parseFailed))
-                    return
+        var allRadars: [Radar] = []
+
+        func fetchNextPage(_ page: Int) {
+            var pagedURLComponents = urlComponents
+            pagedURLComponents.queryItems?.append(URLQueryItem(name: "page", value: String(page)))
+            let pagedURL = pagedURLComponents.url!
+
+            self.performRequest(url: pagedURL) { (result) in
+                switch result {
+                case .value(let data):
+                    do {
+                        let array = try JSONDecoder().decode(OpenRadarAPIResultArray<RadarMetadata>.self, from: data).result
+                        let radars = array.compactMap { Radar(metadata: $0) }
+                        allRadars.append(contentsOf: radars)
+
+                        if radars.count >= countPerPage {
+                            fetchNextPage(page + 1)
+                        } else {
+                            completion(.value(allRadars))
+                        }
+                    } catch {
+                        completion(.error(error))
+                    }
+                case .error(let error):
+                    completion(.error(error))
                 }
-            case .error(let error):
-                completion(.error(error))
             }
         }
+
+        fetchNextPage(1)
     }
 
     public func fetchRadarsBy(keywords: [String], completion: @escaping (_ result: Result<[Radar]>) -> Void) {
