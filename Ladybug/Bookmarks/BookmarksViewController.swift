@@ -10,6 +10,8 @@ import UIKit
 
 class BookmarksViewController: UITableViewController, TableViewControllerUsingViewModel {
     lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var previewingContext: UIViewControllerPreviewing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +28,16 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
 
         tableView.dataSource = tableViewViewModel
         tableView.delegate = tableViewViewModel
+        previewingContext = registerForPreviewing(with: tableViewViewModel, sourceView: view)
+
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Filter radars with text".localized()
+        searchController.searchBar.barStyle = .black
+        navigationItem.searchController = searchController
+        tabBarController?.definesPresentationContext = true
 
         RadarCollection.shared.delegates.add(delegate: self)
     }
@@ -34,7 +46,17 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
         let isAPIKeySet = OpenRadarKeychain.getAPIKey() != nil
         let setupAPIKeySubtitle = "(Setup Open Radar API Key for more information)".localized()
 
-        let cells = RadarCollection.shared.bookmarks(sortBy: UserDefaults.standard.sortOption).map { (radar) -> TableViewCellViewModel in
+        let radars = RadarCollection.shared.bookmarks(sortBy: UserDefaults.standard.sortOption)
+        let filteredRadars: [Radar] = {
+            if let searchText = searchController.searchBar.text?.lowercased(),
+                searchText.isEmpty != true {
+                return radars.filter { $0.caseInsensitiveContains(string: searchText) }
+            } else {
+                return radars
+            }
+        }()
+
+        let cells = filteredRadars.map { (radar) -> TableViewCellViewModel in
             TableViewCellViewModel(title: radar.cellTitle, subtitle: isAPIKeySet ? radar.cellSubtitle : setupAPIKeySubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: nil, previewingViewController: {
                 let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
@@ -68,5 +90,27 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
 extension BookmarksViewController: RadarCollectionDelegate {
     func radarCollectionDidUpdate() {
         reloadData()
+    }
+}
+
+extension BookmarksViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        reloadData()
+    }
+}
+
+extension BookmarksViewController: UISearchControllerDelegate {
+    func didPresentSearchController(_ searchController: UISearchController) {
+        if let context = previewingContext {
+            unregisterForPreviewing(withContext: context)
+            previewingContext = searchController.registerForPreviewing(with: tableViewViewModel, sourceView: self.view)
+        }
+    }
+
+    func didDismissSearchController(_ searchController: UISearchController) {
+        if let context = previewingContext {
+            searchController.unregisterForPreviewing(withContext: context)
+            previewingContext = registerForPreviewing(with: tableViewViewModel, sourceView: self.view)
+        }
     }
 }

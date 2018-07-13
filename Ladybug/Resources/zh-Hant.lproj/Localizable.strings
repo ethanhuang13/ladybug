@@ -12,6 +12,7 @@
 "Save" = "儲存";
 "(No record on Open Radar)" = "(沒有 Open Radar 紀錄)";
 "(Setup Open Radar API Key for more information)" = "(設定 Open Radar API Key 可顯示更多資訊)";
+"Filter radars with text" = "輸入文字來過濾 radars";
 
 // RadarOption
 "Open Radar" = "Open Radar";

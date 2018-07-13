@@ -12,6 +12,7 @@
 "Save" = "Save";
 "(No record on Open Radar)" = "(No record on Open Radar)";
 "(Setup Open Radar API Key for more information)" = "(Setup Open Radar API Key for more information)";
+"Filter radars with text" = "Filter radars with text";
 
 // RadarOption
 "Open Radar" = "Open Radar";

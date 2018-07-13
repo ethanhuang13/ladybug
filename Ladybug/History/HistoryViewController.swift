@@ -10,6 +10,8 @@ import UIKit
 
 class HistoryViewController: UITableViewController, TableViewControllerUsingViewModel {
     lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var previewingContext: UIViewControllerPreviewing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,16 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 
         tableView.dataSource = tableViewViewModel
         tableView.delegate = tableViewViewModel
+        previewingContext = registerForPreviewing(with: tableViewViewModel, sourceView: view)
+
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Filter radars with text".localized()
+        searchController.searchBar.barStyle = .black
+        navigationItem.searchController = searchController
+        tabBarController?.definesPresentationContext = true
 
         RadarCollection.shared.delegates.add(delegate: self)
 
@@ -120,8 +132,18 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 
         let isAPIKeySet = OpenRadarKeychain.getAPIKey() != nil
         let setupAPIKeySubtitle = "(Setup Open Radar API Key for more information)".localized()
-        
-        let cells = RadarCollection.shared.history().map { (radar) -> TableViewCellViewModel in
+
+        let radars = RadarCollection.shared.history()
+        let filteredRadars: [Radar] = {
+            if let searchText = searchController.searchBar.text?.lowercased(),
+                searchText.isEmpty != true {
+                return radars.filter { $0.caseInsensitiveContains(string: searchText) }
+            } else {
+                return radars
+            }
+        }()
+
+        let cells = filteredRadars.map { (radar) -> TableViewCellViewModel in
             TableViewCellViewModel(title: radar.cellTitle, subtitle: isAPIKeySet ? radar.cellSubtitle : setupAPIKeySubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: UISwipeActionsConfiguration(actions: [radar.removeFromHistoryAction]), previewingViewController: {
                 let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
@@ -157,5 +179,28 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 extension HistoryViewController: RadarCollectionDelegate {
     func radarCollectionDidUpdate() {
         reloadData()
+    }
+}
+
+extension HistoryViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        reloadData()
+    }
+}
+
+extension HistoryViewController: UISearchControllerDelegate {
+    // To support 3D Touch Peek & Pop in UISearchController, the solution is here https://stackoverflow.com/a/42261971/2627067
+    func didPresentSearchController(_ searchController: UISearchController) {
+        if let context = previewingContext {
+            unregisterForPreviewing(withContext: context)
+            previewingContext = searchController.registerForPreviewing(with: tableViewViewModel, sourceView: self.view)
+        }
+    }
+
+    func didDismissSearchController(_ searchController: UISearchController) {
+        if let context = previewingContext {
+            searchController.unregisterForPreviewing(withContext: context)
+            previewingContext = registerForPreviewing(with: tableViewViewModel, sourceView: self.view)
+        }
     }
 }
