@@ -54,6 +54,12 @@
 "Radar Website/App" = "Radar Website/App";
 "Browser" = "Browser";
 
+"View" = "View";
+"Sorting" = "Sorting";
+"Sort bookmarks by %@" = "Sort bookmarks by %@";
+"Sort bookmarks by?" = "Sort bookmarks by?";
+"Added Date" = "Added Date";
+
 "Data" = "Data";
 "Import from Open Radar" = "Import from Open Radar";
 "Enter an Open Radar username.\n\nThe email will not be collected." = "Enter an Open Radar username.\n\nThe email will not be collected.";

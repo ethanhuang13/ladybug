@@ -34,6 +34,7 @@ class SettingsViewController: UITableViewController, TableViewControllerUsingVie
         DispatchQueue.main.async {
             self.tableViewViewModel.sections =
                 [self.linksSection,
+                 self.viewSection,
                  self.dataSection,
                  self.aboutSection]
 
@@ -119,6 +120,25 @@ extension SettingsViewController {
         return sectionViewModel
     }
 
+    private var viewSection: TableViewSectionViewModel {
+        let sortOptionCellViewModel = TableViewCellViewModel(title: "Sorting".localized(), subtitle: String(format: "Sort bookmarks by %@".localized(), UserDefaults.standard.sortOption.title), cellStyle: .subtitle) {
+            let alertController = UIAlertController(title: "Sorting".localized(), message: "Sort bookmarks by?".localized(), preferredStyle: .alert)
+
+            for option in [SortOption.radarNumber, .addedDate] {
+                alertController.addAction(UIAlertAction(title: option.title, style: .default, handler: { (_) in
+                    UserDefaults.standard.sortOption = option
+                    RadarCollection.shared.forceNotifyDelegates()
+                    self.reloadData()
+                }))
+            }
+
+            alertController.addAction(.cancelAction)
+            self.present(alertController, animated: true, completion: { })
+        }
+
+        return TableViewSectionViewModel(header: "View".localized(), footer: nil, rows: [sortOptionCellViewModel])
+    }
+
     private var dataSection: TableViewSectionViewModel {
         let importCellViewModel = TableViewCellViewModel(title: "Import from Open Radar".localized()) {
             guard OpenRadarKeychain.getAPIKey() != nil else {
@@ -201,7 +221,7 @@ extension SettingsViewController {
                 presentExportActivityController(title: "History".localized(), radars: RadarCollection.shared.history())
             }))
             alertController.addAction(UIAlertAction(title: "Bookmarks".localized(), style: .default, handler: { (_) in
-                presentExportActivityController(title: "Bookmarks".localized(), radars: RadarCollection.shared.bookmarks())
+                presentExportActivityController(title: "Bookmarks".localized(), radars: RadarCollection.shared.bookmarks(sortBy: UserDefaults.standard.sortOption))
             }))
             alertController.addAction(.cancelAction)
 

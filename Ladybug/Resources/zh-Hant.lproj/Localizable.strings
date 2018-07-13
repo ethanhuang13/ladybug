@@ -54,6 +54,12 @@
 "Radar Website/App" = "Radar 網站/應用程式";
 "Browser" = "瀏覽器";
 
+"View" = "顯示";
+"Sorting" = "排序";
+"Sort bookmarks by %@" = "排序書籤方式：%@";
+"Sort bookmarks by?" = "排序書籤的方式？";
+"Added Date" = "加入時間";
+
 "Data" = "資料";
 "Import from Open Radar" = "從 Open Radar 輸入";
 "Enter an Open Radar username.\n\nThe email will not be collected." = "請填寫要輸入的 Open Radar 帳號。\n\n（Email 不會被保存）";
