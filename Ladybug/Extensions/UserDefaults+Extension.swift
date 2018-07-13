@@ -9,15 +9,16 @@
 import Foundation
 
 extension UserDefaults {
-    private var browserKey: String { return "com.elaborapp.Ladybug.browserKey" }
-    private var radarKey: String { return "com.elaborapp.Ladybug.radarKey" }
+    internal static let browserKey: String = "com.elaborapp.Ladybug.browserKey"
+    internal static let radarKey: String = "com.elaborapp.Ladybug.radarKey"
+    internal static let sortKey: String = "com.elaborapp.Ladybug.sortKey"
 
     var browserOption: BrowserOption {
         get {
-            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: browserKey)) ?? .sfvcReader
+            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.browserKey)) ?? .sfvcReader
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: browserKey)
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaults.browserKey)
 
             if newValue == .briskApp && self.radarOption != .brisk {
                 self.radarOption = .brisk
@@ -29,16 +30,25 @@ extension UserDefaults {
 
     var radarOption: RadarOption {
         get {
-            return RadarOption(rawValue: UserDefaults.standard.integer(forKey: radarKey)) ?? .openRadar
+            return RadarOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.radarKey)) ?? .openRadar
         }
         set {
-            UserDefaults.standard.set(newValue.rawValue, forKey: radarKey)
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaults.radarKey)
 
             if newValue == .brisk && self.browserOption != .briskApp {
                 self.browserOption = .briskApp
             } else if newValue != .brisk && self.browserOption == .briskApp {
                 self.browserOption = .sfvcReader
             }
+        }
+    }
+
+    var sortOption: SortOption {
+        get {
+            return SortOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.sortKey)) ?? .radarNumber
+        }
+        set {
+            UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaults.sortKey)
         }
     }
 }

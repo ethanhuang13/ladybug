@@ -19,8 +19,9 @@ class UserDefaultsExtensionTests: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
 
-        UserDefaults.standard.radarOption = .openRadar
-        UserDefaults.standard.browserOption = .sfvcReader
+        UserDefaults.standard.removeObject(forKey: UserDefaults.browserKey)
+        UserDefaults.standard.removeObject(forKey: UserDefaults.radarKey)
+        UserDefaults.standard.removeObject(forKey: UserDefaults.sortKey)
         super.tearDown()
     }
 
@@ -54,5 +55,13 @@ class UserDefaultsExtensionTests: XCTestCase {
         UserDefaults.standard.browserOption = .briskApp
         XCTAssert(UserDefaults.standard.browserOption == .briskApp)
         XCTAssert(UserDefaults.standard.radarOption == .brisk)
+    }
+
+    func testSetSortOption() {
+        UserDefaults.standard.sortOption = .radarNumber
+        XCTAssert(UserDefaults.standard.sortOption == .radarNumber)
+
+        UserDefaults.standard.sortOption = .addedDate
+        XCTAssert(UserDefaults.standard.sortOption == .addedDate)
     }
 }

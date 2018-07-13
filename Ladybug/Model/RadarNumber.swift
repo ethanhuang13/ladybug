@@ -34,6 +34,12 @@ public func == (lhs: RadarNumber, rhs: RadarNumber) -> Bool {
     return lhs.rawValue == rhs.rawValue
 }
 
+extension RadarNumber: Comparable {
+    public static func < (lhs: RadarNumber, rhs: RadarNumber) -> Bool {
+        return lhs.rawValue < rhs.rawValue
+    }
+}
+
 extension RadarNumber {
     init?(string: String) {
         let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)

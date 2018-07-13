@@ -138,19 +138,31 @@ class RadarCollection {
         notifyDidUpdate()
     }
 
-    public func history() -> [Radar] {
-        let radars = self.radars.values.filter { $0.lastViewedDate != nil }.sorted { (lhs, rhs) -> Bool in
-            return lhs.firstViewedDate > rhs.firstViewedDate
+    public func history(sortBy sortOption:SortOption = .addedDate) -> [Radar] {
+        let historyRadars: [Radar] = radars.values.filter { $0.lastViewedDate != nil }
+        switch sortOption {
+        case .radarNumber:
+            return historyRadars.sorted { (lhs, rhs) -> Bool in
+                return lhs.number > rhs.number
+            }
+        case .addedDate:
+            return historyRadars.sorted { (lhs, rhs) -> Bool in
+                return lhs.firstViewedDate > rhs.firstViewedDate
+            }
         }
-
-        return radars
     }
 
-    public func bookmarks() -> [Radar] {
-        let radars = self.radars.values.filter { $0.bookmarkedDate != nil }.sorted { (lhs, rhs) -> Bool in
-            return lhs.bookmarkedDate! > rhs.bookmarkedDate!
+    public func bookmarks(sortBy sortOption:SortOption = .radarNumber) -> [Radar] {
+        let bookmarkRadars: [Radar] = radars.values.filter { $0.bookmarkedDate != nil }
+        switch sortOption {
+        case .radarNumber:
+            return bookmarkRadars.sorted { (lhs, rhs) -> Bool in
+                return lhs.number > rhs.number
+            }
+        case .addedDate:
+            return bookmarkRadars.sorted { (lhs, rhs) -> Bool in
+                return lhs.bookmarkedDate! > rhs.bookmarkedDate!
+            }
         }
-
-        return radars
     }
 }
