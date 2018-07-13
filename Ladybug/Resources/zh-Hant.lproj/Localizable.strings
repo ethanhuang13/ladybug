@@ -70,8 +70,14 @@
 "Export Markdown..." = "輸出為 Markdown 文字...";
 "Select what to export" = "選擇要輸出的資料。";
 "Backup as a JSON File" = "備份為 JSON";
-"Restore from a JSON File" = "從 JSON 回復";
-"Imported %li radars from the JSON file" = "從 JSON 檔輸入了 %li 個 radar";
+"Import from a JSON File" = "從 JSON 輸入";
+"Merge or replace" = "合併或取代";
+"Merge or Replace?" = "合併或取代？";
+"Merge" = "合併";
+"Loaded %li radars, do you want to merge or replace current radars? This operation cannot be undone." = "讀取到 %li 個 radar。你想要合併或取代目前的 radar？請注意這項操作無法復原。";
+"Merged %li radars from the JSON file" = "從 JSON 檔合併了 %li 個 radar。";
+"Replace" = "取代";
+"Replaced with %li radars from the JSON file" = "目前的資料已從 JSON 檔取代，總共為 %li 個 radar。";
 "Ladybug doesn't sync, but" = "Ladybug 不支援同步，但你可以利用 JSON 檔做備份/還原";
 
 "About" = "關於";

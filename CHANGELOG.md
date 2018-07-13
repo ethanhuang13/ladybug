@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Increase number of imported radars by fetch the next batch #6 Idea thanks to @futuretap
 - Improve paste email to the import textField #10
 - Sorting Options #3 #7
+- When importing JSON, let user select to merge or replace #8
 
 ## [1.0.0(7)] - 2018-07-09
 ### Added

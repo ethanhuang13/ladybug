@@ -80,6 +80,32 @@ class RadarCollection {
         }
     }
 
+    public func merge(radars: [RadarNumber: Radar]) {
+        let existingRadars = self.radars
+
+        radars.values.forEach {
+            if let existingRadar = existingRadars[$0.number] {
+                if existingRadar.bookmarkedDate == nil {
+                    existingRadar.bookmarkedDate = $0.bookmarkedDate
+                }
+
+                if existingRadar.lastViewedDate == nil {
+                    existingRadar.lastViewedDate = $0.lastViewedDate
+                }
+
+                if let metadata = $0.metadata {
+                    existingRadar.metadata = metadata
+                }
+            }
+        }
+
+        self.radars.merge(radars) { $1 }
+    }
+
+    public func replaceAll(radars: [RadarNumber: Radar]) {
+        self.radars = radars
+    }
+
     /// This API has update policy
 
     public func radar(_ radarNumber: RadarNumber) -> Radar? {

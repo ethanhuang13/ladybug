@@ -171,9 +171,12 @@ extension SettingsViewController {
                         case .value(let value):
                             let radars = value.reversed()
                             radars.forEach {
-                                RadarCollection.shared.upsert(radar: $0)
+                                $0.bookmarkedDate = Date()
                             }
-                            RadarCollection.shared.bookmark(radarNumbers: radars.map { $0.number } )
+                            let radarsDict: [RadarNumber: Radar] = radars.reduce(into: [RadarNumber: Radar]()) {
+                                $0[$1.number] = $1
+                            }
+                            RadarCollection.shared.merge(radars: radarsDict)
 
                             let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Imported %li radars from Open Radar".localized(), radars.count), preferredStyle: .alert)
                             alertController.addAction(.okAction)
@@ -239,7 +242,7 @@ extension SettingsViewController {
             self.present(vc, animated: true) { }
         }
 
-        let restoreCellViewModel = TableViewCellViewModel(title: "Restore from a JSON File".localized()) {
+        let restoreCellViewModel = TableViewCellViewModel(title: "Import from a JSON File".localized(), subtitle: "Merge or replace".localized(), cellStyle: .subtitle) {
             let vc = UIDocumentPickerViewController(documentTypes: ["public.text"], in: .import)
             vc.allowsMultipleSelection = false
             vc.delegate = self
@@ -284,14 +287,26 @@ extension SettingsViewController: UIDocumentPickerDelegate {
             url.isFileURL {
             do {
                 let radars = try RadarCollection.load(from: url)
-                radars.values.forEach {
-                    RadarCollection.shared.upsert(radar: $0)
-                }
-                RadarCollection.shared.archive()
-                RadarCollection.shared.forceNotifyDelegates()
 
-                let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Imported %li radars from the JSON file".localized(), radars.count), preferredStyle: .alert)
-                alertController.addAction(.okAction)
+                let alertController = UIAlertController(title: "Merge or Replace?".localized(), message: String(format: "Loaded %li radars, do you want to merge or replace current radars? This operation cannot be undone.".localized(), radars.count), preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Merge".localized(), style: .default, handler: { (_) in
+                    RadarCollection.shared.merge(radars: radars)
+                    RadarCollection.shared.archive()
+
+                    let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Merged %li radars from the JSON file".localized(), radars.count), preferredStyle: .alert)
+                    alertController.addAction(.okAction)
+                    self.present(alertController, animated: true) { }
+                }))
+                alertController.addAction(UIAlertAction(title: "Replace".localized(), style: .destructive, handler: { (_) in
+                    RadarCollection.shared.replaceAll(radars: radars)
+                    RadarCollection.shared.archive()
+
+                    let alertController = UIAlertController(title: "Import Finished".localized(), message: String(format: "Replaced with %li radars from the JSON file".localized(), radars.count), preferredStyle: .alert)
+                    alertController.addAction(.okAction)
+                    self.present(alertController, animated: true) { }
+                }))
+
+                alertController.addAction(.cancelAction)
                 self.present(alertController, animated: true) { }
             } catch {
                 self.present(UIAlertController.errorAlertController(error), animated: true, completion: { })

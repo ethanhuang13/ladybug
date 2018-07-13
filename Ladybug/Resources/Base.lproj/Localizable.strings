@@ -70,8 +70,14 @@
 "Export Markdown..." = "Export as Markdown Text...";
 "Select what to export" = "Select what to export.";
 "Backup as a JSON File" = "Backup as a JSON File";
-"Restore from a JSON File" = "Restore from a JSON File";
-"Imported %li radars from the JSON file" = "Imported %li radars from the JSON file";
+"Import from a JSON File" = "Import from a JSON File";
+"Merge or replace" = "Merge or replace";
+"Merge or Replace?" = "Merge or Replace?";
+"Merge" = "Merge";
+"Loaded %li radars, do you want to merge or replace current radars? This operation cannot be undone." = "Loaded %li radars, do you want to merge or replace current radars? This operation cannot be undone.";
+"Merged %li radars from the JSON file" = "Merged %li radars from the JSON file.";
+"Replace" = "Replace";
+"Replaced with %li radars from the JSON file" = "Replaced with %li radars from the JSON file.";
 "Ladybug doesn't sync, but" = "Ladybug doesn't support syncing, but you can import/export as JSON";
 
 "About" = "About";
