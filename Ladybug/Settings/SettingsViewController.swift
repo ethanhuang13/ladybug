@@ -137,13 +137,11 @@ extension SettingsViewController {
                 textField.keyboardType = .emailAddress
                 textField.textContentType = .emailAddress
                 textField.placeholder = "myname@company.com"
+                textField.delegate = self
             })
             alertController.addAction(UIAlertAction(title: "Import".localized(), style: .default, handler: { (_) in
-                guard var email = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
+                guard let email = alertController.textFields?.first?.text?.trimmingCharacters(in: .whitespacesAndNewlines) else { return }
 
-                if email.caseInsensitiveHasPrefix("mailto:") {
-                    email = email.replacingOccurrences(of: "mailto:", with: "")
-                }
 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = true // No use on iPhone X yet
                 OpenRadarAPI().fetchRadarsBy(user: email, completion: { (result) in
@@ -280,6 +278,20 @@ extension SettingsViewController: UIDocumentPickerDelegate {
             }
         } else {
             print("No valid file")
+        }
+    }
+}
+
+extension SettingsViewController: UITextFieldDelegate {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+
+        if textField.textContentType == .emailAddress,
+            textField.text?.isEmpty == true,
+            string.hasPrefix("mailto:") {
+            textField.text = string.replacingOccurrences(of: "mailto:", with: "")
+            return false
+        } else {
+            return true
         }
     }
 }
