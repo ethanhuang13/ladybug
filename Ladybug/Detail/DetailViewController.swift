@@ -115,27 +115,21 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
             var actionRows: [TableViewCellViewModel] = []
             let rdarURLString = radar.number.rdarURLString
             actionRows.append(TableViewCellViewModel(title: "Copy link".localized(), subtitle: rdarURLString, cellStyle: .subtitle, selectAction: {
-                UIPasteboard.general.string = rdarURLString
+                self.copyRdarLink()
             }))
             let openRadarURLString = radar.number.url(by: .openRadar).absoluteString
             actionRows.append(TableViewCellViewModel(title: "Copy link".localized(), subtitle: openRadarURLString, cellStyle: .subtitle, selectAction: {
-                UIPasteboard.general.string = openRadarURLString
+                self.copyOpenRadarLink()
             }))
-            actionRows.append(TableViewCellViewModel(title: "Open In-app browser".localized(), selectAction: {
-                RadarURLOpener.shared.open(radar.number, radarOption: .openRadar, in: .sfvcReader, completion: { (_) in
-
-                })
+            actionRows.append(TableViewCellViewModel(title: "Open in-app browser".localized(), selectAction: {
+                self.openInSafariViewController()
             }))
             actionRows.append(TableViewCellViewModel(title: "Open in Safari".localized(), selectAction: {
-                RadarURLOpener.shared.open(radar.number, radarOption: .openRadar, in: .safari, completion: { (_) in
-
-                })
+                self.openInSafari()
             }))
             if RadarURLOpener.shared.canOpen(in: .briskApp) {
                 actionRows.append(TableViewCellViewModel(title: "Duplicate in Brisk".localized(), subtitle: nil, selectAction: {
-                    RadarURLOpener.shared.open(radar.number, radarOption: .brisk, in: .briskApp, completion: { (_) in
-
-                    })
+                    self.duplicateInBrisk()
                 }))
             }
             let actionSection = TableViewSectionViewModel(header: "Actions".localized(), footer: nil, rows: actionRows)
@@ -146,5 +140,59 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
             self.navigationItem.title = radar.number.string
             self.tableView.reloadData()
         }
+    }
+
+    override var previewActionItems: [UIPreviewActionItem] {
+        var items: [UIPreviewActionItem] = []
+
+        let copyRdarLinkAction = UIPreviewAction(title: String(format: "Copy %@".localized(), radar.number.rdarURLString), style: .default) { (_, _) in
+            self.copyRdarLink()
+        }
+        let copyOpenRadarLinkAction = UIPreviewAction(title: "Copy Open Radar link".localized(), style: .default) { (_, _) in
+            self.copyOpenRadarLink()
+        }
+        let openInSafariViewControllerAction = UIPreviewAction(title: "Open in-app browser".localized(), style: .default) { (_, _) in
+            self.openInSafariViewController()
+        }
+        let openInSafariAction = UIPreviewAction(title: "Open in Safari".localized(), style: .default) { (_, _) in
+            self.openInSafari()
+        }
+        let duplicateInBrisk = UIPreviewAction(title: "Duplicate in Brisk".localized(), style: .default) { (_, _) in
+            self.duplicateInBrisk()
+        }
+
+        items = [copyRdarLinkAction, copyOpenRadarLinkAction, openInSafariViewControllerAction, openInSafariAction]
+
+        if RadarURLOpener.shared.canOpen(in: .briskApp) {
+            items.append(duplicateInBrisk)
+        }
+        return items
+    }
+
+    // MARK: - Actions
+
+    private func copyRdarLink() {
+        let rdarURLString = radar.number.rdarURLString
+        UIPasteboard.general.string = rdarURLString
+    }
+
+    private func copyOpenRadarLink() {
+        let openRadarURLString = radar.number.url(by: .openRadar).absoluteString
+        UIPasteboard.general.string = openRadarURLString
+    }
+
+    private func openInSafariViewController() {
+        RadarURLOpener.shared.open(radar.number, radarOption: .openRadar, in: .sfvcReader, completion: { (_) in
+        })
+    }
+
+    private func openInSafari() {
+        RadarURLOpener.shared.open(radar.number, radarOption: .openRadar, in: .safari, completion: { (_) in
+        })
+    }
+
+    private func duplicateInBrisk() {
+        RadarURLOpener.shared.open(radar.number, radarOption: .brisk, in: .briskApp, completion: { (_) in
+        })
     }
 }

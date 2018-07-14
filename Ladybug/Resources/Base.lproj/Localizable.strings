@@ -43,7 +43,9 @@
 
 // DetailViewController
 "Copy link" = "Copy link";
-"Open In-app browser" = "Open In-app browser";
+"Copy %@" = "Copy %@";
+"Copy Open Radar link" = "Copy Open Radar link";
+"Open in-app browser" = "Open In-app browser";
 "Open in Safari" = "Open in Safari";
 "Duplicate in Brisk" = "Duplicate in Brisk";
 "Actions" = "Actions";

@@ -58,8 +58,13 @@ class BookmarksViewController: UITableViewController, TableViewControllerUsingVi
 
         let cells = filteredRadars.map { (radar) -> TableViewCellViewModel in
             TableViewCellViewModel(title: radar.cellTitle, subtitle: isAPIKeySet ? radar.cellSubtitle : setupAPIKeySubtitle, cellStyle: .subtitle, leadingSwipeActions: UISwipeActionsConfiguration(actions: [radar.toggleBookmarkAction]), trailingSwipeActions: nil, previewingViewController: {
-                let url = radar.number.url(by: .openRadar)
-                return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
+
+                switch UserDefaults.standard.browserOption {
+                case .native, .briskApp:
+                    return DetailViewController(radar: radar)
+                case .sfvcReader, .sfvc, .safari:
+                    return (self.tabBarController as? TabBarController)?.safariViewController(url: radar.number.url(by: .openRadar), readerMode: UserDefaults.standard.browserOption == .sfvcReader)
+                }
             }, selectAction: {
                 RadarURLOpener.shared.open(radar.number, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
                 }

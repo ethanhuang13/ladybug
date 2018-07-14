@@ -85,6 +85,11 @@ extension TableViewViewModel: UIViewControllerPreviewingDelegate {
     }
 
     func previewingContext(_ previewingContext: UIViewControllerPreviewing, commit viewControllerToCommit: UIViewController) {
-        tableViewController?.present(viewControllerToCommit, animated: true, completion: nil)
+
+        if viewControllerToCommit is DetailViewController {
+            tableViewController?.navigationController?.pushViewController(viewControllerToCommit, animated: false)
+        } else {
+            tableViewController?.present(viewControllerToCommit, animated: true, completion: nil)
+        }
     }
 }

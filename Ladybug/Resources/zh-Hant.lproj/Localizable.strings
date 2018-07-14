@@ -43,7 +43,9 @@
 
 // DetailViewController
 "Copy link" = "複製連結";
-"Open In-app browser" = "在內建瀏覽器打開";
+"Copy %@" = "複製 %@";
+"Copy Open Radar link" = "複製 Open Radar 連結";
+"Open in-app browser" = "在內建瀏覽器打開";
 "Open in Safari" = "在 Safari 打開";
 "Duplicate in Brisk" = "在 Brisk 複製";
 "Actions" = "動作";

@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+- Native View 3D Touch Peek & Previewing Actions #12
 
 ## [1.1.0(8)] - 2018-07-14
 - Increase number of imported radars by fetch the next batch #6 Idea thanks to @futuretap
