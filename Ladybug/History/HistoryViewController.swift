@@ -79,7 +79,7 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
                     DispatchQueue.main.async {
                         switch result {
                         case .value(let radar):
-                            RadarCollection.shared.upsert(radar: radar)
+                            _ = RadarCollection.shared.upsert(radar: radar)
                             try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
 
                             opener.open(radarNumber, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
@@ -114,7 +114,7 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
                     OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
                         switch result {
                         case .value(let radar):
-                            RadarCollection.shared.upsert(radar: radar)
+                            _ = RadarCollection.shared.upsert(radar: radar)
                             try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                         case .error(let error):
                             print(error.localizedDescription)
@@ -148,14 +148,14 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
                 let url = radar.number.url(by: .openRadar)
                 return (self.tabBarController as? TabBarController)?.safariViewController(url: url, readerMode: UserDefaults.standard.browserOption == .sfvcReader)
             }, selectAction: {
-                RadarURLOpener.shared.open(radar.number, radarOption: UserDefaults.standard.radarOption,  in: UserDefaults.standard.browserOption) { (result) in
+                RadarURLOpener.shared.open(radar.number, radarOption: UserDefaults.standard.radarOption, in: UserDefaults.standard.browserOption) { (result) in
                 }
 
                 if radar.metadata == nil {
                     OpenRadarAPI().fetchRadar(by: radar.number) { (result) in
                         switch result {
                         case .value(let radar):
-                            RadarCollection.shared.upsert(radar: radar)
+                            _ = RadarCollection.shared.upsert(radar: radar)
                             try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                         case .error(let error):
                             print(error.localizedDescription)

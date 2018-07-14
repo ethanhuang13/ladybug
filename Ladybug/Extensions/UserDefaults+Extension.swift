@@ -15,15 +15,24 @@ extension UserDefaults {
 
     var browserOption: BrowserOption {
         get {
-            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.browserKey)) ?? .sfvcReader
+            return BrowserOption(rawValue: UserDefaults.standard.integer(forKey: UserDefaults.browserKey)) ?? .native
         }
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaults.browserKey)
 
-            if newValue == .briskApp && self.radarOption != .brisk {
-                self.radarOption = .brisk
-            } else if newValue != .briskApp && self.radarOption == .brisk {
-                self.radarOption = .openRadar
+            switch newValue {
+            case .native:
+                if self.radarOption != .openRadar {
+                    self.radarOption = .openRadar
+                }
+            case .sfvcReader, .sfvc, .safari:
+                if self.radarOption == .brisk {
+                    self.radarOption = .openRadar
+                }
+            case .briskApp:
+                if self.radarOption != .brisk {
+                    self.radarOption = .brisk
+                }
             }
         }
     }
@@ -35,10 +44,19 @@ extension UserDefaults {
         set {
             UserDefaults.standard.set(newValue.rawValue, forKey: UserDefaults.radarKey)
 
-            if newValue == .brisk && self.browserOption != .briskApp {
-                self.browserOption = .briskApp
-            } else if newValue != .brisk && self.browserOption == .briskApp {
-                self.browserOption = .sfvcReader
+            switch newValue {
+            case .openRadar:
+                if self.browserOption == .briskApp {
+                    self.browserOption = .native
+                }
+            case .appleRadar:
+                if self.browserOption == .briskApp || self.browserOption == .native {
+                    self.browserOption = .safari
+                }
+            case .brisk:
+                if self.browserOption != .briskApp {
+                    self.browserOption = .briskApp
+                }
             }
         }
     }

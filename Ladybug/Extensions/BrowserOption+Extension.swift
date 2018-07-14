@@ -19,6 +19,8 @@ extension BrowserOption {
             return "Safari".localized()
         case .briskApp:
             return "Brisk".localized()
+        case .native:
+            return "Native".localized()
         }
     }
 }

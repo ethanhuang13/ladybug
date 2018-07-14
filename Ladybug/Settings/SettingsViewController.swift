@@ -67,11 +67,11 @@ extension SettingsViewController {
             })
 
         let browserOptionCellViewModel =
-            TableViewCellViewModel(title: "Browser".localized(), subtitle: UserDefaults.standard.browserOption.title, cellStyle: .subtitle, selectAction: {
+            TableViewCellViewModel(title: "Viewing/Browser".localized(), subtitle: UserDefaults.standard.browserOption.title, cellStyle: .subtitle, selectAction: {
 
-                let alertController = UIAlertController(title: "Browser".localized(), message: nil, preferredStyle: .alert)
+                let alertController = UIAlertController(title: "Viewing/Browser".localized(), message: nil, preferredStyle: .alert)
 
-                let browserOptions: [BrowserOption] = [.sfvcReader, .sfvc, .safari]
+                let browserOptions: [BrowserOption] = UserDefaults.standard.radarOption.possibleBrowserOptions
                 browserOptions.forEach { (browserOption) in
                     if RadarURLOpener.shared.canOpen(in: browserOption) {
                         alertController.addAction(UIAlertAction(title: browserOption.title, style: .default, handler: { (_) in

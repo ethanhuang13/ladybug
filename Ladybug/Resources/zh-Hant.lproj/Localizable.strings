@@ -18,6 +18,7 @@
 "Open Radar" = "Open Radar";
 "Apple Radar (Bug Reporter)" = "Apple Radar (Bug Reporter)";
 "Brisk" = "Brisk";
+"Native" = "原生介面";
 
 // BrowserOption
 "In-App Browser" = "內建瀏覽器";
@@ -40,6 +41,13 @@
 "Unbookmark" = "移除書籤";
 "Remove" = "移除";
 
+// DetailViewController
+"Copy link" = "複製連結";
+"Open In-app browser" = "在內建瀏覽器打開";
+"Open in Safari" = "在 Safari 打開";
+"Duplicate in Brisk" = "在 Brisk 複製";
+"Actions" = "動作";
+
 // SettingsViewController
 "Settings" = "設定";
 
@@ -53,7 +61,7 @@
 
 "Opening Radar Links" = "開啟 Radar 連結";
 "Radar Website/App" = "Radar 網站/應用程式";
-"Browser" = "瀏覽器";
+"Viewing/Browser" = "檢視/瀏覽器";
 
 "View" = "顯示";
 "Sorting" = "排序";

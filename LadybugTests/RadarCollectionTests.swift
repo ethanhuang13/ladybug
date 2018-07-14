@@ -48,7 +48,7 @@ class RadarCollectionTests: XCTestCase {
 
     func testUpsert() {
         radars.values.forEach {
-            radarCollection.upsert(radar: $0)
+            _ = radarCollection.upsert(radar: $0)
         }
 
         radars.values.reversed().forEach {
@@ -58,37 +58,37 @@ class RadarCollectionTests: XCTestCase {
 
     func testHistory() {
         radars.values.forEach {
-            radarCollection.upsert(radar: $0)
+            _ = radarCollection.upsert(radar: $0)
         }
         XCTAssert(radarCollection.history().isEmpty)
 
         radars.values.reversed().forEach {
             try? radarCollection.updatedViewed(radarNumber: $0.number)
-            radarCollection.upsert(radar: $0)
+            _ = radarCollection.upsert(radar: $0)
         }
         XCTAssert(radarCollection.history().count == 22)
 
         let radarNumbers = radars.values.map { $0.number }
         radarNumbers.forEach {
-            radarCollection.removeFromHistory(radarNumber: $0)
+            _ = radarCollection.removeFromHistory(radarNumber: $0)
         }
         XCTAssert(radarCollection.history().isEmpty)
     }
 
     func testBookmarks() {
         radars.values.forEach {
-            radarCollection.upsert(radar: $0)
+            _ = radarCollection.upsert(radar: $0)
         }
         XCTAssert(radarCollection.bookmarks().count == 22)
 
         radars.values.reversed().forEach {
             try? radarCollection.toggleBookmark(radarNumber: $0.number)
-            radarCollection.upsert(radar: $0)
+            _ = radarCollection.upsert(radar: $0)
         }
         XCTAssert(radarCollection.bookmarks().isEmpty)
 
         let radarNumbers = radars.values.map { $0.number }
-        radarCollection.bookmark(radarNumbers: radarNumbers)
+        _ = radarCollection.bookmark(radarNumbers: radarNumbers)
         XCTAssert(radarCollection.bookmarks().count == 22)
     }
 

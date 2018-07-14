@@ -34,6 +34,7 @@
 		6C7E64A120EF56AF00CB1D2B /* RadarCollectionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */; };
 		6C92D74920DE4A7A0016BBA8 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */; };
 		6C92D74D20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */; };
+		6CA03A6A20F9B3AB004BA91D /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA03A6920F9B3AB004BA91D /* DetailViewController.swift */; };
 		6CA454E020F85EB7001D4DE2 /* OpenRadarAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA454DF20F85EB7001D4DE2 /* OpenRadarAPITests.swift */; };
 		6CA454E220F8730C001D4DE2 /* SortOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CA454E120F8730C001D4DE2 /* SortOption.swift */; };
 		6CB9EFED20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */; };
@@ -98,6 +99,7 @@
 		6C7E64A020EF56AF00CB1D2B /* RadarCollectionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarCollectionTests.swift; sourceTree = "<group>"; };
 		6C92D74820DE4A7A0016BBA8 /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		6C92D74C20DE58DA0016BBA8 /* SettingsViewController+MFMailComposeViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsViewController+MFMailComposeViewControllerDelegate.swift"; sourceTree = "<group>"; };
+		6CA03A6920F9B3AB004BA91D /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		6CA454DF20F85EB7001D4DE2 /* OpenRadarAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenRadarAPITests.swift; sourceTree = "<group>"; };
 		6CA454E120F8730C001D4DE2 /* SortOption.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SortOption.swift; sourceTree = "<group>"; };
 		6CB9EFEC20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerUsingViewModel.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 				6C07275920CFA51B00603199 /* Model */,
 				6C07275E20CFA82300603199 /* History */,
 				6C07275F20CFA84900603199 /* Bookmarks */,
+				6CA03A6820F9B37A004BA91D /* Detail */,
 				6C07275A20CFA53400603199 /* Settings */,
 				6C07277020CFB39800603199 /* Resources */,
 			);
@@ -263,6 +266,14 @@
 				6C45961320F348EE00C66769 /* OpenRadarKeychain.swift */,
 			);
 			path = OpenRadar;
+			sourceTree = "<group>";
+		};
+		6CA03A6820F9B37A004BA91D /* Detail */ = {
+			isa = PBXGroup;
+			children = (
+				6CA03A6920F9B3AB004BA91D /* DetailViewController.swift */,
+			);
+			path = Detail;
 			sourceTree = "<group>";
 		};
 		6CB9EFF420E8D85200D44CB3 /* Frameworks */ = {
@@ -444,6 +455,7 @@
 				6C07276F20CFA91800603199 /* SettingsViewController.swift in Sources */,
 				6CCEA1E620D23FFF007FA16B /* TableViewCellViewModel.swift in Sources */,
 				6CB9EFED20E6972A00D44CB3 /* TableViewControllerUsingViewModel.swift in Sources */,
+				6CA03A6A20F9B3AB004BA91D /* DetailViewController.swift in Sources */,
 				6C07276D20CFA90E00603199 /* BookmarksViewController.swift in Sources */,
 				6CCFA67320D109FD006C9BAE /* RadarURLOpener.swift in Sources */,
 				6CCEA1EA20D24590007FA16B /* UIAlertAction+Extension.swift in Sources */,

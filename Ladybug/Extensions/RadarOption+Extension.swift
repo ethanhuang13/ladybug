@@ -19,4 +19,15 @@ extension RadarOption {
             return "Brisk"
         }
     }
+
+    var possibleBrowserOptions: [BrowserOption] {
+        switch self {
+        case .openRadar:
+            return [.native, .sfvcReader, .sfvc, .safari]
+        case .appleRadar:
+            return [.sfvcReader, .sfvc, .safari]
+        case .brisk:
+            return [.briskApp]
+        }
+    }
 }

@@ -112,22 +112,30 @@ class RadarCollection {
         return radars[radarNumber]
     }
 
-    public func upsert(radar: Radar) {
+    public func upsert(radar: Radar) -> Bool {
+        var hasChange = false
+
         if let existingRadar = radars[radar.number] {
             if existingRadar.bookmarkedDate == nil {
                 existingRadar.bookmarkedDate = radar.bookmarkedDate
+                hasChange = true
             }
 
             if existingRadar.lastViewedDate == nil {
                 existingRadar.lastViewedDate = radar.lastViewedDate
+                hasChange = true
             }
 
             if let metadata = radar.metadata {
                 existingRadar.metadata = metadata
+                hasChange = true
             }
         } else {
             radars[radar.number] = radar
+            hasChange = true
         }
+
+        return hasChange
     }
 
     public func removeFromHistory(radarNumber: RadarNumber) {

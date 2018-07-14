@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Sorting Options #3 #7
 - When importing JSON, let user select to merge or replace #8
 - List filtering #9
+- Native Radar Detail View #11
 
 ## [1.0.0(7)] - 2018-07-09
 ### Added

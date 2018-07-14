@@ -10,6 +10,7 @@ import UIKit
 
 protocol RadarURLOpenerUI {
     func openRadarLinkInSafariViewController(_ radarNumber: RadarNumber, radarOption: RadarOption, readerMode: Bool)
+    func openRadarInDetailViewController(_ radar: Radar)
 }
 
 class RadarURLOpener {
@@ -20,7 +21,7 @@ class RadarURLOpener {
         switch browserOption {
         case .sfvcReader, .sfvc:
             return delegate != nil
-        case .safari:
+        case .safari, .native:
             return true
         case .briskApp:
             let url = URL(string: "brisk-rdar://")!
@@ -57,6 +58,20 @@ class RadarURLOpener {
                     completion(.value(()))
                 } else {
                     completion(.error(RadarURLOpenerError.appOpenURLError))
+                }
+            }
+        case .native:
+            if let radar = RadarCollection.shared.radar(radarNumber) {
+                delegate.openRadarInDetailViewController(radar)
+            } else {
+                OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
+                    switch result {
+                    case .value(let radar):
+                        delegate.openRadarInDetailViewController(radar)
+                    case .error(_):
+                        let radar = Radar(number: radarNumber)
+                        delegate.openRadarInDetailViewController(radar)
+                    }
                 }
             }
         }

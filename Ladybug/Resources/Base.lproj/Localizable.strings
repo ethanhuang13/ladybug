@@ -18,6 +18,7 @@
 "Open Radar" = "Open Radar";
 "Apple Radar (Bug Reporter)" = "Apple Radar (Bug Reporter)";
 "Brisk" = "Brisk";
+"Native" = "Native";
 
 // BrowserOption
 "In-App Browser" = "In-App Browser";
@@ -40,6 +41,13 @@
 "Unbookmark" = "Unbookmark";
 "Remove" = "Remove";
 
+// DetailViewController
+"Copy link" = "Copy link";
+"Open In-app browser" = "Open In-app browser";
+"Open in Safari" = "Open in Safari";
+"Duplicate in Brisk" = "Duplicate in Brisk";
+"Actions" = "Actions";
+
 // SettingsViewController
 "Settings" = "Settings";
 
@@ -53,7 +61,7 @@
 
 "Opening Radar Links" = "Opening Radar Links";
 "Radar Website/App" = "Radar Website/App";
-"Browser" = "Browser";
+"Viewing/Browser" = "Viewing/Browser";
 
 "View" = "View";
 "Sorting" = "Sorting";

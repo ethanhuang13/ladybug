@@ -75,12 +75,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             OpenRadarAPI().fetchRadar(by: radarNumber) { (result) in
                 switch result {
                 case .value(let radar):
-                    RadarCollection.shared.upsert(radar: radar)
+                    _ = RadarCollection.shared.upsert(radar: radar)
                     try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                 case .error(let error):
                     print(error.localizedDescription)
                     let radar = Radar(number: radarNumber)
-                    RadarCollection.shared.upsert(radar: radar)
+                    _ = RadarCollection.shared.upsert(radar: radar)
                     try? RadarCollection.shared.updatedViewed(radarNumber: radar.number)
                 }
             }
