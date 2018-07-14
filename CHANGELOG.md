@@ -5,6 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+## [1.1.0(9)] - 2018-07-14
 - Native View 3D Touch Peek & Previewing Actions #12
 
 ## [1.1.0(8)] - 2018-07-14
