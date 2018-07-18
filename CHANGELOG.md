@@ -5,10 +5,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.1.0(10)] - 2018-07-18
+### Fixed
+- Fix push DetailViewController not in main thread
+
+---
 ## [1.1.0(9)] - 2018-07-14
+### Added
 - Native View 3D Touch Peek & Previewing Actions #12
 
 ## [1.1.0(8)] - 2018-07-14
+### Added
 - Increase number of imported radars by fetch the next batch #6 Idea thanks to @futuretap
 - Improve paste email to the import textField #10
 - Sorting Options #3 #7
@@ -16,6 +24,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - List filtering #9
 - Native Radar Detail View #11
 
+---
 ## [1.0.0(7)] - 2018-07-09
 ### Added
 - User agent in Open Radar API request #4
