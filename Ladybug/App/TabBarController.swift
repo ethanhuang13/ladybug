@@ -36,13 +36,16 @@ class TabBarController: UITabBarController {
 
 extension TabBarController: RadarURLOpenerUI {
     func openRadarInDetailViewController(_ radar: Radar) {
-        let vc = DetailViewController(radar: radar)
 
-        if let navController = self.selectedViewController as? UINavigationController {
-            if let vc = navController.topViewController as? DetailViewController {
-                vc.radar = radar
-            } else {
-                navController.pushViewController(vc, animated: true)
+        DispatchQueue.main.async {
+            let vc = DetailViewController(radar: radar)
+            
+            if let navController = self.selectedViewController as? UINavigationController {
+                if let vc = navController.topViewController as? DetailViewController {
+                    vc.radar = radar
+                } else {
+                    navController.pushViewController(vc, animated: true)
+                }
             }
         }
     }
