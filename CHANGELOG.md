@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - Support radar:// links #16
 - Support Handoff to webpage #17
 - UITableView.cellLayoutMarginsFollowReadableWidth set true #18
+- Support open links from radar description #14
 
 ## [1.1.1(10)] - 2018-07-18
 ### Fixed

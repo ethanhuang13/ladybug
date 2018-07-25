@@ -117,7 +117,7 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
                 let metadataSection = TableViewSectionViewModel(header: nil, footer: nil, rows: metadataCells)
                 sections.append(metadataSection)
 
-                let descriptionCellViewModel = TableViewCellViewModel(title: metadata.description, subtitle: nil, cellStyle: .default, selectionStyle: .none, accessoryType: .none, selectAction: { })
+                let descriptionCellViewModel = TableViewCellViewModel(textViewString: metadata.description)
                 let descriptionSection = TableViewSectionViewModel(header: nil, footer: nil, rows: [descriptionCellViewModel])
                 sections.append(descriptionSection)
             }
