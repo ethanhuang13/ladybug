@@ -26,10 +26,12 @@ class RadarNumberTests: XCTestCase {
             "https://bugreport.apple.com/web/?problemID=41075977",
             "RDAR://12345678",
             "rdar://12345678",
+            "radar://12345678",
             "rdar://5605213490642944",
             "rdar://problem/41089459",
             "https://openradar.appspot.com/12345678",
             "http://openradar.me/12345678",
+            "anyscheme://12345678",
             "brisk-rdar://radar/12345678"
         ]
 

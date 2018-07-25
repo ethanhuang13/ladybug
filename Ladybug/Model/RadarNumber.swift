@@ -64,7 +64,8 @@ extension RadarNumber {
     }
 
     static func parse(_ url: URL) -> String? {
-        if url.scheme?.caseInsensitiveCompare("rdar") == .orderedSame,
+        if let scheme = url.scheme,
+            scheme.caseInsensitiveCompare("rdar") == .orderedSame || scheme.caseInsensitiveCompare("radar") == .orderedSame,
             let host = url.host {
             if host == "problem" {
                 return url.lastPathComponent
@@ -86,6 +87,10 @@ extension RadarNumber {
         } else if let int = Int(url.lastPathComponent),
             String(int) == url.lastPathComponent {
             return url.lastPathComponent
+        } else if let host = url.host,
+            let int = Int(host),
+            String(int) == host {
+            return host
         } else {
             return nil
         }
