@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - [Suggestion] Add case-sensitive warning on import from Open Radar #15
 
-## [1.1.0(10)] - 2018-07-18
+## [1.1.1(10)] - 2018-07-18
 ### Fixed
 - Fix push DetailViewController not in main thread
 
