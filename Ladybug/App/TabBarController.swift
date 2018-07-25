@@ -81,6 +81,19 @@ extension TabBarController: RadarURLOpenerUI {
         sfvc.preferredBarTintColor = .barTintColor
         sfvc.preferredControlTintColor = .tintColor
 
+        sfvc.delegate = self
+        let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+        userActivity.webpageURL = url
+        sfvc.userActivity = userActivity
+
         return sfvc
+    }
+}
+
+extension TabBarController: SFSafariViewControllerDelegate {
+    func safariViewController(_ controller: SFSafariViewController, didCompleteInitialLoad didLoadSuccessfully: Bool) {
+        if didLoadSuccessfully {
+            controller.userActivity?.becomeCurrent()
+        }
     }
 }

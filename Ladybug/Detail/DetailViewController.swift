@@ -48,6 +48,16 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
                 break
             }
         }
+
+        let userActivity = NSUserActivity(activityType: NSUserActivityTypeBrowsingWeb)
+        userActivity.webpageURL = radar.number.url(by: .openRadar)
+        self.userActivity = userActivity
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+
+        self.userActivity?.becomeCurrent()
     }
 
     func reloadData() {

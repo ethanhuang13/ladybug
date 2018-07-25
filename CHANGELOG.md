@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Added
 - [Suggestion] Add case-sensitive warning on import from Open Radar #15
 - Support radar:// links #16
+- Support Handoff to webpage #17
 
 ## [1.1.1(10)] - 2018-07-18
 ### Fixed
