@@ -151,7 +151,7 @@ extension SettingsViewController {
                 return
             }
 
-            let alertController = UIAlertController(title: "Import from Open Radar".localized(), message: "Enter an Open Radar username.\n\nThe email will not be collected.".localized(), preferredStyle: .alert)
+            let alertController = UIAlertController(title: "Import from Open Radar".localized(), message: "Enter an Open Radar username.".localized(), preferredStyle: .alert)
 
             alertController.addTextField(configurationHandler: { (textField) in
                 textField.keyboardType = .emailAddress

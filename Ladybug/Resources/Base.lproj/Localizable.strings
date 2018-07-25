@@ -73,7 +73,7 @@
 
 "Data" = "Data";
 "Import from Open Radar" = "Import from Open Radar";
-"Enter an Open Radar username.\n\nThe email will not be collected." = "Enter an Open Radar username.\n\nThe email will not be collected.";
+"Enter an Open Radar username." = "Enter an Open Radar username\n(email, case-sensitive). \n\nThe email will not be collected.";
 "Import" = "Import";
 "Import Finished" = "Import Finished";
 "Imported %li radars from Open Radar" = "Imported %li radars from Open Radar. Added to Bookmarks.";

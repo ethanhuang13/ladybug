@@ -73,7 +73,7 @@
 
 "Data" = "資料";
 "Import from Open Radar" = "從 Open Radar 輸入";
-"Enter an Open Radar username.\n\nThe email will not be collected." = "請填寫要輸入的 Open Radar 帳號。\n\n（Email 不會被保存）";
+"Enter an Open Radar username." = "請填寫要輸入的 Open Radar 帳號（email，區分大小寫）。\n\nEmail 不會被保存。";
 "Import" = "輸入";
 "Import Finished" = "輸入完畢";
 "Imported %li radars from Open Radar" = "從 Open Radar 輸入了 %li 個 radar，已自動加入書籤";
