@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - [Suggestion] Add case-sensitive warning on import from Open Radar #15
 - Support radar:// links #16
 - Support Handoff to webpage #17
+- UITableView.cellLayoutMarginsFollowReadableWidth set true #18
 
 ## [1.1.1(10)] - 2018-07-18
 ### Fixed

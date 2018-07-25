@@ -15,6 +15,7 @@ class TableViewViewModel: NSObject, UITableViewDataSource, UITableViewDelegate {
     init(tableViewController: UITableViewController) {
         super.init()
         self.tableViewController = tableViewController
+        tableViewController.tableView.cellLayoutMarginsFollowReadableWidth = true // Since iOS 12 the default is false
     }
 
     // MARK: - UITableViewDataSource
