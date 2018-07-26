@@ -1,6 +1,6 @@
 # Ladybug 🐞
 
-![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master)
+![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master) [![GitHub release](https://img.shields.io/github/release/ethanhuang13/ladybug.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README) ![GitHub top language](https://img.shields.io/github/languages/top/ethanhuang13/ladybug.svg) [![GitHub](https://img.shields.io/github/license/ethanhuang13/ladybug.svg)](https://github.com/ethanhuang13/ladybug/blob/master/LICENSE)
 
 Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
 
