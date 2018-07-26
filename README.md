@@ -1,14 +1,18 @@
 # Ladybug 🐞
 
-![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master) [![GitHub release](https://img.shields.io/github/release/ethanhuang13/ladybug.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README) ![GitHub top language](https://img.shields.io/github/languages/top/ethanhuang13/ladybug.svg) [![GitHub](https://img.shields.io/github/license/ethanhuang13/ladybug.svg)](https://github.com/ethanhuang13/ladybug/blob/master/LICENSE)
-
-Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
+![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master) [![GitHub release](https://img.shields.io/github/release/ethanhuang13/ladybug.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README) ![GitHub top language](https://img.shields.io/github/languages/top/ethanhuang13/ladybug.svg) [![GitHub](https://img.shields.io/github/license/ethanhuang13/ladybug.svg)](https://github.com/ethanhuang13/ladybug/blob/master/LICENSE) 
 
 [![](App_Store_Badge.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
 
+Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
+
+Developers have mixed feeling about radars. Some of radars never get close or response. Ladybug doesn't try to “fix” this situation, but it helps you to manage radar links or retrieve your records from Open Radar. If you want to file a radar while cross-posting to Open Radar, consider using [Brisk](https://github.com/br1sk/brisk-ios). 
+
 ## Demo
 
-![Demo of user tapped a radar link in Message and opened Ladybug to view Open Radar.](demo.gif)
+This is how you duplicate a radar in 2018. Open a rdar:// link, then duplicate it in [Brisk](https://github.com/br1sk/brisk-ios)!
+
+![Demo of user tapped a radar link in Tweetbot and opened Ladybug to view Open Radar, then open Brisk for filing a duplicated radar.](demo2.gif)
 
 ## Features
 
@@ -28,8 +32,6 @@ Ladybug is a simple iOS app handles Radar links ([rdar://](rdar://)) gracefully.
 | 🆓 | Free without ads |
 | 🚫 | No third-party tracking or analytics |
 
-Developers have mixed feeling about radars. Lots of radars never get close or response. Ladybug doesn't try to “fix” this situation, it just helps you to manage radar links or retrieve your records from Open Radar. If you want to file a radar while cross-posting to Open Radar, consider using [Brisk](https://github.com/br1sk/brisk-ios). 
-
 ## Install
 
 [![](App_Store_Badge.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
@@ -38,10 +40,10 @@ Download the official release version from [App Store](https://itunes.apple.com/
 
 Or, you can install this open source app with the following steps:
 
-- Clone the repo on [GitHub](https://github.com/ethanhuang13/ladybug)
-- Open the project with Xcode 9 or above
-- Change bundle ID to something like `com.yourcompany.Ladybug`
-- Build and run on your iOS devices
+1. Clone the repo on [GitHub](https://github.com/ethanhuang13/ladybug)
+2. Open the project with Xcode 9 or above
+3. Change bundle ID to something like `com.yourcompany.Ladybug`
+4. Build and Run on your iOS devices
 
 ## Contribution 
 
