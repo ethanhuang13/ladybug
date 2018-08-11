@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Echo
 
 extension UserDefaults {
     internal static let browserKey: String = "com.elaborapp.Ladybug.browserKey"

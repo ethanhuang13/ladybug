@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum OpenRadarAPIError: Error {
+public enum OpenRadarAPIError: Error {
     case urlInvalidString(String)
     case requiresAPIKey
     case noData
@@ -16,19 +16,19 @@ enum OpenRadarAPIError: Error {
     case parseFailed
 }
 
-extension OpenRadarAPIError: LocalizedError {
-    var errorDescription: String? {
+extension OpenRadarAPIError: CustomStringConvertible {
+    public var description: String {
         switch self {
         case .urlInvalidString(_):
-            return "URL invalid".localized()
+            return "URL invalid"
         case .requiresAPIKey:
-            return "Requires API Key".localized()
+            return "Requires API Key"
         case .noData:
-            return "No data".localized()
+            return "No data"
         case .noResult:
-            return "No result".localized()
+            return "No result"
         case .parseFailed:
-            return "Parse data failed".localized()
+            return "Parse data failed"
         }
     }
 }
@@ -42,6 +42,7 @@ struct OpenRadarAPIResultArray<T: Codable>: Codable {
 }
 
 public struct OpenRadarAPI {
+    public init() {}
     private func performRequest(url: URL, completion: @escaping (_ result: Result<Data>) -> Void) {
         guard let apiKey = OpenRadarKeychain.getAPIKey() else {
             completion(.error(OpenRadarAPIError.requiresAPIKey))
@@ -50,7 +51,7 @@ public struct OpenRadarAPI {
 
         var request = URLRequest(url: url)
         request.addValue(apiKey, forHTTPHeaderField: "Authorization")
-        request.addValue(AppConstants.userAgentString, forHTTPHeaderField: "User-Agent")
+//        request.addValue(userAgentString, forHTTPHeaderField: "User-Agent")
 
         URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let error = error {
@@ -144,7 +145,7 @@ public struct OpenRadarAPI {
         fetchNextPage(1)
     }
 
-    public func fetchRadarsBy(keywords: [String], completion: @escaping (_ result: Result<[Radar]>) -> Void) {
+    func fetchRadarsBy(keywords: [String], completion: @escaping (_ result: Result<[Radar]>) -> Void) {
         let urlString = "https://openradar.appspot.com/api/search?q=\(keywords.joined(separator: ","))"
         guard let url = URL(string: urlString) else {
             completion(.error(OpenRadarAPIError.urlInvalidString(urlString)))

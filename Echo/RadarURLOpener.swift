@@ -8,16 +8,16 @@
 
 import UIKit
 
-protocol RadarURLOpenerUI {
+public protocol RadarURLOpenerUI {
     func openRadarLinkInSafariViewController(_ radarNumber: RadarNumber, radarOption: RadarOption, readerMode: Bool)
     func openRadarInDetailViewController(_ radar: Radar)
 }
 
-class RadarURLOpener {
-    static let shared = RadarURLOpener()
-    var delegate: RadarURLOpenerUI?
+public class RadarURLOpener {
+    public static let shared = RadarURLOpener()
+    public var delegate: RadarURLOpenerUI?
 
-    func canOpen(in browserOption: BrowserOption) -> Bool {
+    public func canOpen(in browserOption: BrowserOption) -> Bool {
         switch browserOption {
         case .sfvcReader, .sfvc:
             return delegate != nil
@@ -29,7 +29,7 @@ class RadarURLOpener {
         }
     }
 
-    func open(_ radarNumber: RadarNumber, radarOption: RadarOption = .openRadar, in browserOption: BrowserOption = .sfvcReader, completion: @escaping (Result<Void>) -> Void) {
+    public func open(_ radarNumber: RadarNumber, radarOption: RadarOption = .openRadar, in browserOption: BrowserOption = .sfvcReader, completion: @escaping (Result<Void>) -> Void) {
 
         guard canOpen(in: browserOption) else {
             completion(.error(RadarURLOpenerError.cannotOpenIn(browserOption)))

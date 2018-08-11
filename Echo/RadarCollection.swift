@@ -8,18 +8,18 @@
 
 import Foundation
 
-protocol RadarCollectionDelegate {
+public protocol RadarCollectionDelegate {
     func radarCollectionDidUpdate()
 }
 
-class RadarCollection {
-    static let shared = RadarCollection()
+public class RadarCollection {
+    public static let shared = RadarCollection()
 
-    var delegates: MulticastDelegate<RadarCollectionDelegate> = MulticastDelegate()
+    public var delegates: MulticastDelegate<RadarCollectionDelegate> = MulticastDelegate()
 
     static private let key = "com.elaborapp.Ladybug.RadarCollection"
 
-    lazy var fileURL: URL = {
+    public lazy var fileURL: URL = {
         let fileManager = FileManager.default
         let documentDirectory = try! fileManager.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
         let fileURL = documentDirectory.appendingPathComponent("ladybug-radars.json")
@@ -71,7 +71,7 @@ class RadarCollection {
         }
     }
 
-    public static func save(_ radars: [RadarNumber: Radar], to fileURL: URL) throws {
+    static func save(_ radars: [RadarNumber: Radar], to fileURL: URL) throws {
         do {
             try JSONEncoder().encode(radars).write(to: fileURL)
             print("Saved \(radars.count) radars")
@@ -163,7 +163,7 @@ class RadarCollection {
         }
     }
 
-    public func bookmark(radarNumbers: [RadarNumber]) {
+    func bookmark(radarNumbers: [RadarNumber]) {
         for radarNumber in radarNumbers {
             if let existingRadar = radars[radarNumber] {
                 existingRadar.bookmarkedDate = existingRadar.bookmarkedDate != nil ? existingRadar.bookmarkedDate : Date()

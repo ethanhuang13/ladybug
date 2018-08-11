@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Echo
 
 extension OpenRadarKeychain {
     static func presentSetupAlertController(on vc: UIViewController, completion: @escaping (_ success: Bool) -> Void) {

@@ -8,18 +8,18 @@
 
 import Foundation
 
-enum SortOption: Int {
+public enum SortOption: Int {
     case radarNumber
     case addedDate
 }
 
-extension SortOption {
-    var title: String {
+extension SortOption: CustomStringConvertible {
+    public var description: String {
         switch self {
         case .radarNumber:
             return "Radar Number"
         case .addedDate:
-            return "Added Date".localized()
+            return "Added Date"
         }
     }
 }

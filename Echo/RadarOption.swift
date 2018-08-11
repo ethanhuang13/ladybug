@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum RadarOption: Int {
+public enum RadarOption: Int {
     case openRadar
     case appleRadar
     case brisk

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Echo
 
 extension BrowserOption {
     var title: String {

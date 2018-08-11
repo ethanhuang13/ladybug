@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BrowserOption: Int {
+public enum BrowserOption: Int {
     case sfvcReader
     case sfvc
     case safari
