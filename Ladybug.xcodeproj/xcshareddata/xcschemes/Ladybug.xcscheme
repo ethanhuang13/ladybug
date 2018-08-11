@@ -59,6 +59,16 @@
                ReferencedContainer = "container:Ladybug.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "501F1424211F00FC008A0092"
+               BuildableName = "EchoTests.xctest"
+               BlueprintName = "EchoTests"
+               ReferencedContainer = "container:Ladybug.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
