@@ -53,16 +53,6 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6C07272620CDC70600603199"
-               BuildableName = "LadybugUITests.xctest"
-               BlueprintName = "LadybugUITests"
-               ReferencedContainer = "container:Ladybug.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
                BlueprintIdentifier = "501F1424211F00FC008A0092"
                BuildableName = "EchoTests.xctest"
                BlueprintName = "EchoTests"
