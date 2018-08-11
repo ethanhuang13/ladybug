@@ -41,7 +41,7 @@ extension RadarNumber: Comparable {
 }
 
 extension RadarNumber {
-    init?(string: String) {
+    public init?(string: String) {
         let trimmedString = string.trimmingCharacters(in: .whitespacesAndNewlines)
         if let int = Int(trimmedString),
             String(int) == trimmedString {
@@ -54,7 +54,7 @@ extension RadarNumber {
         }
     }
 
-    init?(url: URL) {
+    public init?(url: URL) {
         if let string = RadarNumber.parse(url),
             let radarNumber = RadarNumber(string: string) {
             self = radarNumber
@@ -96,7 +96,7 @@ extension RadarNumber {
         }
     }
 
-    func url(by radarOption: RadarOption) -> URL {
+    public func url(by radarOption: RadarOption) -> URL {
         switch radarOption {
         case .appleRadar:
             return URL(string: "https://bugreport.apple.com/web/?problemID=\(rawValue)")!
@@ -107,11 +107,11 @@ extension RadarNumber {
         }
     }
 
-    var rdarURLString: String {
+    public var rdarURLString: String {
         return "rdar://" + self.string
     }
 
-    var string: String {
+    public var string: String {
         return String(self.number)
     }
 }

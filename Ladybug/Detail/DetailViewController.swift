@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Echo
 
 class DetailViewController: UITableViewController, TableViewControllerUsingViewModel {
     var radar: Radar {

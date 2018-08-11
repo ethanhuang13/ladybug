@@ -9,7 +9,7 @@
 import Foundation
 import Security
 
-struct OpenRadarKeychain {
+public struct OpenRadarKeychain {
     private static let accessibilityLevel: CFString = kSecAttrAccessibleWhenUnlockedThisDeviceOnly
     private static let service: String = "Ladybug"
     private static let username: String = "openradar"
@@ -22,12 +22,12 @@ struct OpenRadarKeychain {
         return query
     }
 
-    static func deleteAPIKey() -> Bool {
+    public static func deleteAPIKey() -> Bool {
         let query = queryDictionary()
         return SecItemDelete(query as CFDictionary).hasNoError
     }
 
-    static func set(apiKey: String) -> Bool {
+    public static func set(apiKey: String) -> Bool {
         var query = queryDictionary()
         _ = deleteAPIKey()
         let data = apiKey.data(using: .utf8)
@@ -37,7 +37,7 @@ struct OpenRadarKeychain {
         return status.hasNoError
     }
 
-    static func getAPIKey() -> String? {
+    public static func getAPIKey() -> String? {
         var query = queryDictionary()
         query[kSecReturnData as String] = kCFBooleanTrue
         query[kSecMatchLimit as String] = kSecMatchLimitOne

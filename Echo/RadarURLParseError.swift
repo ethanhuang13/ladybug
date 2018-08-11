@@ -8,15 +8,15 @@
 
 import Foundation
 
-enum RadarURLParseError: Error {
+public enum RadarURLParseError: Error {
     case noValidRadarNumber
 }
 
-extension RadarURLParseError: LocalizedError {
-    var errorDescription: String? {
+extension RadarURLParseError: CustomStringConvertible {
+    public var description: String {
         switch self {
         case .noValidRadarNumber:
-            return "No valid radar number".localized()
+            return "No valid radar number"
         }
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Echo
 
 class HistoryViewController: UITableViewController, TableViewControllerUsingViewModel {
     lazy var tableViewViewModel: TableViewViewModel = { TableViewViewModel(tableViewController: self) }()

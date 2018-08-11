@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Echo
 
 class TabBarController: UITabBarController {
     override func viewDidLoad() {

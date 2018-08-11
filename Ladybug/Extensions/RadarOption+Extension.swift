@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Echo
 
 extension RadarOption {
     var title: String {

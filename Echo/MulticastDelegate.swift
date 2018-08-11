@@ -9,10 +9,10 @@
 import Foundation
 
 // Inspired by https://gist.github.com/klemenzagar91/8c918dc20f6c8f648b6e68e6a86fa0da and http://www.gregread.com/2016/02/23/multicast-delegates-in-swift/
-struct MulticastDelegate<D> {
+public struct MulticastDelegate<D> {
     private let delegates: NSHashTable<AnyObject> = NSHashTable.weakObjects()
 
-    func add(delegate: D) {
+    public func add(delegate: D) {
         delegates.add(delegate as AnyObject)
     }
 

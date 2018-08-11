@@ -10,19 +10,19 @@ import Foundation
 
 /// Open Radar format
 
-struct RadarMetadata: Codable {
-    let status: String
-    let resolved: String
-    let product: String
-    let description: String
-    let classification: String
-    let originated: String
-    let productVersion: String
-    let number: String
-    let user: String
+public struct RadarMetadata: Codable {
+    public let status: String
+    public let resolved: String
+    public let product: String
+    public let description: String
+    public let classification: String
+    public let originated: String
+    public let productVersion: String
+    public let number: String
+    public let user: String
     let id: Int
-    let title: String
-    let reproducible: String
+    public let title: String
+    public let reproducible: String
 
     enum CodingKeys: String, CodingKey {
         case status
