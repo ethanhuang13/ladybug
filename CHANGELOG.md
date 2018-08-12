@@ -5,10 +5,13 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
+
+## [1.2.1(12)] - 2018-08-12
 - Scroll to top when loading another radar #19
 - Radar title in the lists should show full text with multiple lines #21
 - Add toggle bookmark action to detail view and its peek #24
 
+---
 ## [1.2.0(11)] - 2018-07-26
 ### Added
 - [Suggestion] Add case-sensitive warning on import from Open Radar #15
