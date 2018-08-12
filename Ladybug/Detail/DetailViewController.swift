@@ -152,6 +152,14 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
         }
     }
 
+    func load(radar: Radar) {
+        self.radar = radar
+        
+        DispatchQueue.main.async {
+            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+        }
+    }
+
     override var previewActionItems: [UIPreviewActionItem] {
         var items: [UIPreviewActionItem] = []
 
