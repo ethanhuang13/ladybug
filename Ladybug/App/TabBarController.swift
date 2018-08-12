@@ -42,7 +42,7 @@ extension TabBarController: RadarURLOpenerUI {
             
             if let navController = self.selectedViewController as? UINavigationController {
                 if let vc = navController.topViewController as? DetailViewController {
-                    vc.load(radar: radar)
+                    vc.load(radar: radar, scrollToTop: true)
                 } else {
                     navController.pushViewController(vc, animated: true)
                 }

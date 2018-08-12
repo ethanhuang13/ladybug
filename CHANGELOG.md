@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 - Scroll to top when loading another radar #19
 - Radar title in the lists should show full text with multiple lines #21
+- Add toggle bookmark action to detail view and its peek #24
 
 ## [1.2.0(11)] - 2018-07-26
 ### Added

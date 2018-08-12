@@ -40,8 +40,9 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
         OpenRadarAPI().fetchRadar(by: radar.number) { [weak self] (result) in
             switch result {
             case .value(let radar):
-                if RadarCollection.shared.upsert(radar: radar) {
-                    self?.radar = radar
+                if RadarCollection.shared.upsert(radar: radar),
+                    let updatedRadar = RadarCollection.shared.radar(radar.number) {
+                    self?.load(radar: updatedRadar)
                     RadarCollection.shared.forceNotifyDelegates()
                 }
             case .error(_):
@@ -58,6 +59,16 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
         super.viewDidAppear(animated)
 
         self.userActivity?.becomeCurrent()
+    }
+
+    func load(radar: Radar, scrollToTop: Bool = false) {
+        self.radar = radar
+
+        if scrollToTop {
+            DispatchQueue.main.async {
+                self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
+            }
+        }
     }
 
     func reloadData() {
@@ -123,6 +134,10 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
             }
 
             var actionRows: [TableViewCellViewModel] = []
+            actionRows.append(TableViewCellViewModel(title: radar.isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), selectAction: {
+                radar.toggleBookmark()
+                self.reloadData()
+            }))
             let rdarURLString = radar.number.rdarURLString
             actionRows.append(TableViewCellViewModel(title: "Copy link".localized(), subtitle: rdarURLString, cellStyle: .subtitle, selectAction: {
                 self.copyRdarLink()
@@ -152,17 +167,12 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
         }
     }
 
-    func load(radar: Radar) {
-        self.radar = radar
-        
-        DispatchQueue.main.async {
-            self.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: false)
-        }
-    }
-
     override var previewActionItems: [UIPreviewActionItem] {
         var items: [UIPreviewActionItem] = []
 
+        let toggleBookmarkAction = UIPreviewAction(title: radar.isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), style: .default) { (_, _) in
+            self.radar.toggleBookmark()
+        }
         let copyRdarLinkAction = UIPreviewAction(title: String(format: "Copy %@".localized(), radar.number.rdarURLString), style: .default) { (_, _) in
             self.copyRdarLink()
         }
@@ -179,7 +189,7 @@ class DetailViewController: UITableViewController, TableViewControllerUsingViewM
             self.duplicateInBrisk()
         }
 
-        items = [copyRdarLinkAction, copyOpenRadarLinkAction, openInSafariViewControllerAction, openInSafariAction]
+        items = [toggleBookmarkAction, copyRdarLinkAction, copyOpenRadarLinkAction, openInSafariViewControllerAction, openInSafariAction]
 
         if RadarURLOpener.shared.canOpen(in: .briskApp) {
             items.append(duplicateInBrisk)

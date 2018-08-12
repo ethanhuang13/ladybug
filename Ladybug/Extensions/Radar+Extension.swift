@@ -9,10 +9,17 @@
 import UIKit
 
 extension Radar {
+    var isBookmarked: Bool {
+        return bookmarkedDate != nil
+    }
+
+    func toggleBookmark() {
+        try? RadarCollection.shared.toggleBookmark(radarNumber: self.number)
+    }
+
     var toggleBookmarkAction: UIContextualAction {
-        let isBookmarked = bookmarkedDate != nil
         let action = UIContextualAction(style: .normal, title: isBookmarked ? "Unbookmark".localized() : "Bookmark".localized(), handler: { (_, _, completion) in
-            try? RadarCollection.shared.toggleBookmark(radarNumber: self.number)
+            self.toggleBookmark()
             completion(true)
         })
         return action
