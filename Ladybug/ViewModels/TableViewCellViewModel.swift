@@ -92,6 +92,7 @@ struct TableViewCellViewModel {
 
         cell.textLabel?.numberOfLines = 0
         cell.detailTextLabel?.text = subtitle
+        cell.detailTextLabel?.numberOfLines = 0
         cell.selectionStyle = selectionStyle
         cell.accessoryType = accessoryType
     }
