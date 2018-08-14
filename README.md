@@ -1,6 +1,12 @@
 # Ladybug 🐞
 
-![](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master) [![GitHub release](https://img.shields.io/github/release/ethanhuang13/ladybug.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README) ![GitHub top language](https://img.shields.io/github/languages/top/ethanhuang13/ladybug.svg) [![GitHub](https://img.shields.io/github/license/ethanhuang13/ladybug.svg)](https://github.com/ethanhuang13/ladybug/blob/master/LICENSE) 
+[![Travis CI](https://travis-ci.org/ethanhuang13/ladybug.svg?branch=master)](https://travis-ci.org/ethanhuang13/ladybug)
+[![GitHub release](https://img.shields.io/github/release/ethanhuang13/ladybug.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
+![GitHub top language](https://img.shields.io/github/languages/top/ethanhuang13/ladybug.svg) 
+![](https://img.shields.io/badge/Platform-iOS%2011.0%2B-lightgrey.svg)
+[![License](https://img.shields.io/github/license/ethanhuang13/ladybug.svg)](https://github.com/ethanhuang13/ladybug/blob/master/LICENSE)
+[![Twitter](https://img.shields.io/badge/Twitter-%40ethanhuang13-blue.svg)](https://twitter.com/ethanhuang13)
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ethanhuang13)
 
 [![](App_Store_Badge.svg)](https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=README)
 
