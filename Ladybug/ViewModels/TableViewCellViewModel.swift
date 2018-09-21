@@ -15,9 +15,9 @@ struct TableViewCellViewModel {
     let title: String
     let subtitle: String?
     let reuseIdentifier: String
-    let cellStyle: UITableViewCellStyle
-    let selectionStyle: UITableViewCellSelectionStyle
-    let accessoryType: UITableViewCellAccessoryType
+    let cellStyle: UITableViewCell.CellStyle
+    let selectionStyle: UITableViewCell.SelectionStyle
+    let accessoryType: UITableViewCell.AccessoryType
     var leadingSwipeActions: UISwipeActionsConfiguration?
     var trailingSwipeActions: UISwipeActionsConfiguration?
     var previewingViewController: UIViewControllerClosure?
@@ -25,9 +25,9 @@ struct TableViewCellViewModel {
 
     init(title: String,
          subtitle: String? = nil,
-         cellStyle: UITableViewCellStyle = .default,
-         selectionStyle: UITableViewCellSelectionStyle = .default,
-         accessoryType: UITableViewCellAccessoryType = .disclosureIndicator,
+         cellStyle: UITableViewCell.CellStyle = .default,
+         selectionStyle: UITableViewCell.SelectionStyle = .default,
+         accessoryType: UITableViewCell.AccessoryType = .disclosureIndicator,
          leadingSwipeActions: UISwipeActionsConfiguration? = nil,
          trailingSwipeActions: UISwipeActionsConfiguration? = nil,
          previewingViewController: UIViewControllerClosure? = nil,

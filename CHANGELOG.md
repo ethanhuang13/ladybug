@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+- Support iOS 12 and Swift 4.2 #26
+
 ## [1.2.1(12)] - 2018-08-12
 - Scroll to top when loading another radar #19
 - Radar title in the lists should show full text with multiple lines #21

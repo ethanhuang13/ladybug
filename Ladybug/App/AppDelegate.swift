@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return UIPasteboard.general.string
     }()
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
 
         window = UIWindow(frame: UIScreen.main.bounds)
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         if let pasteboardString = UIPasteboard.general.string,
             pasteboardString != currentPasteboardString {
-            NotificationCenter.default.post(name: .UIPasteboardChanged, object: nil)
+            NotificationCenter.default.post(name: UIPasteboard.changedNotification, object: nil)
             currentPasteboardString = pasteboardString
         }
     }
@@ -64,7 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // MARK: - URL Scheme
 
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let opener = RadarURLOpener.shared
 
         if let radarNumber = RadarNumber(url: url),

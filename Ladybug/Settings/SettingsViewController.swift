@@ -255,7 +255,7 @@ extension SettingsViewController {
 
     private var aboutSection: TableViewSectionViewModel {
         let rateCellViewModel = TableViewCellViewModel(title: "App Store".localized()) {
-            UIApplication.shared.open(AppConstants.appStoreURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.appStoreURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
 
         let feedbackCellViewModel = TableViewCellViewModel(title: "Feedback".localized()) {
@@ -263,12 +263,12 @@ extension SettingsViewController {
         }
 
         let developerCellViewModel = TableViewCellViewModel(title: "Developer".localized(), subtitle: "@ethanhuang13", cellStyle: .value1) {
-            UIApplication.shared.open(AppConstants.developerURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.developerURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
 
         let githubCellViewModel = TableViewCellViewModel(title: "GitHub".localized(), subtitle: nil) {
 
-            UIApplication.shared.open(AppConstants.githubURL, options: [:], completionHandler: nil)
+            UIApplication.shared.open(AppConstants.githubURL, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
         }
 
         let sectionViewModel = TableViewSectionViewModel(header: "About".localized(), footer: AppConstants.aboutString, rows: [rateCellViewModel, feedbackCellViewModel, developerCellViewModel, githubCellViewModel])
@@ -329,4 +329,9 @@ extension SettingsViewController: UITextFieldDelegate {
             return true
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

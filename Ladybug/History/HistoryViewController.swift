@@ -43,7 +43,7 @@ class HistoryViewController: UITableViewController, TableViewControllerUsingView
 
         RadarCollection.shared.delegates.add(delegate: self)
 
-        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: .UIPasteboardChanged, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(pasteboardDidChange), name: UIPasteboard.changedNotification, object: nil)
     }
 
     @objc func pasteboardDidChange() {
