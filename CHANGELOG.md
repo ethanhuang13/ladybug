@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased]
 
+## [1.2.2(13)] - 2018-09-21
 - Support iOS 12 and Swift 4.2 #26
 
 ## [1.2.1(12)] - 2018-08-12
