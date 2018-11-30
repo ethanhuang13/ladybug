@@ -633,7 +633,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -643,6 +643,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elaborapp.Ladybug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match Development com.elaborapp.Ladybug";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -652,7 +653,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SE9N6X5V7C;
 				INFOPLIST_FILE = "$(SRCROOT)/Ladybug/Resources/Ladybug-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -662,6 +664,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.elaborapp.Ladybug;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "match AppStore com.elaborapp.Ladybug";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
