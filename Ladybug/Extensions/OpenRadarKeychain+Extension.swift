@@ -25,7 +25,7 @@ extension OpenRadarKeychain {
             }))
             alertController.addAction(UIAlertAction(title: "Get My API Key".localized(), style: .default, handler: { (_) in
                 let url = URL(string: "https://openradar.appspot.com/apikey")!
-                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (success) in
+                UIApplication.shared.open(url, options: SharedUtils.convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (success) in
                     if success {
                         DispatchQueue.main.async {
                             vc.present(alertController, animated: true) { }
@@ -55,9 +55,4 @@ extension OpenRadarKeychain {
             vc.present(alertController, animated: true) { }
         }
     }
-}
-
-// Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
-	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }
