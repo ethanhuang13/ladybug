@@ -88,7 +88,7 @@ extension SettingsViewController {
         let openRadarAPIKeyViewModel = TableViewCellViewModel(title: "Open Radar API Key".localized(), subtitle: "Setup or remove the API Key".localized(), cellStyle: .subtitle, selectAction: {
 
             if OpenRadarKeychain.getAPIKey() != nil {
-                OpenRadarKeychain.presentRemoveKeyAlertContrller(on: self, completion: { (success) in
+                OpenRadarKeychain.presentRemoveKeyAlertController(on: self, completion: { (success) in
                     if success {
                         self.reloadData()
                         RadarCollection.shared.forceNotifyDelegates()
