@@ -41,7 +41,7 @@ extension OpenRadarKeychain {
         }
     }
 
-    static func presentRemoveKeyAlertContrller(on vc: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
+    static func presentRemoveKeyAlertController(on vc: UIViewController, completion: @escaping (_ success: Bool) -> Void) {
         DispatchQueue.main.async {
             let alertController = UIAlertController(title: "Remove Open Radar API Key".localized(), message: "", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Remove".localized(), style: .destructive, handler: { (_) in
