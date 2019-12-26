@@ -20,5 +20,6 @@ struct AppConstants {
 
     static var appStoreURL: URL = URL(string: "https://itunes.apple.com/us/app/ladybug-handles-radar-links/id1402968134?l=zh&ls=1&mt=8&ct=Ladybug")!
     static var githubURL: URL = URL(string: "https://github.com/ethanhuang13/ladybug")!
+    static var githubIssueURL: URL = URL(string: "https://github.com/ethanhuang13/ladybug/issues/new")!
     static var developerURL: URL = URL(string: "https://twitter.com/ethanhuang13")!
 }

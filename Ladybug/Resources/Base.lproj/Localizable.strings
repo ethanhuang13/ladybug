@@ -97,6 +97,11 @@
 "Developer" = "Developer";
 "GitHub" = "GitHub";
 
+"Select a Feedback Option" = "Select a Feedback Option";
+"Send Email" = "Send Email";
+"Submit GitHub Issue" = "Submit GitHub Issue";
+"Cancel" = "Cancel";
+
 "Setup iOS Mail" = "Setup iOS Mail";
 "Setup iOS Mail accounts first, or..." = "Setup iOS Mail accounts first, or send email to elaborapp+ladybug@gmail.com";
 
